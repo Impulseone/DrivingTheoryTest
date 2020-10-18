@@ -1,3 +1,4 @@
+import 'package:dirving_theory_test/view/question_screen.dart';
 import 'package:flutter/material.dart';
 
 class WarningScreen extends StatelessWidget {
@@ -14,7 +15,10 @@ class WarningScreen extends StatelessWidget {
           RaisedButton(
               child: Text("Don't show again"),
               color: Colors.green,
-              onPressed: () {})
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => QuestionScreen()));
+              })
         ],
       ),
     );
