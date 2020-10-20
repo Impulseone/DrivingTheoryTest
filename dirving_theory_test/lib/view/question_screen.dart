@@ -3,18 +3,24 @@ import 'package:dirving_theory_test/model/question.dart';
 import 'package:flutter/material.dart';
 
 class QuestionScreen extends StatefulWidget {
+
+ final QuestionBloc questionBloc;
+
+ QuestionScreen(this.questionBloc);
+
   @override
-  _QuestionScreenState createState() => _QuestionScreenState();
+  _QuestionScreenState createState() => _QuestionScreenState(questionBloc);
 }
 
 class _QuestionScreenState extends State<QuestionScreen> {
-  int questionNumber = 1;
+  int _questionNumber = 0;
   List<Question> questions;
-  QuestionBloc questionBloc = QuestionBloc();
+  QuestionBloc questionBloc;
+
+  _QuestionScreenState(this.questionBloc);
 
   @override
   Widget build(BuildContext context) {
-    questionBloc.readQuestionsFromFile();
     return Scaffold(
         appBar: AppBar(
           title: Text("Q1 of 757"),
@@ -25,15 +31,38 @@ class _QuestionScreenState extends State<QuestionScreen> {
             if (snapshot.hasData && snapshot.data.length > 0)
               return Column(
                 children: [
-                  Text(snapshot.data[0].question),
+                  Text(snapshot.data[_questionNumber].question),
                   RaisedButton(
-                      child: Text(snapshot.data[0].answer1), onPressed: () {}),
+                      child: Text(snapshot.data[_questionNumber].answer1),
+                      onPressed: () {}),
                   RaisedButton(
-                      child: Text(snapshot.data[0].answer2), onPressed: () {}),
+                      child: Text(snapshot.data[_questionNumber].answer2),
+                      onPressed: () {}),
                   RaisedButton(
-                      child: Text(snapshot.data[0].answer3), onPressed: () {}),
+                      child: Text(snapshot.data[_questionNumber].answer3),
+                      onPressed: () {}),
                   RaisedButton(
-                      child: Text(snapshot.data[0].answer4), onPressed: () {}),
+                      child: Text(snapshot.data[_questionNumber].answer4),
+                      onPressed: () {}),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                          icon: Icon(Icons.arrow_left),
+                          onPressed: () {
+                            setState(() {
+                              _questionNumber--;
+                            });
+                          }),
+                      IconButton(
+                          icon: Icon(Icons.arrow_right),
+                          onPressed: () {
+                            setState(() {
+                              _questionNumber++;
+                            });
+                          }),
+                    ],
+                  )
                 ],
               );
             else

@@ -16,8 +16,8 @@ class WarningScreen extends StatelessWidget {
               child: Text("Don't show again"),
               color: Colors.green,
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => QuestionScreen()));
+                // Navigator.of(context).push(
+                //     MaterialPageRoute(builder: (context) => QuestionScreen()));
               })
         ],
       ),

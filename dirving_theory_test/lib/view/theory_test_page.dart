@@ -10,33 +10,98 @@ class _TheoryTestMenuPageState extends State<TheoryTestMenuPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Driving Test")),
-      body: ListView(
+      appBar: AppBar(title: Text("Theory Test")),
+      body: Column(
         children: [
           RaisedButton(
-              child: Text('Practice all questions \n Все вопросы '),
+              color: Colors.green,
+              child: Text(
+                "Practice all questions\nПрактиковать все вопросы",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
+              ),
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => CategoriesToPracticeScreen()));
               }),
           RaisedButton(
-              child: Text('Mock test \n Пробный тест '), onPressed: () {}),
+            color: Colors.green,
+            child: Text("Mock test \nПробный тест",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                )),
+            onPressed: () {},
+          ),
           RaisedButton(
-              child: Text('Search questions \n Поиск вопросов '),
+              color: Colors.green,
+              child: Text(
+                "Search questions \nПоиск вопросов",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
+              ),
               onPressed: () {}),
           RaisedButton(
-              child: Text('My questions \n Мои вопросы '), onPressed: () {}),
-          RaisedButton(
-              child: Text('Progress monitor \n Индикатор прогресса '),
+              color: Colors.green,
+              child: Text(
+                "My questions\nМои вопросы",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
+              ),
               onPressed: () {}),
           RaisedButton(
-              child: Text('Stopping distances \n Тормозные пути '),
+              color: Colors.green,
+              child: Text(
+                "Progress monitor\nИндикатор прогресса",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
+              ),
               onPressed: () {}),
           RaisedButton(
-              child: Text('Help & Support \n Помощь и поддержка '),
+              color: Colors.green,
+              child: Text(
+                "Stopping distances \n Тормозные пути",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
+              ),
               onPressed: () {}),
           RaisedButton(
-              child: Text('Offers and Rewards \n Предложения и награды '),
+              color: Colors.green,
+              child: Text(
+                "Help & Support \n Помощь и поддержка",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
+              ),
+              onPressed: () {}),
+          RaisedButton(
+              color: Colors.green,
+              child: Text(
+                "Offers and Rewards \n Предложения и награды",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
+              ),
               onPressed: () {}),
         ],
       ),

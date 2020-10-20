@@ -1,5 +1,6 @@
 import 'package:dirving_theory_test/view/theory_test_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 
 void main() {
   runApp(DrivingTheoryTest());
@@ -31,46 +32,34 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(title: Text("Driving Test")),
         body: Center(
           child: GridView.count(
-            primary: false,
+            shrinkWrap: true,
             padding: const EdgeInsets.all(20),
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
             crossAxisCount: 2,
             children: <Widget>[
-              Container(
-                padding: const EdgeInsets.all(8),
-                child: RaisedButton(
-                  child: Text("Theory Test"),
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => TheoryTestMenuPage()));
-                  },
-                ),
-                color: Colors.teal[100],
+              RaisedButton(
+                color: Colors.green,
+                child: Text("THEORY TEST\n\nТЕСТ ПО ТЕОРИИ", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 16, ),),
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => TheoryTestMenuPage()));
+                },
               ),
-              Container(
-                padding: const EdgeInsets.all(8),
-                child: RaisedButton(
-                  child: Text("Hazard Perception"),
-                  onPressed: () {},
-                ),
-                color: Colors.teal[200],
+              RaisedButton(
+                color: Colors.red,
+                child: Text("HAZARD PERCEPTION\n\nВОСПРИЯТИЕ ОПАСНОСТИ", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 16, ),),
+                onPressed: () {},
               ),
-              Container(
-                padding: const EdgeInsets.all(8),
-                child: RaisedButton(
-                  child: Text("Highway code"),
-                  onPressed: () {},
-                ),
-                color: Colors.teal[300],
+              RaisedButton(
+                color: Colors.blue,
+                child: Text("HIGHWAY CODE\n\nПРАВИЛА ДОРОЖНОГО ДВИЖЕНИЯ", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 16, ),),
+                onPressed: () {},
               ),
-              Container(
-                padding: const EdgeInsets.all(8),
-                child: RaisedButton(
-                  child: Text("Road signs"),
-                  onPressed: () {},
-                ),
-                color: Colors.teal[400],
+              RaisedButton(
+                color: Colors.orange,
+                child: Text("ROAD SIGNS\n\nДОРОЖНЫЕ ЗНАКИ", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 16, ),),
+                onPressed: () {},
               ),
             ],
           ),
