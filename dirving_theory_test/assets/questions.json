@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "category": "alertness",
     "hasImage": true,
     "question": "What does this sign mean?",
     "answer_1": "Mini-roundabout",
@@ -12,6 +13,7 @@
   },
   {
     "id": 2,
+    "category": "attitude",
     "hasImage": false,
     "question": "You're carrying two 13-year-old children and their parents in your car. Who’s responsible for seeing that the children wear seat belts?",
     "answer_1": "The front-seat passenger",
@@ -23,6 +25,7 @@
   },
   {
     "id": 3,
+    "category": "documents",
     "hasImage": true,
     "question": "What information would be shown in a triangular road sign?",
     "answer_1": "Minimum speed",
@@ -34,6 +37,7 @@
   },
   {
     "id": 4,
+    "category": "hazard awareness",
     "hasImage": true,
     "question": "Which type of vehicle should you be ready to give way to as you approach this bridge?",
     "answer_1": "Buses",
@@ -45,6 +49,7 @@
   },
   {
     "id": 5,
+    "category": "road and traffic signs",
     "hasImage": true,
     "question": "What does this sign mean?",
     "answer_1": "Entrance to tunnel",
@@ -56,6 +61,7 @@
   },
   {
     "id": 6,
+    "category": "safety margins",
     "hasImage": false,
     "question": "At night, what does it mean if you see a pedestrian wearing reflective clothing and carrying a bright red light?",
     "answer_1": "You’re approaching an organized walk",
@@ -67,6 +73,7 @@
   },
   {
     "id": 7,
+    "category": "motorway rules",
     "hasImage": true,
     "question": "When may you wait in a box junction?",
     "answer_1": "When oncoming traffic prevents you turning right",
@@ -78,6 +85,7 @@
   },
   {
     "id": 8,
+    "category": "alertness",
     "hasImage": false,
     "question": "Why is it dangerous to leave rear fog lights switched on after the fog has cleared?",
     "answer_1": "Direction indicators may not work properly",
@@ -89,6 +97,7 @@
   },
   {
     "id": 9,
+    "category": "rules of the road",
     "hasImage": true,
     "question": "What does this sign mean?",
     "answer_1": "A route for pedestrians and cyclists",
@@ -100,6 +109,7 @@
   },
   {
     "id": 10,
+    "category": "alertness",
     "hasImage": false,
     "question": "When should you use hazard warning lights?",
     "answer_1": "When your vehicle has broken down and is causing an obstruction",
@@ -111,6 +121,7 @@
   },
   {
     "id": 11,
+    "category": "alertness",
     "hasImage": true,
     "question": "What should you do when going through a contraflow system on a motorway?",
     "answer_1": "Switch lanes to keep the traffic flowing",
@@ -122,6 +133,7 @@
   },
   {
     "id": 12,
+    "category": "rules of the road",
     "hasImage": false,
     "question": "What would suggest you’re driving on an icy road?",
     "answer_1": "There’s less transmission noise",
@@ -133,6 +145,7 @@
   },
   {
     "id": 13,
+    "category": "safety margins",
     "hasImage": true,
     "question": " What does this sign mean?",
     "answer_1": "No road markings",
@@ -144,6 +157,7 @@
   },
   {
     "id": 14,
+    "category": "alertness",
     "hasImage": false,
     "question": "What does it mean if your insurance policy has an excess of £500?",
     "answer_1": "You’ll be paid £500 if you don’t claim within one year ",
@@ -155,6 +169,7 @@
   },
   {
     "id": 15,
+    "category": "alertness",
     "hasImage": true,
     "question": "Why should you slow down as you approach this hazard?",
     "answer_1": "Because it’s hard to see to the right",

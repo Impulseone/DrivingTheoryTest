@@ -105,6 +105,17 @@ class _TheoryTestMenuPageState extends State<TheoryTestMenuPage> {
               onPressed: () {}),
         ],
       ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          children: [
+            IconButton(icon: Icon(Icons.info_outline), onPressed: (){}),
+            IconButton(icon: Icon(Icons.settings), onPressed: (){}),
+            IconButton(icon: Icon(Icons.star_border), onPressed: (){}),
+            IconButton(icon: Icon(Icons.share), onPressed: (){}),
+            IconButton(icon: Icon(Icons.more), onPressed: (){}),
+          ],
+        ),
+      ),
     );
   }
 }

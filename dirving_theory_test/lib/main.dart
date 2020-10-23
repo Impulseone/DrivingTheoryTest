@@ -63,6 +63,16 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-        ));
+        ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          children: [
+            IconButton(icon: Icon(Icons.settings), onPressed: (){}),
+            IconButton(icon: Icon(Icons.camera_alt), onPressed: (){}),
+            IconButton(icon: Icon(Icons.more), onPressed: (){}),
+            IconButton(icon: Icon(Icons.shop), onPressed: (){}),
+          ],
+        ),
+      ),);
   }
 }

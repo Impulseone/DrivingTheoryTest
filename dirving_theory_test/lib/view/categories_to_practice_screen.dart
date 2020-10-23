@@ -12,6 +12,7 @@ class CategoriesToPracticeScreen extends StatefulWidget {
 class _CategoriesToPracticeScreenState
     extends State<CategoriesToPracticeScreen> {
   QuestionBloc questionBloc = QuestionBloc();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,8 +80,8 @@ class _CategoriesToPracticeScreenState
               child: Text("Start"),
               onPressed: () {
                 questionBloc.readQuestionsFromFile();
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => QuestionScreen(questionBloc)));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => QuestionScreen(questionBloc)));
               },
             )));
   }

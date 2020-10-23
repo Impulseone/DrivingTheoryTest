@@ -1,5 +1,6 @@
 class Question {
   int id;
+  String category;
   bool hasImage;
   String question;
   String answer1;
@@ -11,6 +12,7 @@ class Question {
 
   Question(
       {this.id,
+        this.category,
       this.hasImage,
       this.question,
       this.answer1,
@@ -23,6 +25,7 @@ class Question {
   static Question fromJson(json) {
     return Question(
       id: json["id"],
+      category: json["category"],
       hasImage: json["hasImage"],
       question: json["question"],
       answer1: json["answer_1"],
@@ -37,6 +40,7 @@ class Question {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'category':category,
       'hasImage': hasImage,
       'question': question,
       'answer1': answer1,
