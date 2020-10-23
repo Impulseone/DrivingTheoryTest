@@ -12,7 +12,7 @@ class Question {
 
   Question(
       {this.id,
-        this.category,
+      this.category,
       this.hasImage,
       this.question,
       this.answer1,
@@ -40,7 +40,7 @@ class Question {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'category':category,
+      'category': category,
       'hasImage': hasImage,
       'question': question,
       'answer1': answer1,
@@ -50,5 +50,20 @@ class Question {
       'rightAnswer': rightAnswer,
       'explanation': explanation,
     };
+  }
+
+  String findRightAnswer(int rightAnswerNumber) {
+    switch (rightAnswerNumber) {
+      case 1:
+        return this.answer1;
+      case 2:
+        return this.answer2;
+      case 3:
+        return this.answer3;
+      case 4:
+        return this.answer4;
+      default:
+        return this.answer1;
+    }
   }
 }

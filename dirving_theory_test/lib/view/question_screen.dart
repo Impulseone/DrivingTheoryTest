@@ -1,12 +1,13 @@
 import 'package:dirving_theory_test/bloc/questionBloc.dart';
+import 'package:dirving_theory_test/database/database.dart';
+import 'package:dirving_theory_test/database/model/answered_question.dart';
 import 'package:dirving_theory_test/model/question.dart';
 import 'package:flutter/material.dart';
 
 class QuestionScreen extends StatefulWidget {
+  final QuestionBloc questionBloc;
 
- final QuestionBloc questionBloc;
-
- QuestionScreen(this.questionBloc);
+  QuestionScreen(this.questionBloc);
 
   @override
   _QuestionScreenState createState() => _QuestionScreenState(questionBloc);
@@ -21,6 +22,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   @override
   Widget build(BuildContext context) {
+    getAnsweredQuestions();
     return Scaffold(
         appBar: AppBar(
           title: Text("Q1 of 757"),
@@ -28,22 +30,45 @@ class _QuestionScreenState extends State<QuestionScreen> {
         body: StreamBuilder<List<Question>>(
           stream: questionBloc.questions,
           builder: (context, snapshot) {
-            if (snapshot.hasData && snapshot.data.length > 0)
+            if (snapshot.hasData && snapshot.data.length > 0) {
+              Question question = snapshot.data[_questionNumber];
+              String rightAnswer =
+                  question.findRightAnswer(question.rightAnswer);
               return Column(
                 children: [
-                  Text(snapshot.data[_questionNumber].question),
+                  Text(question.question),
                   RaisedButton(
-                      child: Text(snapshot.data[_questionNumber].answer1),
-                      onPressed: () {}),
+                      child: Text(question.answer1),
+                      onPressed: () {
+                        if (question.answer1 == rightAnswer) {
+                          DBProvider.db.insertAnswer(AnsweredQuestion(
+                              question.id, question.category, 1));
+                        }
+                      }),
                   RaisedButton(
                       child: Text(snapshot.data[_questionNumber].answer2),
-                      onPressed: () {}),
+                      onPressed: () {
+                        if (question.answer2 == rightAnswer) {
+                          DBProvider.db.insertAnswer(AnsweredQuestion(
+                              question.id, question.category, 1));
+                        }
+                      }),
                   RaisedButton(
                       child: Text(snapshot.data[_questionNumber].answer3),
-                      onPressed: () {}),
+                      onPressed: () {
+                        if (question.answer3 == rightAnswer) {
+                          DBProvider.db.insertAnswer(AnsweredQuestion(
+                              question.id, question.category, 1));
+                        }
+                      }),
                   RaisedButton(
                       child: Text(snapshot.data[_questionNumber].answer4),
-                      onPressed: () {}),
+                      onPressed: () {
+                        if (question.answer4 == rightAnswer) {
+                          DBProvider.db.insertAnswer(AnsweredQuestion(
+                              question.id, question.category, 1));
+                        }
+                      }),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -65,9 +90,15 @@ class _QuestionScreenState extends State<QuestionScreen> {
                   )
                 ],
               );
-            else
+            } else
               return Column();
           },
         ));
+  }
+
+  void getAnsweredQuestions()async{
+    List<AnsweredQuestion> list = List();
+    list = await DBProvider.db.getAnsweredQuestions();
+    print(list.length);
   }
 }
