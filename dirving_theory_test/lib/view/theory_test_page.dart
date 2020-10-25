@@ -10,111 +10,123 @@ class _TheoryTestMenuPageState extends State<TheoryTestMenuPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Theory Test")),
+      appBar: AppBar(
+        title: Text("Driving Test"),
+        backgroundColor: Colors.black,
+      ),
       body: Column(
         children: [
-          RaisedButton(
+          Container(
+            child: Text(
+              "THEORY TEST\n"
+              "ТЕСТ ПО ТЕОРИИ",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 22,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            color: Colors.green,
+            width: double.infinity,
+          ),
+          Padding(padding: EdgeInsets.only(top: 18)),
+          button("Practice all questions\nПрактиковать все вопросы",
+              Icons.arrow_right),
+          button("Mock test \nПробный тест", Icons.timer),
+          button("Search questions \nПоиск вопросов", Icons.search),
+          button("My questions\nМои вопросы", Icons.favorite),
+          button("Progress monitor\nИндикатор прогресса", Icons.graphic_eq),
+          button("Stopping distances \nТормозные пути",
+              Icons.arrow_right_alt_outlined),
+          button("Help & Support \nПомощь и поддержка", Icons.mail_outline),
+          button("Offers and Rewards \nПредложения и награды", Icons.star),
+        ],
+      ),
+      bottomNavigationBar: bottomNavigationBar()
+    );
+  }
+
+  Widget button(String text, IconData iconData) {
+    return Padding(
+        padding: EdgeInsets.only(top: 5),
+        child: SizedBox(
+          width: 300.0,
+          child: RaisedButton(
+              elevation: 0,
               color: Colors.green,
-              child: Text(
-                "Practice all questions\nПрактиковать все вопросы",
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                ),
+              child: Row(
+                children: [
+                  Container(
+                    width: 215,
+                    child: Text(
+                      text,
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                  Icon(iconData, color: Colors.white, size: 50)
+                ],
               ),
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => CategoriesToPracticeScreen()));
               }),
-          RaisedButton(
-            color: Colors.green,
-            child: Text("Mock test \nПробный тест",
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                )),
-            onPressed: () {},
+        ));
+  }
+
+  Widget bottomNavigationBar() {
+    return Theme(
+      data: Theme.of(context).copyWith(
+          canvasColor: Colors.black,
+          primaryColor: Colors.white,
+          textTheme: Theme.of(context)
+              .textTheme
+              .copyWith(caption: new TextStyle(color: Colors.white))),
+      child: new BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: 0,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        onTap: (tappedIcon) {
+          print(tappedIcon);
+        },
+        items: [
+          new BottomNavigationBarItem(
+            icon: new Icon(
+              Icons.info_outline,
+              size: 30,
+            ),
+            label: "",
           ),
-          RaisedButton(
-              color: Colors.green,
-              child: Text(
-                "Search questions \nПоиск вопросов",
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                ),
-              ),
-              onPressed: () {}),
-          RaisedButton(
-              color: Colors.green,
-              child: Text(
-                "My questions\nМои вопросы",
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                ),
-              ),
-              onPressed: () {}),
-          RaisedButton(
-              color: Colors.green,
-              child: Text(
-                "Progress monitor\nИндикатор прогресса",
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                ),
-              ),
-              onPressed: () {}),
-          RaisedButton(
-              color: Colors.green,
-              child: Text(
-                "Stopping distances \n Тормозные пути",
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                ),
-              ),
-              onPressed: () {}),
-          RaisedButton(
-              color: Colors.green,
-              child: Text(
-                "Help & Support \n Помощь и поддержка",
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                ),
-              ),
-              onPressed: () {}),
-          RaisedButton(
-              color: Colors.green,
-              child: Text(
-                "Offers and Rewards \n Предложения и награды",
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                ),
-              ),
-              onPressed: () {}),
+          new BottomNavigationBarItem(
+            icon: new Icon(
+              Icons.settings,
+              size: 30,
+            ),
+            label: "",
+          ),
+          new BottomNavigationBarItem(
+            icon: new Icon(
+              Icons.star_border,
+              size: 30,
+            ),
+            label: "",
+          ),
+          new BottomNavigationBarItem(
+            icon: new Icon(
+              Icons.share,
+              size: 30,
+            ),
+            label: "",
+          ),
+          new BottomNavigationBarItem(
+            icon: new Icon(Icons.shop, size: 30),
+            label: "",
+          )
         ],
-      ),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          children: [
-            IconButton(icon: Icon(Icons.info_outline), onPressed: (){}),
-            IconButton(icon: Icon(Icons.settings), onPressed: (){}),
-            IconButton(icon: Icon(Icons.star_border), onPressed: (){}),
-            IconButton(icon: Icon(Icons.share), onPressed: (){}),
-            IconButton(icon: Icon(Icons.more), onPressed: (){}),
-          ],
-        ),
       ),
     );
   }
