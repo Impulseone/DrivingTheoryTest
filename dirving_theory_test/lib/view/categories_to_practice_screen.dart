@@ -12,77 +12,110 @@ class CategoriesToPracticeScreen extends StatefulWidget {
 class _CategoriesToPracticeScreenState
     extends State<CategoriesToPracticeScreen> {
   QuestionBloc questionBloc = QuestionBloc();
+  int selectedCategories = 0;
+  bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Categories to practice \n0 of 757 selected"),
-        ),
-        body: ListView(
+      appBar: AppBar(
+        title: Text(
+            "Categories to practice \n$selectedCategories of 757 selected"),
+        backgroundColor: Colors.black,
+      ),
+      body: categoriesList(),
+      bottomNavigationBar: BottomAppBar(
+          color: Colors.green,
+          child: Container(
+              child: new RaisedButton(
+            elevation: 0.0,
+            color: Colors.green,
+            child: Text(
+              "START",
+              style: TextStyle(fontSize: 25, color: Colors.white),
+            ),
+            onPressed: () {
+              questionBloc.readQuestionsFromFile();
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => QuestionScreen(questionBloc)));
+            },
+          ))),
+    );
+  }
+
+  Widget categoriesList() {
+    return ListView(
+      children: [
+        categoryWidget('All categories\nВсе категории', Icons.list),
+        categoryWidget('Alertness\nОсторожность', Icons.vpn_key),
+        categoryWidget('Attitude \nПоложение', Icons.tag_faces),
+        categoryWidget('Documents \nДокументы', Icons.library_books_sharp),
+        categoryWidget('Hazard awareness\nОсведомленность об опасности',
+            Icons.warning_amber_outlined),
+        categoryWidget(
+            'Road and traffic signs \nДорога и дорожные знаки', Icons.traffic),
+        categoryWidget(
+            'Incidents, accidents and emergencies \nПроисшествия, аварии и чрезвычайные ситуации',
+            Icons.medical_services),
+        categoryWidget(
+            'Other types of vehicle \nДругие виды транспорта', Icons.bus_alert),
+        categoryWidget(
+            'Vehicle handling \nУправление автомобилем', Icons.directions_car),
+        categoryWidget(
+            'Motorway rules \nПравила автомагистрали', Icons.add_road),
+        categoryWidget('Safety margins \nПравила безопасности', Icons.speed),
+        categoryWidget(
+            'Safety and your vehicle \nБезопасность и ваш автомобиль',
+            Icons.build),
+        categoryWidget(
+            'Vulnerable road users \nУязвимые участники дорожного движения',
+            Icons.people),
+        categoryWidget(
+            'Vehicle loading \nЗагрузка автомобиля', Icons.car_rental),
+        categoryWidget('Videos \nВидео', Icons.video_collection),
+      ],
+    );
+  }
+
+  Widget categoryWidget(String text, IconData iconData) {
+    return Column(
+      children: [
+        Row(
           children: [
-            Card(
-              child: Text("All categories\nВсе категории"),
+            Icon(
+              iconData,
+              size: 45,
+              color: Colors.green,
             ),
-            Card(
-              child: Text("Alertness\nОсторожность"),
-            ),
-            Card(
-              child: Text("Attitude \nПоложение"),
-            ),
-            Card(
-              child: Text("Documents \nДокументы"),
-            ),
-            Card(
-              child: Text("Hazard awareness\nОсведомленность об опасности"),
-            ),
-            Card(
-              child: Text("Road and traffic signs \nДорога и дорожные знаки"),
-            ),
-            Card(
+            Container(
               child: Text(
-                  "Incidents, accidents and emergencies \nПроисшествия, аварии и чрезвычайные ситуации"),
+                text,
+              ),
+              width: 270,
+              padding: EdgeInsets.only(left: 10),
             ),
-            Card(
-              child: Text("Other types of vehicle \nДругие типы автомобилей"),
-            ),
-            Card(
-              child: Text("Vehicle handling \nУправление автомобилем"),
-            ),
-            Card(
-              child: Text("Motorway rules \nПравила автомагистрали"),
-            ),
-            Card(
-              child: Text("Safety margins \nПравила безопасности"),
-            ),
-            Card(
-              child: Text(
-                  "Safety and your vehicle \nБезопасность и ваш автомобиль"),
-            ),
-            Card(
-              child: Text(
-                  "Vulnerable road users \nУязвимые участники дорожного движения"),
-            ),
-            Card(
-              child: Text("Vehicle loading \nЗагрузка автомобиля"),
-            ),
-            Card(
-              child: Text("Videos \nВидео"),
+            Checkbox(
+              onChanged: (isChecked) {
+                setState(() {
+                  if (isChecked)
+                    selectedCategories = 757;
+                  else
+                    selectedCategories = 0;
+                  this.isChecked = isChecked;
+                });
+              },
+              value: isChecked,
+              activeColor: Colors.green,
             ),
           ],
+          mainAxisAlignment: MainAxisAlignment.center,
         ),
-        floatingActionButton: Container(
-            width: 600,
-            height: 30.0,
-            child: new RaisedButton(
-              elevation: 0.0,
-              color: Colors.green,
-              child: Text("Start"),
-              onPressed: () {
-                questionBloc.readQuestionsFromFile();
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => QuestionScreen(questionBloc)));
-              },
-            )));
+        Container(
+          height: 2,
+          width: double.infinity,
+          color: Colors.green,
+        )
+      ],
+    );
   }
 }
