@@ -29,50 +29,106 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Driving Test")),
-        body: Center(
-          child: GridView.count(
-            shrinkWrap: true,
-            padding: const EdgeInsets.all(20),
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            crossAxisCount: 2,
-            children: <Widget>[
-              RaisedButton(
-                color: Colors.green,
-                child: Text("THEORY TEST\n\nТЕСТ ПО ТЕОРИИ", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 16, ),),
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => TheoryTestMenuPage()));
-                },
-              ),
-              RaisedButton(
-                color: Colors.red,
-                child: Text("HAZARD PERCEPTION\n\nВОСПРИЯТИЕ ОПАСНОСТИ", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 16, ),),
-                onPressed: () {},
-              ),
-              RaisedButton(
-                color: Colors.blue,
-                child: Text("HIGHWAY CODE\n\nПРАВИЛА ДОРОЖНОГО ДВИЖЕНИЯ", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 16, ),),
-                onPressed: () {},
-              ),
-              RaisedButton(
-                color: Colors.orange,
-                child: Text("ROAD SIGNS\n\nДОРОЖНЫЕ ЗНАКИ", textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 16, ),),
-                onPressed: () {},
-              ),
-            ],
-          ),
-        ),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          children: [
-            IconButton(icon: Icon(Icons.settings), onPressed: (){}),
-            IconButton(icon: Icon(Icons.camera_alt), onPressed: (){}),
-            IconButton(icon: Icon(Icons.more), onPressed: (){}),
-            IconButton(icon: Icon(Icons.shop), onPressed: (){}),
+      appBar: AppBar(title: Text("Driving Test"), backgroundColor: Colors.black,),
+      body: Center(
+        child: GridView.count(
+          shrinkWrap: true,
+          padding: const EdgeInsets.all(20),
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          crossAxisCount: 2,
+          children: <Widget>[
+            menuButton(
+                Colors.green, Icons.menu_book, "THEORY_TEST", "ТЕСТ ПО ТЕОРИИ"),
+            menuButton(Colors.red, Icons.warning_amber_outlined,
+                "HAZARD PERCEPTION", "ВОСПРИЯТИЕ ОПАСНОСТИ"),
+            menuButton(Colors.lightBlue, Icons.list_alt, "HIGHWAY CODE",
+                "ПРАВИЛА ДОРОЖНОГО ДВИЖЕНИЯ"),
+            menuButton(
+                Colors.orange, Icons.edit_road, "ROAD SIGNS", "ДОРОЖНЫЕ ЗНАКИ"),
           ],
         ),
-      ),);
+      ),
+      bottomNavigationBar: new Theme(
+        data: Theme.of(context).copyWith(
+            // sets the background color of the `BottomNavigationBar`
+            canvasColor: Colors.black,
+            // sets the active color of the `BottomNavigationBar` if `Brightness` is light
+            primaryColor: Colors.white,
+            textTheme: Theme.of(context)
+                .textTheme
+                .copyWith(caption: new TextStyle(color: Colors.white))),
+        // sets the inactive color of the `BottomNavigationBar`
+        child: new BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: 0,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          onTap: (tappedIcon){
+            print(tappedIcon);
+          },
+          items: [
+            new BottomNavigationBarItem(
+              icon: new Icon(
+                Icons.settings,
+                size: 30,
+              ),
+              label: "",
+            ),
+            new BottomNavigationBarItem(
+              icon: new Icon(
+                Icons.camera_alt,
+                size: 30,
+              ),
+              label: "",
+            ),
+            new BottomNavigationBarItem(
+              icon: new Icon(
+                Icons.more,
+                size: 30,
+              ),
+              label: "",
+            ),
+            new BottomNavigationBarItem(
+              icon: new Icon(Icons.shop, size: 30),
+              label: "",
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget menuButton(
+      Color color, IconData icon, String engText, String rusText) {
+    return RaisedButton(
+      color: color,
+      child: Column(
+        children: [
+          Icon(
+            icon,
+            size: 80,
+            color: Colors.white,
+          ),
+          Text("$engText",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 14,
+              )),
+          Padding(padding: EdgeInsets.all(4)),
+          Text("$rusText",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 14,
+              ))
+        ],
+      ),
+      onPressed: () {
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => TheoryTestMenuPage()));
+      },
+    );
   }
 }
