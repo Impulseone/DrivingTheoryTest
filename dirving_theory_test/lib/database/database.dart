@@ -44,9 +44,22 @@ class DBProvider {
     return answeredQuestions;
   }
 
+  Future<List<AnsweredQuestion>> getAnsweredQuestionsCategory(
+      String category) async {
+    Database db = await this.database;
+    final List<Map<String, dynamic>> answeredQuestionsMapsList = await db
+        .query(tableName, where: '$answerCategory = ?', whereArgs: [category]);
+    List<AnsweredQuestion> answeredQuestions = List();
+    answeredQuestionsMapsList.forEach((element) {
+      answeredQuestions.add(AnsweredQuestion.fromMap(element));
+    });
+    return answeredQuestions;
+  }
+
   void insertAnswer(AnsweredQuestion answeredQuestion) async {
     Database db = await this.database;
-    await db.insert(tableName, answeredQuestion.toMap(), conflictAlgorithm: ConflictAlgorithm.replace);
+    await db.insert(tableName, answeredQuestion.toMap(),
+        conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   Future<int> updateAnswer(AnsweredQuestion answeredQuestion) async {

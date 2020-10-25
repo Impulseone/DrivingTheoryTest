@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "category": "alertness",
+    "category": "All categories",
     "hasImage": true,
     "question": "What does this sign mean?",
     "answer_1": "Mini-roundabout",
@@ -13,7 +13,7 @@
   },
   {
     "id": 2,
-    "category": "attitude",
+    "category": "All categories",
     "hasImage": false,
     "question": "You're carrying two 13-year-old children and their parents in your car. Who’s responsible for seeing that the children wear seat belts?",
     "answer_1": "The front-seat passenger",
@@ -25,7 +25,7 @@
   },
   {
     "id": 3,
-    "category": "documents",
+    "category": "All categories",
     "hasImage": true,
     "question": "What information would be shown in a triangular road sign?",
     "answer_1": "Minimum speed",

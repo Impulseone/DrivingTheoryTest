@@ -1,3 +1,4 @@
+import 'package:dirving_theory_test/bloc/categories_bloc.dart';
 import 'package:dirving_theory_test/view/categories_to_practice_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -7,43 +8,45 @@ class TheoryTestMenuPage extends StatefulWidget {
 }
 
 class _TheoryTestMenuPageState extends State<TheoryTestMenuPage> {
+
+  CategoriesBloc categoriesBloc = new CategoriesBloc();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Driving Test"),
-        backgroundColor: Colors.black,
-      ),
-      body: Column(
-        children: [
-          Container(
-            child: Text(
-              "THEORY TEST\n"
-              "ТЕСТ ПО ТЕОРИИ",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 22,
+        appBar: AppBar(
+          title: Text("Driving Test"),
+          backgroundColor: Colors.black,
+        ),
+        body: Column(
+          children: [
+            Container(
+              child: Text(
+                "THEORY TEST\n"
+                "ТЕСТ ПО ТЕОРИИ",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 22,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
+              color: Colors.green,
+              width: double.infinity,
             ),
-            color: Colors.green,
-            width: double.infinity,
-          ),
-          Padding(padding: EdgeInsets.only(top: 18)),
-          button("Practice all questions\nПрактиковать все вопросы",
-              Icons.arrow_right),
-          button("Mock test \nПробный тест", Icons.timer),
-          button("Search questions \nПоиск вопросов", Icons.search),
-          button("My questions\nМои вопросы", Icons.favorite),
-          button("Progress monitor\nИндикатор прогресса", Icons.graphic_eq),
-          button("Stopping distances \nТормозные пути",
-              Icons.arrow_right_alt_outlined),
-          button("Help & Support \nПомощь и поддержка", Icons.mail_outline),
-          button("Offers and Rewards \nПредложения и награды", Icons.star),
-        ],
-      ),
-      bottomNavigationBar: bottomNavigationBar()
-    );
+            Padding(padding: EdgeInsets.only(top: 18)),
+            button("Practice all questions\nПрактиковать все вопросы",
+                Icons.arrow_right),
+            button("Mock test \nПробный тест", Icons.timer),
+            button("Search questions \nПоиск вопросов", Icons.search),
+            button("My questions\nМои вопросы", Icons.favorite),
+            button("Progress monitor\nИндикатор прогресса", Icons.graphic_eq),
+            button("Stopping distances \nТормозные пути",
+                Icons.arrow_right_alt_outlined),
+            button("Help & Support \nПомощь и поддержка", Icons.mail_outline),
+            button("Offers and Rewards \nПредложения и награды", Icons.star),
+          ],
+        ),
+        bottomNavigationBar: bottomNavigationBar());
   }
 
   Widget button(String text, IconData iconData) {
@@ -71,8 +74,9 @@ class _TheoryTestMenuPageState extends State<TheoryTestMenuPage> {
                 ],
               ),
               onPressed: () {
+                categoriesBloc.readAnsweredQuestions();
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => CategoriesToPracticeScreen()));
+                    builder: (context) => CategoriesToPracticeScreen(categoriesBloc)));
               }),
         ));
   }
