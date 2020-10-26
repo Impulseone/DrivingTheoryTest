@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
             mainAxisSpacing: 10,
             crossAxisCount: 2,
             children: <Widget>[
-              menuButton(Colors.green, Icons.menu_book, "THEORY_TEST",
+              menuButton(Colors.green, Icons.menu_book, "THEORY TEST",
                   "ТЕСТ ПО ТЕОРИИ"),
               menuButton(Colors.red, Icons.warning_amber_outlined,
                   "HAZARD PERCEPTION", "ВОСПРИЯТИЕ ОПАСНОСТИ"),

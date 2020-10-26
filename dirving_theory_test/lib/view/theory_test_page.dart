@@ -1,4 +1,5 @@
 import 'package:dirving_theory_test/bloc/categories_bloc.dart';
+import 'package:dirving_theory_test/extension/categories_provider.dart';
 import 'package:dirving_theory_test/view/categories_to_practice_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -76,7 +77,7 @@ class _TheoryTestMenuPageState extends State<TheoryTestMenuPage> {
               onPressed: () {
                 categoriesBloc.readAnsweredQuestions();
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => CategoriesToPracticeScreen(categoriesBloc)));
+                    builder: (context) => CategoriesToPracticeScreen(categoriesBloc, CategoriesProvider().generateCategoriesInfo())));
               }),
         ));
   }
