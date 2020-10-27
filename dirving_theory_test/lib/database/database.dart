@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dirving_theory_test/model/question.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
@@ -7,7 +8,8 @@ import 'package:sqflite/sqlite_api.dart';
 import 'model/answered_question.dart';
 
 class DBProvider {
-  String tableName = 'answered_questions';
+  String questionsTable = 'questions';
+  String answeredQuestionsTable = 'answered_questions';
   String answerId = 'id';
   String answerCategory = 'category';
   String answerIsTrue = 'answerIsTrue';
@@ -24,19 +26,70 @@ class DBProvider {
 
   Future<Database> _initDb() async {
     Directory directory = await getApplicationDocumentsDirectory();
-    String path = directory.path + 'answered_questions.db';
+    String path = directory.path + 'questions.db';
     return await openDatabase(path, version: 1, onCreate: _createDb);
   }
 
   void _createDb(Database db, int version) async {
     await db.execute(
-        'CREATE TABLE $tableName($answerId INTEGER PRIMARY KEY,$answerCategory TEXT,$answerIsTrue INTEGER)');
+        'CREATE TABLE $answeredQuestionsTable($answerId INTEGER PRIMARY KEY,$answerCategory TEXT,$answerIsTrue INTEGER)');
+    await db.execute('CREATE TABLE $questionsTable('
+        'id INTEGER PRIMARY KEY,'
+        'category TEXT,'
+        'hasImage INTEGER,'
+        'question TEXT,'
+        'answer1 TEXT,'
+        'answer2 TEXT,'
+        'answer3 TEXT,'
+        'answer4 TEXT,'
+        'rightAnswer TEXT,'
+        'explanation TEXT'
+        ')');
+  }
+
+  Future<List<Question>> getQuestions() async {
+    Database db = await this.database;
+    final List<Map<String, dynamic>> questionsMapsList =
+        await db.query(questionsTable);
+    List<Question> questions = List();
+    questionsMapsList.forEach((element) {
+      questions.add(Question.fromDbJson(element));
+    });
+    return questions;
+  }
+
+  Future<List<Question>> getQuestionsForCategory(String category) async {
+    Database db = await this.database;
+    final List<Map<String, dynamic>> questionsMapsList = await db
+        .query(questionsTable, where: 'category = ?', whereArgs: [category]);
+    List<Question> questions = List();
+    questionsMapsList.forEach((element) {
+      questions.add(Question.fromDbJson(element));
+    });
+    return questions;
+  }
+
+  void insertQuestion(Question question) async {
+    Database db = await this.database;
+    await db.insert(questionsTable, question.toDbJson(),
+        conflictAlgorithm: ConflictAlgorithm.replace);
+  }
+
+  Future<int> updateQuestion(Question question) async {
+    Database db = await this.database;
+    return await db.update(questionsTable, question.toDbJson(),
+        where: 'id = ? ', whereArgs: [question.id]);
+  }
+
+  Future<int> deleteQuestion(int id) async {
+    Database db = await this.database;
+    return await db.delete(questionsTable, where: 'id=?', whereArgs: [id]);
   }
 
   Future<List<AnsweredQuestion>> getAnsweredQuestions() async {
     Database db = await this.database;
     final List<Map<String, dynamic>> answeredQuestionsMapsList =
-        await db.query(tableName);
+        await db.query(answeredQuestionsTable);
     List<AnsweredQuestion> answeredQuestions = List();
     answeredQuestionsMapsList.forEach((element) {
       answeredQuestions.add(AnsweredQuestion.fromMap(element));
@@ -44,11 +97,13 @@ class DBProvider {
     return answeredQuestions;
   }
 
-  Future<List<AnsweredQuestion>> getAnsweredQuestionsCategory(
+  Future<List<AnsweredQuestion>> getAnsweredQuestionsForCategory(
       String category) async {
     Database db = await this.database;
-    final List<Map<String, dynamic>> answeredQuestionsMapsList = await db
-        .query(tableName, where: '$answerCategory = ?', whereArgs: [category]);
+    final List<Map<String, dynamic>> answeredQuestionsMapsList = await db.query(
+        answeredQuestionsTable,
+        where: '$answerCategory = ?',
+        whereArgs: [category]);
     List<AnsweredQuestion> answeredQuestions = List();
     answeredQuestionsMapsList.forEach((element) {
       answeredQuestions.add(AnsweredQuestion.fromMap(element));
@@ -56,20 +111,21 @@ class DBProvider {
     return answeredQuestions;
   }
 
-  void insertAnswer(AnsweredQuestion answeredQuestion) async {
+  void insertAnsweredQuestion(AnsweredQuestion answeredQuestion) async {
     Database db = await this.database;
-    await db.insert(tableName, answeredQuestion.toMap(),
+    await db.insert(answeredQuestionsTable, answeredQuestion.toMap(),
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
-  Future<int> updateAnswer(AnsweredQuestion answeredQuestion) async {
+  Future<int> updateAnsweredQuestion(AnsweredQuestion answeredQuestion) async {
     Database db = await this.database;
-    return await db.update(tableName, answeredQuestion.toMap(),
+    return await db.update(answeredQuestionsTable, answeredQuestion.toMap(),
         where: '$answerId = ? ', whereArgs: [answeredQuestion.id]);
   }
 
-  Future<int> deleteAnswer(int id) async {
+  Future<int> deleteAnsweredQuestion(int id) async {
     Database db = await this.database;
-    return await db.delete(tableName, where: '$answerId=?', whereArgs: [id]);
+    return await db
+        .delete(answeredQuestionsTable, where: '$answerId=?', whereArgs: [id]);
   }
 }

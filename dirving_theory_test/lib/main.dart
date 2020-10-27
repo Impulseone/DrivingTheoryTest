@@ -1,3 +1,6 @@
+import 'package:dirving_theory_test/bloc/question_bloc.dart';
+import 'package:dirving_theory_test/database/database.dart';
+import 'package:dirving_theory_test/model/question.dart';
 import 'package:dirving_theory_test/view/theory_test_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -133,5 +136,18 @@ class _HomePageState extends State<HomePage> {
             MaterialPageRoute(builder: (context) => TheoryTestMenuPage()));
       },
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    initAndWriteQuestionsToDb();
+  }
+
+  void initAndWriteQuestionsToDb() async {
+    List<Question> questions = await QuestionBloc().readQuestionsFromFile();
+    questions.forEach((element) {
+      DBProvider.db.insertQuestion(element);
+    });
   }
 }

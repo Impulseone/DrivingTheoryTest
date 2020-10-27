@@ -37,11 +37,41 @@ class Question {
     );
   }
 
+  static Question fromDbJson(json) {
+    return Question(
+      id: json["id"],
+      category: json["category"],
+      hasImage: json["hasImage"] == 1 ? true : false,
+      question: json["question"],
+      answer1: json["answer1"],
+      answer2: json["answer2"],
+      answer3: json["answer3"],
+      answer4: json["answer4"],
+      rightAnswer: int.parse(json["rightAnswer"]),
+      explanation: json["explanation"],
+    );
+  }
+
   Map<String, dynamic> toJson() {
     return {
       'id': id,
       'category': category,
       'hasImage': hasImage,
+      'question': question,
+      'answer1': answer1,
+      'answer2': answer2,
+      'answer3': answer3,
+      'answer4': answer4,
+      'rightAnswer': rightAnswer,
+      'explanation': explanation,
+    };
+  }
+
+  Map<String, dynamic> toDbJson() {
+    return {
+      'id': id,
+      'category': category,
+      'hasImage': hasImage == true ? 1 : 0,
       'question': question,
       'answer1': answer1,
       'answer2': answer2,

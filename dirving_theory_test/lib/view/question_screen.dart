@@ -41,7 +41,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                       child: Text(question.answer1),
                       onPressed: () {
                         if (question.answer1 == rightAnswer) {
-                          DBProvider.db.insertAnswer(AnsweredQuestion(
+                          DBProvider.db.insertAnsweredQuestion(AnsweredQuestion(
                               question.id, question.category, 1));
                         }
                       }),
@@ -49,7 +49,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                       child: Text(snapshot.data[_questionNumber].answer2),
                       onPressed: () {
                         if (question.answer2 == rightAnswer) {
-                          DBProvider.db.insertAnswer(AnsweredQuestion(
+                          DBProvider.db.insertAnsweredQuestion(AnsweredQuestion(
                               question.id, question.category, 1));
                         }
                       }),
@@ -57,7 +57,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                       child: Text(snapshot.data[_questionNumber].answer3),
                       onPressed: () {
                         if (question.answer3 == rightAnswer) {
-                          DBProvider.db.insertAnswer(AnsweredQuestion(
+                          DBProvider.db.insertAnsweredQuestion(AnsweredQuestion(
                               question.id, question.category, 1));
                         }
                       }),
@@ -65,7 +65,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                       child: Text(snapshot.data[_questionNumber].answer4),
                       onPressed: () {
                         if (question.answer4 == rightAnswer) {
-                          DBProvider.db.insertAnswer(AnsweredQuestion(
+                          DBProvider.db.insertAnsweredQuestion(AnsweredQuestion(
                               question.id, question.category, 1));
                         }
                       }),
@@ -96,7 +96,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
         ));
   }
 
-  void getAnsweredQuestions()async{
+  void getAnsweredQuestions() async {
+    List<Question> questions = await DBProvider.db.getQuestions();
     List<AnsweredQuestion> list = List();
     list = await DBProvider.db.getAnsweredQuestions();
     print(list.length);
