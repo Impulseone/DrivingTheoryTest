@@ -125,7 +125,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
               padding: EdgeInsets.only(top: 20),
               child: Text(question.question,
                   style: TextStyle(color: Colors.white, fontSize: 16))),
-          Container(height: 200, width: 200, child: Image.asset("assets/1.jpg"))
+          Container(height: 190, width: 190, child: Image.asset("assets/1.jpg"))
         ],
       );
     } else
