@@ -19,15 +19,18 @@ class CategoriesToPracticeScreen extends StatefulWidget {
 class _CategoriesToPracticeScreenState
     extends State<CategoriesToPracticeScreen> {
   QuestionBloc questionBloc = QuestionBloc();
-  int selectedCategories = 0;
+  List<Category> selectedCategoriesList = List();
+  int selectedQuestions = 0;
   bool isChecked = false;
+
+  static const int ALL_QUESTIONS_NUMBER = 757;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-            "Categories to practice \n$selectedCategories of 757 selected"),
+            "Categories to practice \n$selectedQuestions of $ALL_QUESTIONS_NUMBER selected"),
         backgroundColor: Colors.black,
       ),
       body: categoriesList(widget.categoriesList),
@@ -42,7 +45,7 @@ class _CategoriesToPracticeScreenState
               style: TextStyle(fontSize: 25, color: Colors.white),
             ),
             onPressed: () {
-              questionBloc.readQuestionsFromFile();
+              questionBloc.getQuestionsForCategories(selectedCategoriesList);
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => QuestionScreen(questionBloc)));
             },
@@ -127,13 +130,15 @@ class _CategoriesToPracticeScreenState
             return;
           } else {
             if (isChecked) {
+              selectedCategoriesList.add(category);
               category.isChecked = isChecked;
-              selectedCategories += categoriesMax;
+              selectedQuestions += categoriesMax;
               if (checkAllChecked(widget.categoriesList))
                 setAllChecked(widget.categoriesList, true);
             } else {
+              selectedCategoriesList.remove(category);
               setAllUnchecked(widget.categoriesList);
-              selectedCategories -= categoriesMax;
+              selectedQuestions -= categoriesMax;
               category.isChecked = isChecked;
             }
           }
@@ -163,12 +168,14 @@ class _CategoriesToPracticeScreenState
   void setAllChecked(List<Category> allCategories, isChecked) {
     setState(() {
       if (isChecked) {
+        selectedCategoriesList.addAll(allCategories);
         allCategories.forEach((element) {
           element.isChecked = true;
         });
-        selectedCategories = 757;
+        selectedQuestions = 757;
       } else {
-        selectedCategories = 0;
+        selectedCategoriesList = List();
+        selectedQuestions = 0;
         allCategories.forEach((element) {
           element.isChecked = false;
         });

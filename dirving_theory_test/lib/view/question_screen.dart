@@ -14,9 +14,9 @@ class QuestionScreen extends StatefulWidget {
 }
 
 class _QuestionScreenState extends State<QuestionScreen> {
-  int _questionNumber = 0;
-  List<Question> questions;
+  int questionNumber = 0;
   QuestionBloc questionBloc;
+  int questionsSize = 0;
 
   _QuestionScreenState(this.questionBloc);
 
@@ -27,14 +27,22 @@ class _QuestionScreenState extends State<QuestionScreen> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.green,
-        title: Text("Q1 of 757"),
+        title: StreamBuilder<List<Question>>(
+            stream: questionBloc.questions,
+            builder: (context, snapshot) {
+              if (snapshot.hasData && snapshot.data.length > 0)
+                return Text("Q${questionNumber+1} of ${snapshot.data.length}");
+              else
+                return Text("Q${questionNumber+1} of 0");
+            }),
       ),
       body: StreamBuilder<List<Question>>(
         stream: questionBloc.questions,
         builder: (context, snapshot) {
           if (snapshot.hasData && snapshot.data.length > 0) {
-            Question question = snapshot.data[_questionNumber];
-            String rightAnswer = question.findRightAnswer(question.rightAnswer);
+            if (questionsSize != snapshot.data.length)
+                questionsSize = snapshot.data.length;
+            Question question = snapshot.data[questionNumber];
             return Column(
               children: [
                 progressIndicator(),
@@ -66,7 +74,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                   icon: Icon(Icons.arrow_left),
                   onPressed: () {
                     setState(() {
-                      _questionNumber--;
+                      if (questionNumber > 0) questionNumber--;
                     });
                   }),
               IconButton(icon: Icon(Icons.info), onPressed: () {}),
@@ -75,7 +83,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                   icon: Icon(Icons.arrow_right),
                   onPressed: () {
                     setState(() {
-                      _questionNumber++;
+                      if (questionNumber + 1 < questionsSize) questionNumber++;
                     });
                   }),
             ],
@@ -118,6 +126,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
                   DBProvider.db.insertAnsweredQuestion(AnsweredQuestion(
                       question.id, question.category, numberOfAnswer));
                 }
+                setState(() {
+                  if (questionNumber + 1 < questionsSize) questionNumber++;
+                });
               }),
         ));
   }
