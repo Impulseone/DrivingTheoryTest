@@ -110,6 +110,7 @@ class _CategoriesToPracticeScreenState
                   mainAxisAlignment: MainAxisAlignment.center,
                 ),
                 Container(
+                  margin: EdgeInsets.only(top: 5, bottom: 5),
                   height: 2,
                   width: double.infinity,
                   color: Colors.green,
@@ -187,7 +188,7 @@ class _CategoriesToPracticeScreenState
       String text,
       List<AnsweredQuestion> categoryAnsweredQuestionsAll,
       List<AnsweredQuestion> categoryAnsweredQuestionsTrue,
-      int categoriesMax) {
+      int questionsMax) {
     return Column(
       children: [
         Row(
@@ -195,20 +196,24 @@ class _CategoriesToPracticeScreenState
             Container(
               child: Text(
                 text,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
               width: 250,
               padding: EdgeInsets.only(left: 10),
             ),
             Text(
-                "${(categoryAnsweredQuestionsTrue.length / categoriesMax).round() * 100}%")
+                "${(categoryAnsweredQuestionsTrue.length / questionsMax).round() * 100}%")
           ],
         ),
         Row(
           children: [
             Container(
               width: 250,
+              height: 10,
+              margin: EdgeInsets.only(top: 2, bottom: 2),
               child: LinearProgressIndicator(
-                value: 0,
+                value: categoryAnsweredQuestionsAll.length / questionsMax,
+                valueColor: new AlwaysStoppedAnimation<Color>(Colors.green),
                 backgroundColor: Colors.red,
               ),
             )
@@ -217,10 +222,10 @@ class _CategoriesToPracticeScreenState
         Row(
           children: [
             Text(
-                "Answered:${categoryAnsweredQuestionsAll.length}/$categoriesMax"),
+                "Answered:${categoryAnsweredQuestionsAll.length}/$questionsMax"),
             Padding(padding: EdgeInsets.only(left: 30)),
             Text(
-                "Correctly:${categoryAnsweredQuestionsTrue.length}/$categoriesMax")
+                "Correctly:${categoryAnsweredQuestionsTrue.length}/$questionsMax")
           ],
         ),
       ],

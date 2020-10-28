@@ -2,6 +2,7 @@ import 'package:dirving_theory_test/bloc/question_bloc.dart';
 import 'package:dirving_theory_test/database/database.dart';
 import 'package:dirving_theory_test/database/model/answered_question.dart';
 import 'package:dirving_theory_test/model/question.dart';
+import 'package:dirving_theory_test/view/question_info_screen.dart';
 import 'package:flutter/material.dart';
 
 class QuestionScreen extends StatefulWidget {
@@ -14,9 +15,10 @@ class QuestionScreen extends StatefulWidget {
 }
 
 class _QuestionScreenState extends State<QuestionScreen> {
-  int questionNumber = 0;
   QuestionBloc questionBloc;
+  Question selectedQuestion;
   int questionsSize = 0;
+  int questionNumber = 0;
 
   _QuestionScreenState(this.questionBloc);
 
@@ -31,9 +33,10 @@ class _QuestionScreenState extends State<QuestionScreen> {
             stream: questionBloc.questions,
             builder: (context, snapshot) {
               if (snapshot.hasData && snapshot.data.length > 0)
-                return Text("Q${questionNumber+1} of ${snapshot.data.length}");
+                return Text(
+                    "Q${questionNumber + 1} of ${snapshot.data.length}");
               else
-                return Text("Q${questionNumber+1} of 0");
+                return Text("Q${questionNumber + 1} of 0");
             }),
       ),
       body: StreamBuilder<List<Question>>(
@@ -41,23 +44,20 @@ class _QuestionScreenState extends State<QuestionScreen> {
         builder: (context, snapshot) {
           if (snapshot.hasData && snapshot.data.length > 0) {
             if (questionsSize != snapshot.data.length)
-                questionsSize = snapshot.data.length;
-            Question question = snapshot.data[questionNumber];
+              questionsSize = snapshot.data.length;
+            selectedQuestion = snapshot.data[questionNumber];
             return Column(
               children: [
                 progressIndicator(),
-                questionText(question),
-                Align(
-                  alignment: FractionalOffset.bottomCenter,
-                  child: Column(
-                    children: [
-                      answerButton(question, 1),
-                      answerButton(question, 2),
-                      answerButton(question, 3),
-                      answerButton(question, 4),
-                    ],
-                  ),
-                )
+                questionWidget(selectedQuestion),
+                Column(
+                  children: [
+                    answerButton(selectedQuestion, 1),
+                    answerButton(selectedQuestion, 2),
+                    answerButton(selectedQuestion, 3),
+                    answerButton(selectedQuestion, 4),
+                  ],
+                ),
               ],
             );
           } else
@@ -69,42 +69,71 @@ class _QuestionScreenState extends State<QuestionScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              IconButton(
-                  iconSize: 50,
-                  icon: Icon(Icons.arrow_left),
-                  onPressed: () {
-                    setState(() {
-                      if (questionNumber > 0) questionNumber--;
-                    });
-                  }),
-              IconButton(icon: Icon(Icons.info), onPressed: () {}),
-              IconButton(
-                  iconSize: 50,
-                  icon: Icon(Icons.arrow_right),
-                  onPressed: () {
-                    setState(() {
-                      if (questionNumber + 1 < questionsSize) questionNumber++;
-                    });
-                  }),
+              bottomBarWidget(60, 60, Icons.keyboard_arrow_left, 60, () {
+                setState(() {
+                  if (questionNumber > 0) questionNumber--;
+                });
+              }),
+              bottomBarWidget(50, 50, Icons.flag, 40, () {}),
+              bottomBarWidget(50, 50, Icons.info, 40, () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        QuestionInfoScreen(selectedQuestion.explanation)));
+              }),
+              bottomBarWidget(50, 50, Icons.favorite, 40, () {}),
+              bottomBarWidget(60, 60, Icons.keyboard_arrow_right, 60, () {
+                setState(() {
+                  if (questionNumber + 1 < questionsSize) questionNumber++;
+                });
+              }),
             ],
           )),
     );
   }
 
+  Widget bottomBarWidget(double width, double height, IconData iconData,
+      double iconSize, Function function) {
+    return GestureDetector(
+        child: Container(
+            margin: EdgeInsets.only(left: 12, right: 12),
+            width: width,
+            height: height,
+            child: Center(
+              child: Icon(
+                iconData,
+                size: iconSize,
+              ),
+            )),
+        onTap: () {
+          function();
+        });
+  }
+
   Widget progressIndicator() {
     return LinearProgressIndicator(
-      value: 10,
+      value: questionNumber / questionsSize,
       minHeight: 10,
       backgroundColor: Colors.white,
     );
   }
 
-  Widget questionText(Question question) {
-    return Container(
-        padding: EdgeInsets.only(top: 20),
-        height: MediaQuery.of(context).size.height / 2.65,
-        child: Text(question.question,
-            style: TextStyle(color: Colors.white, fontSize: 16)));
+  Widget questionWidget(Question question) {
+    if (question.hasImage) {
+      return Column(
+        children: [
+          Container(
+              padding: EdgeInsets.only(top: 20),
+              child: Text(question.question,
+                  style: TextStyle(color: Colors.white, fontSize: 16))),
+          Container(height: 200, width: 200, child: Image.asset("assets/1.jpg"))
+        ],
+      );
+    } else
+      return Container(
+          padding: EdgeInsets.only(top: 20),
+          height: MediaQuery.of(context).size.height / 2.6,
+          child: Text(question.question,
+              style: TextStyle(color: Colors.white, fontSize: 16)));
   }
 
   Widget answerButton(Question question, int numberOfAnswer) {

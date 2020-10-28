@@ -3,13 +3,13 @@
     "id": 1,
     "category": "Alertness",
     "hasImage": true,
-    "question": "What does this sign mean?",
-    "answer_1": "Mini-roundabout",
-    "answer_2": "Ring road",
-    "answer_3": "Buses turning",
-    "answer_4": "Keep right",
+    "question": "What does this sign mean?\n\nЧто означает этот знак?",
+    "answer_1": "Mini-roundabout\nМини-карусель",
+    "answer_2": "Ring road\nКольцевая дорога",
+    "answer_3": "Buses turning\nАвтобусный поворот",
+    "answer_4": "Keep right\nДержитесь правой стороны",
     "right_answer": 1,
-    "explanation": "When you see this sign, look out for any direction signs and judge whether you need to signal your intentions. Do this in good time so that other road users approaching the roundabout know what you’re planning to do."
+    "explanation": "When you see this sign, look out for any direction signs and judge whether you need to signal your intentions. Do this in good time so that other road users approaching the roundabout know what you’re planning to do.\nКогда вы увидите этот знак, обратите внимание на любые указатели и решите, нужно ли вам сигнализировать о своих намерениях. Сделайте это заблаговременно, чтобы другие участники дорожного движения, приближающиеся к кольцевой развязке, знали, что вы собираетесь делать."
   },
   {
     "id": 2,
