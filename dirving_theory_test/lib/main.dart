@@ -1,5 +1,6 @@
 import 'package:dirving_theory_test/bloc/question_bloc.dart';
 import 'package:dirving_theory_test/database/database.dart';
+import 'package:dirving_theory_test/extension/custom_text_style.dart';
 import 'package:dirving_theory_test/model/question.dart';
 import 'package:dirving_theory_test/view/theory_test_page.dart';
 import 'package:flutter/material.dart';
@@ -118,20 +119,15 @@ class _HomePageState extends State<HomePage> {
           ),
           Text("$engText",
               textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 14,
-              )),
+              style: CustomTextStyle.engTextStyleBody(context)),
           Padding(padding: EdgeInsets.all(4)),
           Text("$rusText",
               textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 14,
-              ))
+              style: CustomTextStyle.rusTextStyleBody(context))
         ],
       ),
       onPressed: () {
+        if(engText=="THEORY TEST")
         Navigator.of(context).push(
             MaterialPageRoute(builder: (context) => TheoryTestMenuPage()));
       },

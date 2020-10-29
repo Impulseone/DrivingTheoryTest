@@ -1,5 +1,6 @@
 import 'package:dirving_theory_test/bloc/categories_bloc.dart';
 import 'package:dirving_theory_test/extension/categories_provider.dart';
+import 'package:dirving_theory_test/extension/custom_text_style.dart';
 import 'package:dirving_theory_test/view/categories_to_practice_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,6 @@ class TheoryTestMenuPage extends StatefulWidget {
 }
 
 class _TheoryTestMenuPageState extends State<TheoryTestMenuPage> {
-
   CategoriesBloc categoriesBloc = new CategoriesBloc();
 
   @override
@@ -22,35 +22,40 @@ class _TheoryTestMenuPageState extends State<TheoryTestMenuPage> {
         body: Column(
           children: [
             Container(
-              child: Text(
-                "THEORY TEST\n"
-                "ТЕСТ ПО ТЕОРИИ",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
-                ),
-                textAlign: TextAlign.center,
+              child: Column(
+                children: [
+                  Text(
+                    "THEORY TEST",
+                    style: CustomTextStyle.engTextStyleHeadline(context),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    "ТЕСТ ПО ТЕОРИИ",
+                    style: CustomTextStyle.rusTextStyleHeadline(context),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
               color: Colors.green,
               width: double.infinity,
             ),
             Padding(padding: EdgeInsets.only(top: 18)),
-            button("Practice all questions\nПрактиковать все вопросы",
+            button("Practice all questions", "Практиковать все вопросы",
                 Icons.arrow_right),
-            button("Mock test \nПробный тест", Icons.timer),
-            button("Search questions \nПоиск вопросов", Icons.search),
-            button("My questions\nМои вопросы", Icons.favorite),
-            button("Progress monitor\nИндикатор прогресса", Icons.graphic_eq),
-            button("Stopping distances \nТормозные пути",
+            button("Mock test", "Пробный тест", Icons.timer),
+            button("Search questions", "Поиск вопросов", Icons.search),
+            button("My questions", "Мои вопросы", Icons.favorite),
+            button("Progress monitor", "Индикатор прогресса", Icons.graphic_eq),
+            button("Stopping distances", "Тормозные пути",
                 Icons.arrow_right_alt_outlined),
-            button("Help & Support \nПомощь и поддержка", Icons.mail_outline),
-            button("Offers and Rewards \nПредложения и награды", Icons.star),
+            button("Help & Support", "Помощь и поддержка", Icons.mail_outline),
+            button("Offers and Rewards", "Предложения и награды", Icons.star),
           ],
         ),
         bottomNavigationBar: bottomNavigationBar());
   }
 
-  Widget button(String text, IconData iconData) {
+  Widget button(String engText, String rusText, IconData iconData) {
     return Padding(
         padding: EdgeInsets.only(top: 5),
         child: SizedBox(
@@ -62,22 +67,31 @@ class _TheoryTestMenuPageState extends State<TheoryTestMenuPage> {
                 children: [
                   Container(
                     width: 215,
-                    child: Text(
-                      text,
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                      ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          engText,
+                          style: CustomTextStyle.engTextStyleBody(context),
+                        ),
+                        Text(
+                          rusText,
+                          style: CustomTextStyle.rusTextStyleBody(context),
+                        ),
+                      ],
                     ),
                   ),
                   Icon(iconData, color: Colors.white, size: 50)
                 ],
               ),
               onPressed: () {
-                categoriesBloc.readAnsweredQuestions();
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => CategoriesToPracticeScreen(categoriesBloc, CategoriesProvider().generateCategoriesInfo())));
+                if (engText == "Practice all questions") {
+                  categoriesBloc.readAnsweredQuestions();
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => CategoriesToPracticeScreen(
+                          categoriesBloc,
+                          CategoriesProvider().generateCategoriesInfo())));
+                }
               }),
         ));
   }

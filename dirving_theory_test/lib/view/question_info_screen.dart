@@ -1,3 +1,4 @@
+import 'package:dirving_theory_test/extension/custom_text_style.dart';
 import 'package:flutter/material.dart';
 
 class QuestionInfoScreen extends StatelessWidget {
@@ -16,10 +17,23 @@ class QuestionInfoScreen extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            Padding(
               padding: EdgeInsets.all(20),
-              child: Text(text),
-              height: MediaQuery.of(context).size.height / 3,
+              child: Column(
+                children: [
+                  Text(
+                    text.split("\n")[0],
+                    style: CustomTextStyle.engTextStyleBodyBlack(context),
+                    textAlign: TextAlign.center,
+                  ),
+                  Padding(padding: EdgeInsets.all(10)),
+                  Text(
+                    text.split("\n")[1],
+                    style: CustomTextStyle.rusTextStyleBodyBlack(context),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
             ),
             SizedBox(
                 width: 200.0,

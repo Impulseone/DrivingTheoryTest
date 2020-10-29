@@ -1,6 +1,7 @@
 import 'package:dirving_theory_test/bloc/question_bloc.dart';
 import 'package:dirving_theory_test/database/database.dart';
 import 'package:dirving_theory_test/database/model/answered_question.dart';
+import 'package:dirving_theory_test/extension/custom_text_style.dart';
 import 'package:dirving_theory_test/model/question.dart';
 import 'package:dirving_theory_test/view/question_info_screen.dart';
 import 'package:flutter/material.dart';
@@ -70,32 +71,44 @@ class _QuestionScreenState extends State<QuestionScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               bottomBarWidget(60, 60, Icons.keyboard_arrow_left, 60, () {
-                setState(() {
-                  if (questionNumber > 0) questionNumber--;
-                });
+                decreaseQuestionNumber();
               }),
               bottomBarWidget(50, 50, Icons.flag, 40, () {}),
               bottomBarWidget(50, 50, Icons.info, 40, () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>
-                        QuestionInfoScreen(selectedQuestion.explanation)));
+                toExplanationScreen();
               }),
               bottomBarWidget(50, 50, Icons.favorite, 40, () {}),
               bottomBarWidget(60, 60, Icons.keyboard_arrow_right, 60, () {
-                setState(() {
-                  if (questionNumber + 1 < questionsSize) questionNumber++;
-                });
+                increaseQuestionNumber();
               }),
             ],
           )),
     );
   }
 
+  void decreaseQuestionNumber() {
+    setState(() {
+      if (questionNumber > 0) questionNumber--;
+    });
+  }
+
+  void increaseQuestionNumber() {
+    setState(() {
+      if (questionNumber + 1 < questionsSize) questionNumber++;
+    });
+  }
+
+  void toExplanationScreen() {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) =>
+            QuestionInfoScreen(selectedQuestion.explanation)));
+  }
+
   Widget bottomBarWidget(double width, double height, IconData iconData,
       double iconSize, Function function) {
     return GestureDetector(
         child: Container(
-            margin: EdgeInsets.only(left: 12, right: 12),
+            margin: EdgeInsets.only(left: 10, right: 10),
             width: width,
             height: height,
             child: Center(
@@ -123,9 +136,20 @@ class _QuestionScreenState extends State<QuestionScreen> {
         children: [
           Container(
               padding: EdgeInsets.only(top: 20),
-              child: Text(question.question,
-                  style: TextStyle(color: Colors.white, fontSize: 16))),
-          Container(height: 190, width: 190, child: Image.asset("assets/1.jpg"))
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    getEngText(question.question),
+                    style: CustomTextStyle.engTextStyleBody(context),
+                  ),
+                  Text(
+                    getRusText(question.question),
+                    style: CustomTextStyle.rusTextStyleBody(context),
+                  ),
+                ],
+              )),
+          Container(height: 180, width: 180, child: Image.asset("assets/1.jpg"))
         ],
       );
     } else
@@ -134,6 +158,14 @@ class _QuestionScreenState extends State<QuestionScreen> {
           height: MediaQuery.of(context).size.height / 2.6,
           child: Text(question.question,
               style: TextStyle(color: Colors.white, fontSize: 16)));
+  }
+
+  String getRusText(String question) {
+    return question.split("\n")[1];
+  }
+
+  String getEngText(String question) {
+    return question.split("\n")[0];
   }
 
   Widget answerButton(Question question, int numberOfAnswer) {
@@ -146,9 +178,19 @@ class _QuestionScreenState extends State<QuestionScreen> {
           height: 60,
           child: RaisedButton(
               color: Colors.green,
-              child: Text(
-                answer,
-                style: TextStyle(color: Colors.white, fontSize: 16),
+              child:
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    getEngText(answer),
+                    style: CustomTextStyle.engTextStyleBody(context),
+                  ),
+                  Text(
+                    getRusText(answer),
+                    style: CustomTextStyle.rusTextStyleBody(context),
+                  ),
+                ],
               ),
               onPressed: () {
                 if (answer == rightAnswer) {

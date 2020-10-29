@@ -2,6 +2,7 @@ import 'package:dirving_theory_test/bloc/categories_bloc.dart';
 import 'package:dirving_theory_test/bloc/question_bloc.dart';
 import 'package:dirving_theory_test/database/model/answered_question.dart';
 import 'package:dirving_theory_test/extension/categories_provider.dart';
+import 'package:dirving_theory_test/extension/custom_text_style.dart';
 import 'package:dirving_theory_test/view/question_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -101,7 +102,8 @@ class _CategoriesToPracticeScreenState
                       color: Colors.green,
                     ),
                     centerCategoryInfo(
-                        '${category.engName}\n${category.rusName}',
+                        category.engName,
+                        category.rusName,
                         categoryAnsweredQuestionsAll,
                         categoryAnsweredQuestionsTrue,
                         category.allQuestionsNumber),
@@ -185,7 +187,8 @@ class _CategoriesToPracticeScreenState
   }
 
   Widget centerCategoryInfo(
-      String text,
+      String engText,
+      String rusText,
       List<AnsweredQuestion> categoryAnsweredQuestionsAll,
       List<AnsweredQuestion> categoryAnsweredQuestionsTrue,
       int questionsMax) {
@@ -194,9 +197,18 @@ class _CategoriesToPracticeScreenState
         Row(
           children: [
             Container(
-              child: Text(
-                text,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    engText,
+                    style: CustomTextStyle.engTextStyleBodyBlack(context),
+                  ),
+                  Text(
+                    rusText,
+                    style: CustomTextStyle.rusTextStyleBodyBlack(context),
+                  ),
+                ],
               ),
               width: 250,
               padding: EdgeInsets.only(left: 10),
@@ -222,10 +234,10 @@ class _CategoriesToPracticeScreenState
         Row(
           children: [
             Text(
-                "Answered:${categoryAnsweredQuestionsAll.length}/$questionsMax"),
+                "Answered:${categoryAnsweredQuestionsAll.length}/$questionsMax", style: CustomTextStyle.rusTextStyleBodyBlack(context),),
             Padding(padding: EdgeInsets.only(left: 30)),
             Text(
-                "Correctly:${categoryAnsweredQuestionsTrue.length}/$questionsMax")
+                "Correctly:${categoryAnsweredQuestionsTrue.length}/$questionsMax",style: CustomTextStyle.rusTextStyleBodyBlack(context))
           ],
         ),
       ],

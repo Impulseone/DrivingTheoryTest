@@ -3,7 +3,7 @@
     "id": 1,
     "category": "Alertness",
     "hasImage": true,
-    "question": "What does this sign mean?\n\nЧто означает этот знак?",
+    "question": "What does this sign mean?\nЧто означает этот знак?",
     "answer_1": "Mini-roundabout\nМини-карусель",
     "answer_2": "Ring road\nКольцевая дорога",
     "answer_3": "Buses turning\nАвтобусный поворот",
