@@ -214,7 +214,7 @@ class _CategoriesToPracticeScreenState
               padding: EdgeInsets.only(left: 10),
             ),
             Text(
-                "${(categoryAnsweredQuestionsTrue.length / questionsMax).round() * 100}%")
+                "${((categoryAnsweredQuestionsTrue.length / questionsMax)*100).round()}%")
           ],
         ),
         Row(
@@ -235,7 +235,7 @@ class _CategoriesToPracticeScreenState
           children: [
             Text(
                 "Answered:${categoryAnsweredQuestionsAll.length}/$questionsMax", style: CustomTextStyle.rusTextStyleBodyBlack(context),),
-            Padding(padding: EdgeInsets.only(left: 30)),
+            Padding(padding: EdgeInsets.only(left: 60)),
             Text(
                 "Correctly:${categoryAnsweredQuestionsTrue.length}/$questionsMax",style: CustomTextStyle.rusTextStyleBodyBlack(context))
           ],
