@@ -22,6 +22,6 @@ class SearchQuestionBloc {
   }
 
   void dispose() {
-    _searchQuestionsController.sink.close();
+    _searchQuestionsController.close();
   }
 }

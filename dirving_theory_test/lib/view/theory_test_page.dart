@@ -5,6 +5,8 @@ import 'package:dirving_theory_test/view/categories_to_practice_screen.dart';
 import 'package:dirving_theory_test/view/search_question_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'favorite_questions_screen.dart';
+
 enum PageType {
   PRACTICE_ALL_QUESTIONS,
   MOCK_TEST,
@@ -114,11 +116,19 @@ class _TheoryTestMenuPageState extends State<TheoryTestMenuPage> {
                   case PageType.SEARCH_QUESTIONS:
                     openSearchQuestionsPage();
                     return;
+                  case PageType.MY_QUESTIONS:
+                    openFavoritesScreen();
+                    return;
                   default:
                     return;
                 }
               }),
         ));
+  }
+
+  void openFavoritesScreen() {
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => FavoriteQuestionsScreen()));
   }
 
   void openCategoriesToPracticePage() {

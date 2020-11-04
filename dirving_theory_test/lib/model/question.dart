@@ -10,6 +10,15 @@ class Question {
   int rightAnswer;
   String explanation;
 
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Question && runtimeType == other.runtimeType && id == other.id;
+
+  @override
+  int get hashCode => id.hashCode;
+
   Question(
       {this.id,
       this.category,

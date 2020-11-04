@@ -10,6 +10,7 @@ import 'model/answered_question.dart';
 class DBProvider {
   String _questionsTable = 'questions';
   String _answeredQuestionsTable = 'answered_questions';
+  String _favoritesTable = 'favorites';
   String _answerId = 'id';
   String _answerCategory = 'category';
   String _answerIsTrue = 'answerIsTrue';
@@ -32,9 +33,23 @@ class DBProvider {
 
   void _createDb(Database db, int version) async {
     await db.execute(
+        'CREATE TABLE $_favoritesTable('
+            '$_answerId INTEGER PRIMARY KEY,'
+            'category TEXT,'
+            'hasImage INTEGER,'
+            'question TEXT,'
+            'answer1 TEXT,'
+            'answer2 TEXT,'
+            'answer3 TEXT,'
+            'answer4 TEXT,'
+            'rightAnswer TEXT,'
+            'explanation TEXT'
+            ')'
+    );
+    await db.execute(
         'CREATE TABLE $_answeredQuestionsTable($_answerId INTEGER PRIMARY KEY,$_answerCategory TEXT,$_answerIsTrue INTEGER)');
     await db.execute('CREATE TABLE $_questionsTable('
-        'id INTEGER PRIMARY KEY,'
+        '$_answerId INTEGER PRIMARY KEY,'
         'category TEXT,'
         'hasImage INTEGER,'
         'question TEXT,'
@@ -75,6 +90,12 @@ class DBProvider {
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
+  void insertFavoriteQuestion(Question question) async {
+    Database db = await this.database;
+    await db.insert(_favoritesTable, question.toDbJson(),
+        conflictAlgorithm: ConflictAlgorithm.replace);
+  }
+
   Future<int> updateQuestion(Question question) async {
     Database db = await this.database;
     return await db.update(_questionsTable, question.toDbJson(),
@@ -84,6 +105,17 @@ class DBProvider {
   Future<int> deleteQuestion(int id) async {
     Database db = await this.database;
     return await db.delete(_questionsTable, where: 'id=?', whereArgs: [id]);
+  }
+
+  Future<List<Question>> getFavoriteQuestions() async {
+    Database db = await this.database;
+    final List<Map<String, dynamic>> favoriteQuestionsList =
+        await db.query(_favoritesTable);
+    List<Question> favoriteQuestions = List();
+    favoriteQuestionsList.forEach((element) {
+      favoriteQuestions.add(Question.fromDbJson(element));
+    });
+    return favoriteQuestions;
   }
 
   Future<List<AnsweredQuestion>> getAnsweredQuestions() async {
@@ -125,7 +157,13 @@ class DBProvider {
 
   Future<int> deleteAnsweredQuestion(int id) async {
     Database db = await this.database;
-    return await db
-        .delete(_answeredQuestionsTable, where: '$_answerId=?', whereArgs: [id]);
+    return await db.delete(_answeredQuestionsTable,
+        where: '$_answerId=?', whereArgs: [id]);
+  }
+
+  Future<int> deleteFavoriteQuestion(int id) async {
+    Database db = await this.database;
+    return await db.delete(_favoritesTable,
+        where: '$_answerId=?', whereArgs: [id]);
   }
 }

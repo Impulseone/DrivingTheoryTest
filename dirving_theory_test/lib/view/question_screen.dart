@@ -50,7 +50,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
             return Column(
               children: [
                 progressIndicator(),
-                questionWidget(selectedQuestion),
+                questionTextWidget(selectedQuestion),
                 Column(
                   children: [
                     answerButton(selectedQuestion, 1),
@@ -77,13 +77,21 @@ class _QuestionScreenState extends State<QuestionScreen> {
               bottomBarWidget(50, 50, Icons.info, 40, () {
                 toExplanationScreen();
               }),
-              bottomBarWidget(50, 50, Icons.favorite, 40, () {}),
+              bottomBarWidget(50, 50, Icons.favorite, 40, () {
+                insertQuestionIntoFavorites(selectedQuestion);
+              }),
               bottomBarWidget(60, 60, Icons.keyboard_arrow_right, 60, () {
                 increaseQuestionNumber();
               }),
             ],
           )),
     );
+  }
+
+  void insertQuestionIntoFavorites(Question question) async {
+    if ((await DBProvider.db.getFavoriteQuestions()).contains(question))
+      DBProvider.db.deleteFavoriteQuestion(question.id);
+    else DBProvider.db.insertFavoriteQuestion(question);
   }
 
   void decreaseQuestionNumber() {
@@ -123,7 +131,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
   }
 
   Widget progressIndicator() {
-    double k = (questionNumber+1) / questionsSize;
+    double k = (questionNumber + 1) / questionsSize;
     return LinearProgressIndicator(
       value: k,
       minHeight: 10,
@@ -131,7 +139,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
     );
   }
 
-  Widget questionWidget(Question question) {
+  Widget questionTextWidget(Question question) {
     if (question.hasImage) {
       return Column(
         children: [
