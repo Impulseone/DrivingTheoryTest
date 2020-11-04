@@ -123,8 +123,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
   }
 
   Widget progressIndicator() {
+    double k = (questionNumber+1) / questionsSize;
     return LinearProgressIndicator(
-      value: questionNumber / questionsSize,
+      value: k,
       minHeight: 10,
       backgroundColor: Colors.white,
     );
@@ -155,17 +156,28 @@ class _QuestionScreenState extends State<QuestionScreen> {
     } else
       return Container(
           padding: EdgeInsets.only(top: 20),
-          height: MediaQuery.of(context).size.height / 2.6,
-          child: Text(question.question,
-              style: TextStyle(color: Colors.white, fontSize: 16)));
+          height: MediaQuery.of(context).size.height / 2.8,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                getEngText(question.question),
+                style: CustomTextStyle.engTextStyleBody(context),
+              ),
+              Text(
+                getRusText(question.question),
+                style: CustomTextStyle.rusTextStyleBody(context),
+              ),
+            ],
+          ));
   }
 
   String getRusText(String question) {
-    return question.split("\n")[1];
+    return question.split(";")[1];
   }
 
   String getEngText(String question) {
-    return question.split("\n")[0];
+    return question.split(";")[0];
   }
 
   Widget answerButton(Question question, int numberOfAnswer) {
@@ -175,11 +187,10 @@ class _QuestionScreenState extends State<QuestionScreen> {
         padding: EdgeInsets.only(left: 1, right: 1, top: 6),
         child: SizedBox(
           width: 500.0,
-          height: 60,
+          height: 64,
           child: RaisedButton(
               color: Colors.green,
-              child:
-              Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(

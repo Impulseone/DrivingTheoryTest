@@ -22,13 +22,13 @@ class QuestionInfoScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    text.split("\n")[0],
+                    text.split(";")[0],
                     style: CustomTextStyle.engTextStyleBodyBlack(context),
                     textAlign: TextAlign.center,
                   ),
                   Padding(padding: EdgeInsets.all(10)),
                   Text(
-                    text.split("\n")[1],
+                    text.split(";")[1],
                     style: CustomTextStyle.rusTextStyleBodyBlack(context),
                     textAlign: TextAlign.center,
                   ),

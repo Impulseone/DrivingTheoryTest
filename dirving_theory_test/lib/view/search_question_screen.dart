@@ -55,8 +55,7 @@ class _SearchQuestionScreenState extends State<SearchQuestionScreen> {
     return Row(
       children: [
         Container(
-          width: 330,
-          height: 60,
+          width: MediaQuery.of(context).size.width*0.8,
           child: Text(text),
         ),
         Padding(padding: EdgeInsets.only(left: 40)),

@@ -104,7 +104,7 @@ class _QuestionAfterSearchScreenState extends State<QuestionAfterSearchScreen> {
 
   Widget progressIndicator() {
     return LinearProgressIndicator(
-      value: questionNumber /widget.questions.length,
+      value: (questionNumber+1) /widget.questions.length,
       minHeight: 10,
       backgroundColor: Colors.white,
     );
@@ -141,11 +141,11 @@ class _QuestionAfterSearchScreenState extends State<QuestionAfterSearchScreen> {
   }
 
   String getRusText(String question) {
-    return question.split("\n")[1];
+    return question.split(";")[1];
   }
 
   String getEngText(String question) {
-    return question.split("\n")[0];
+    return question.split(";")[0];
   }
 
   Widget answerButton(Question question, int numberOfAnswer) {
