@@ -16,6 +16,9 @@ class QuestionScreen extends StatefulWidget {
 }
 
 class _QuestionScreenState extends State<QuestionScreen> {
+
+  List<Question> _flaggedQuestions = new List();
+
   QuestionBloc questionBloc;
   Question selectedQuestion;
   int questionsSize = 0;
@@ -73,7 +76,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
               bottomBarWidget(60, 60, Icons.keyboard_arrow_left, 60, () {
                 decreaseQuestionNumber();
               }),
-              bottomBarWidget(50, 50, Icons.flag, 40, () {}),
+              bottomBarWidget(50, 50, Icons.flag, 40, () {
+                _flaggedQuestions.add(selectedQuestion);
+              }),
               bottomBarWidget(50, 50, Icons.info, 40, () {
                 toExplanationScreen();
               }),
