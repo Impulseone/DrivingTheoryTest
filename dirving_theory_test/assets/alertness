@@ -1,62 +1,120 @@
 [
   {
-    "id": 86,
-    "category": "Alertness",
+    "id": 89,
     "hasImage": false,
-    "question": "What should you do if your mobile phone rings while you're driving or riding?;Что делать, если ваш мобильный телефон звонит во время вождения или езды?",
-    "answer_1": "Stop immediately;Немедленно прекратить",
-    "answer_2": "Answer it immediately;Сразу ответить на него",
-    "answer_3": "Pull up at the nearest kerb;Остановитесь у ближайшего бордюра",
-    "answer_4": "Leave it until you have stopped in a safe place;Оставьте его, пока не остановитесь в безопасном месте",
-    "right_answer": 4,
-    "explanation": "It's illegal to use a hand-held mobile or similar device when driving or riding, except in a genuine emergency. The safest option is to switch off your mobile phone before you set off, and use a message service. If you've forgotten to switch your phone off and it rings, you should leave it. When you've stopped in a safe place, you can see who called and return the call if necessary.;Запрещается использовать ручные мобильные или аналогичные устройства во время вождения или езды,кроме как в случае реальной чрезвычайной ситуации. Самый безопасный вариант-выключить мобильный телефон перед тем, как отправиться в путь, и воспользоваться службой сообщений. Если вы забыли выключить телефон и он звонит, выдолжны оставить его. Когда вы остановитесь в безопасном месте, вы сможете увидеть, кто звонил, и при необходимости перезвонить."
-  },
-  {
-    "id": 88,
-    "category": "Alertness",
-    "hasImage": false,
-    "question": "You're driving your car. When may you use a hand-held mobile phone?;Вы за рулем вашего автомобиля. Когда вы используете ручной мобильный телефон?",
-    "answer_1": "When your car has automatic transmission;Когда ваш автомобиль имеет автоматическую коробку передач",
-    "answer_2": "When you've parked safely;Когда вы благополучно припарковались",
-    "answer_3": "When you're driving at less than 30 mph;когда вы едете менее чем на 30 миль в час",
-    "answer_4": "When you're receiving a call;Когда вы получаете звонок",
+    "question":  "You're following a large vehicle. Why should you stay a safe distance behind it?;Вы преследуете большой автомобиль. Почему вы должны оставаться за ним на безопасном расстоянии?",
+    "answer_1": "You'll help the large vehicle to stop more easily;Вы поможете большому автомобилю легче останавливаться",
+    "answer_2": "You'll give the driver a chance to see you in their mirrors;Вы дадите водителю возможность увидеть вас в зеркале",
+    "answer_3": "You'll be able to corner more quickly;Вы сможете быстрее свернуть на поворот",
+    "answer_4": "You'll keep out of the wind better;Лучше держись от ветра",
     "right_answer": 2,
-    "explanation": "It's illegal to use a hand-held mobile phone while you're driving, except in a genuine emergency. Even using a hands-free kit can distract your attention. Park in a safe and convenient place before receiving or making a call or using text messaging. Then you'll also be free to take notes or refer to papers.;Это незаконно, чтобы использовать ручной мобильный телефон пока вы за рулем, кроме как в реальных чрезвычайных. Даже использование комплекта громкой связи может отвлечь ваше внимание. Припаркуйтесь в безопасном и удобном месте, прежде чем принимать или совершать звонок или использовать текстовые сообщения. Тогда вы также будете свободны делать заметки или ссылаться на документы."
+    "explanation": "If you're following a large vehicle but are so close to it that you can't see its exterior mirrors, the driver won't be able to see you. Keeping well back will also allow you to see the road ahead by looking past the large vehicle;Если вы следуете за большим транспортным средством, но находитесь так близко к нему, что не можете видеть его наружные зеркала заднего вида, водитель не увидит вас чтобы увидеть дорогу впереди, глядя мимо большого автомобиля "
+  },
+
+  {
+    "id": 90,
+    "hasImage": false,
+    "question":  "What should you do when you're approaching traffic lights that have been green for some time?;Что делать, когда вы приближаетесь к светофору, зеленеет какое-то время?",
+    "answer_1": "Maintain your speed;Поддерживайте скорость",
+    "answer_2": "Accelerate hard;Резко ускоряйтесь",
+    "answer_3": "Brake hard;Тормозить сильно ",
+    "answer_4": "Be ready to stop;Будьте готовы остановиться",
+    "right_answer": 4,
+    "explanation": "The longer traffic lights have been green, the sooner they'll change. Allow for this as you approach traffic lights that you know have been green for a while. They're likely to change soon, so you should be prepared to stop;Чем дольше светофор был зеленым, тем скорее он поменяется. Учитывайте это, когда приближаетесь к светофору, который, как вы знаете, какое-то время был зеленым. Скорее всего, скоро они поменяются, так что вы должны готовы остановиться"
   },
   {
-    "id": 97,
-    "category": "Alertness",
-    "hasImage": true,
-    "question": "What should you do as you approach this bridge?;Что нужно делать, чтобы подъехать к этому мосту?",
-    "answer_1": "Move to the right;Посмотреть по сторонам",
-    "answer_2": "Change gear;Переключить передачу",
-    "answer_3": "Slow down;Тормозить",
-    "answer_4": "Keep to 30 mph;Сохранять скорость 30 миль/ч",
+    "id": 94,
+    "hasImage": false,
+    "question":  "What's most likely to distract you while you're driving?;Что, скорее всего, отвлечет вас во время вождения? ",
+    "answer_1": "Using the windscreen wipers;Использование дворников",
+    "answer_2": "Using the mirrors;Используя зеркала",
+    "answer_3": "Using a mobile phone;С мобильного телефона",
+    "answer_4": "Using the demisters;Использование демистеров",
     "right_answer": 3,
-    "explanation": "You should slow down and be cautious. Hump bridges are often narrow and there may not be enough room for you to pass an oncoming vehicle at this point. Also, there's no footpath, so be aware of pedestrians in the road.;Вы должны замедлиться и быть осторожными. Горбатые мосты часто бывают узкими, и в этом месте вам может не хватить места, чтобы пропустить встречный автомобиль. Кроме того, здесь нет пешеходной дорожки, так что будьте осторожны с пешеходами на дороге."
+    "explanation": "Except for emergencies, it's illegal to use a hand-held mobile phone while you're driving. Even using a hands-free kit can severely distract your attention;За исключением чрезвычайных ситуаций, использование портативного мобильного телефона во время вождения запрещено. Даже использование комплекта громкой связи может серьезно отвлечь ваше внимание"
   },
+
+  {
+    "id": 96,
+    "hasImage": false,
+    "question": "What should you do before making a U-turn?;Что делать перед разворотом? ",
+    "answer_1": "Check road markings to see that U-turns are permitted;Проверьте дорожную разметку, чтобы убедиться, что развороты разрешены",
+    "answer_2": "Look over your shoulder for a final check;Посмотрите через плечо, чтобы еще раз проверить",
+    "answer_3": "Give an arm signal as well as using your indicators;Подайте сигнал на охрану и используйте индикаторы",
+    "answer_4": "Select a higher gear than normal;Выберите более высокую передачу, чем обычно",
+    "right_answer": 2,
+    "explanation": "If you have to make a U-turn, slow down and ensure that the road is clear in both directions. Make sure that the road is wide enough for you to carry out the manoeuvre safely. Use your mirrors and look round to check it's safe before turning across the road;Если вам нужно сделать разворот, снизьте скорость и убедитесь, что дорога свободна в обоих направлениях. Убедитесь, что дорога достаточно широкая, чтобы вы могли безопасно выполнить маневр. Используйте свои зеркала и посмотрите перед поворотом на дорогу, чтобы проверить безопасность"
+  },
+
   {
     "id": 98,
-    "category": "Alertness",
     "hasImage": false,
-    "question": "How can you make sure that a satellite navigation (satnav) system doesn't distract you when you're driving?;Как вы можете убедиться, что системы спутниковой навигации (GPS-навигатор) не отвлекают вас, когда вы за рулем?",
-    "answer_1": "Turn it off while you're driving in built-up areas;Выключите его, когда вы за рулем в населенных пунктах",
-    "answer_2": "Set it before starting your journey;Установить это, прежде чем начать ваше путешествие",
-    "answer_3": "Choose a voice that you find calming;Выбрать голос, в котором вы находите успокоение",
-    "answer_4": "Only set the destination when you're lost;Задается только пункт назначения, когда вы потеряли",
+    "question": "How can you make sure that a satellite navigation (satnav) system doesn't distract you when you're driving?;Как сделать так, чтобы система спутниковой навигации (навигатора) не отвлекала вас во время вождения?",
+    "answer_1": "Turn it off while you're driving in built-up areas;Выключайте, пока едете по населенным пунктам",
+    "answer_2": "Set it before starting your journey;Установите перед началом путешествия",
+    "answer_3": "Choose a voice that you find calming;Выберите голос, который вас успокаивает",
+    "answer_4": "Only set the destination when you're lost;Указывайте пункт назначения, только когда заблудитесь",
     "right_answer": 2,
-    "explanation": "Satnavs can be useful when driving on unfamiliar routes. However, they can also distract you and cause you to lose control if you look at or adjust them while you're driving. Set the satnav before starting your journey, or pull up in a safe place before making any changes to it.;Сателитному может быть полезно при движении по незнакомым маршрутам. Однако они также могут отвлечь вас."
+    "explanation": "Satnavs can be useful when driving on unfamiliar routes. However, they can also distract you and cause you to lose control if you look at or adjust them while you're driving. Set the satnav before starting your journey, or pull up in a safe place before making any changes to it;Спутниковые навигационные системы могут быть полезны при движении по незнакомым маршрутам. Однако они также могут отвлекать вас и привести к потере контроля, если вы посмотрите на них или настроите их, пока вы вождение. Настройте спутниковую навигацию перед началом путешествия или остановитесь в безопасном месте, прежде чем вносить в него какие-либо изменения"
+  },
+
+  {
+    "id": 101,
+    "hasImage": false,
+    "question": "What should you do before slowing down or stopping your vehicle?;Что делать перед тем, как сбавить скорость или остановиться ?",
+    "answer_1": "Use the mirrors;Используйте зеркала",
+    "answer_2": "Flash the headlights;Мигать фарами",
+    "answer_3": "Select a higher gear;Выберите более высокую передачу",
+    "answer_4": "Sound the horn;Подать звуковой сигнал",
+    "right_answer": 1,
+    "explanation": "Before slowing down or stopping, check the mirrors to see what's happening behind you. Also assess what's ahead and make sure you give the correct signal if it will help other road users;Перед тем как сбавить скорость или остановиться, посмотрите в зеркала, что происходит за тобой. Также оцените, что впереди, и убедитесь, что вы подаете правильный сигнал, если это поможет другим участникам дорожного движения"
+  },
+
+
+  {
+    "id": 102,
+    "hasImage": true,
+    "question": "You're travelling along this road. How should you pass the cyclist?;Вы путешествуете по этой дороге. Как пройти велосипедиста?",
+    "answer_1": "Keep close to them as you pass;При проезде держитесь поближе",
+    "answer_2": "Leave them plenty of room as you pass;Оставьте им достаточно места, когда будете проходить мимо",
+    "answer_3": "Change down one gear before you pass;Переключитесь на одну передачу перед тем, как обгонять",
+    "answer_4": "Sound your horn as you pass;Проходя мимо, подавайте звуковой сигнал",
+    "right_answer": 2,
+    "explanation": "Allow the cyclist plenty of room in case they wobble or swerve around a pothole or raised drain. Look well ahead before you start to overtake, because you'll need to cross the hazard line. Look for entrances where vehicles could be waiting to pull out;Дайте велосипедисту достаточно места на случай, если он будет раскачиваться, объезжать выбоину или возвышающийся водосток. Прежде чем начать обгон, смотрите вперед, потому что вам понадобится пересечь линию опасности. Ищите входы, где машины могут ждать выезда"
   },
   {
-    "id": 99,
-    "category": "Alertness",
-    "hasImage": true,
-    "question": "Why are these yellow lines painted across the road?;Почему эти желтые линии нарисованы поперек дороги?",
-    "answer_1": "To help you choose the correct lane;Чтобы помочь вам выбрать правильную полосу движения",
-    "answer_2": "To help you keep the correct separation distance;Чтобы помочь вам сохранить правильную дистанцию разделения",
-    "answer_3": "To tell you the distance to the roundabout;Чтобы сказать вам расстояние до кольцевой развязки",
-    "answer_4": "To make you aware of your speed;Чтобы вы знали свою скорость",
+    "id": 104,
+    "hasImage": false,
+    "question": "What does the term 'blind spot' mean?;Что означает термин «слепое пятно»? ",
+    "answer_1": "An area covered by your left-hand mirror;Область, закрытая вашим левым зеркалом",
+    "answer_2": "An area not covered by your headlights;Область, не освещенная вашими фарами",
+    "answer_3": "An area not visible to the driver;Область, не видимая водителю",
+    "answer_4": "An area covered by your right-hand mirror;Область, закрываемая вашим правым зеркалом",
+    "right_answer": 3,
+    "explanation": "Modern vehicles provide the driver with a good view of both the road ahead and behind using well-positioned mirrors. However, the mirrors can't see every angle of the scene behind and to the sides of the vehicle. It's essential that you know when and how to check the vehicle's blind spots, so that you're aware of any hidden hazards;Современные автомобили обеспечивают водителю хороший обзор как впереди, так и сзади, благодаря правильно расположенным зеркалам. Однако зеркала не могут видеть все ракурсы сцены позади и по бокам транспортного средства. Это важно, чтобы вы знали, когда и как проверять слепые зоны автомобиля, чтобы вы знали о любых скрытых опасностях"
+  },
+
+
+  {
+    "id": 105,
+    "hasImage": false,
+    "question":  "When do windscreen pillars cause a serious obstruction to your view?;Когда стойки лобового стекла создают серьезное препятствие для обзора?;Когда стойки лобового стекла создают серьезное препятствие для обзора?  ",
+    "answer_1": "When you're approaching bends and junctions;При приближении к поворотам и перекресткам",
+    "answer_2": "When you're driving on a motorway;Когда едешь по автомагистрали",
+    "answer_3": "When you're approaching a one-way street;Когда вы приближаетесь к улице с односторонним движением",
+    "answer_4": "When you're driving on a dual carriageway;При движении по проезжей части с двусторонним движением",
+    "right_answer": 1,
+    "explanation": "Windscreen pillars can obstruct your view, particularly at bends and junctions. Look out for other road users – especially cyclists, motorcyclists and pedestrians who can easily be overlooked;Столбы ветрового стекла могут закрывать вам обзор, особенно на поворотах и перекрестках. Остерегайтесь других участников дорожного движения, особенно велосипедистов, мотоциклистов и пешеходов. кого можно легко не заметить."
+  },
+  {
+    "id": 108,
+    "hasImage": false,
+    "question": "You're driving on a wet road. What should you do if you have to stop your vehicle in an emergency;Вы едете по мокрой дороге. Что делать, если вам нужно остановить автомобиль в экстренной ситуации ",
+    "answer_1": "Apply the parking brake and footbrake together;Включите стояночный тормоз и ножной тормоз одновременно",
+    "answer_2": "Select reverse gear;Выбрать передачу заднего хода",
+    "answer_3": "Give an arm signal;Подать сигнал на охрану",
+    "answer_4": "Keep both hands on the steering wheel;Держите обе руки на руле",
     "right_answer": 4,
-    "explanation": "These lines are often found on the approach to a roundabout or a dangerous junction. They give you extra warning to adjust your speed. Look well ahead and do this in good time.;Эти линии часто встречаются на подходе к кольцевой развязке или опасному перекрестку. Они дают вам дополнительное предупреждение, чтобы отрегулировать вашу скорость. Смотрите вперед и делайте это вовремя."
+    "explanation": "As you drive, look well ahead and all around so that you're ready for any hazards that might develop. If you have to stop in an emergency, react as soon as you can while keeping control of the vehicle. Keep both hands on the steering wheel so you can control the vehicle's direction of travel;Когда едете, смотрите вперед и вокруг, чтобы быть готовым к любому опасности, которые могут возникнуть. Если вам необходимо остановиться в аварийной ситуации, при первой же возможности отреагируйте, сохраняя при этом контроль над автомобилем. Держите обе руки на рулевом колесе, чтобы вы могли контролировать направление движения автомобиля"
   }
 ]
