@@ -116,5 +116,27 @@
     "answer_4": "Keep both hands on the steering wheel;Держите обе руки на руле",
     "right_answer": 4,
     "explanation": "As you drive, look well ahead and all around so that you're ready for any hazards that might develop. If you have to stop in an emergency, react as soon as you can while keeping control of the vehicle. Keep both hands on the steering wheel so you can control the vehicle's direction of travel;Когда едете, смотрите вперед и вокруг, чтобы быть готовым к любому опасности, которые могут возникнуть. Если вам необходимо остановиться в аварийной ситуации, при первой же возможности отреагируйте, сохраняя при этом контроль над автомобилем. Держите обе руки на рулевом колесе, чтобы вы могли контролировать направление движения автомобиля"
+  },
+  {
+    "id": 94,
+    "hasImage": false,
+    "question":  "What's most likely to distract you while you're driving?;Что, скорее всего, отвлечет вас во время вождения? ",
+    "answer_1": "Using the windscreen wipers;Использование дворников",
+    "answer_2": "Using the mirrors;Используя зеркала",
+    "answer_3": "Using a mobile phone;С мобильного телефона",
+    "answer_4": "Using the demisters;Использование демистеров",
+    "right_answer": 3,
+    "explanation": "Except for emergencies, it's illegal to use a hand-held mobile phone while you're driving. Even using a hands-free kit can severely distract your attention;За исключением чрезвычайных ситуаций, использование портативного мобильного телефона во время вождения запрещено. Даже использование комплекта громкой связи может серьезно отвлечь ваше внимание"
+  },
+  {
+    "id": 95,
+    "hasImage": false,
+    "question": "What should you do when you move off from behind a parked car?;Что делать, если вы трогаетесь из-за припаркованной машины?",
+    "answer_1": "Look around before moving off;Осмотритесь, прежде чем уходить",
+    "answer_2": "Give a signal after moving off;Подать сигнал после выхода",
+    "answer_3": "Use the exterior mirrors only;Использовать только наружные зеркала заднего вида",
+    "answer_4": "Look around after moving off;Осмотритесь после отъезда",
+    "right_answer": 1,
+    "explanation": "Before moving off, you should use both the interior and exterior mirrors to check that the road is clear. Look around to check the blind spots and, if necessary, give a signal to warn other road users of your intentions. Also look well ahead as you'll have to steer out into the road to pass the parked car;Перед началом движения вы должны использовать как внутренние, так и наружные зеркала заднего вида, чтобы убедиться, что дорога свободна. Осмотритесь, чтобы проверить слепые зоны и, при необходимости, подать сигнал, чтобы предупредить других участников дорожного движения о ваших намерениях. Также смотрите вперед, так как вам придется свернуть на дорогу, чтобы обогнать припаркованную машину"
   }
 ]
