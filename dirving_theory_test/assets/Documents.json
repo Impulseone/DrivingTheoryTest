@@ -1,1 +1,38 @@
-[{"id":14,"category":"Documents","hasImage":false,"question":"What does it mean if your insurance policy has an excess of £500?;Что это значит, если ваш страховой полис превышает 500 фунтов стерлингов","answer_1":"You’ll be paid £500 if you don’t claim within one year;Вам заплатят 500 фунтов стерлингов, если вы не подадите иск в течение одного года. ","answer_2":"The insurance company will pay the first £500 of any claim;Страховая компания выплатит первые 500 фунтов стерлингов по любой претензии ","answer_3":"You’ll have to pay the first £500 of the cost of any claim;Вам необходимо будет оплатить первые 500 фунтов стерлингов от стоимости любого требования ","answer_4":"Your vehicle is insured for a value of £500 if it’s stolen;Ваш автомобиль застрахован на сумму 500 фунтов стерлингов в случае кражи ","right_answer":3,"explanation":"Having an excess on your policy will help to keep the premium down. However, if you make a claim, you’ll have to pay the excess yourself – in this case, £500;Превышение вашего полиса поможет снизить размер премии. Однако, если вы подаете претензию, вам придется оплатить франшизу самостоятельно - в данном случае 500 фунтов стерлингов"},{"id":20,"category":"Documents","hasImage":false,"question":"When could the cost of your insurance be reduced?;Когда можно будет снизить стоимость вашей страховки?","answer_1":"When you’re under 25 years old;Когда вам меньше 25 лет","answer_2":"When you don’t wear glasses;Когда ты без очков","answer_3":"When you complete the Pass Plus scheme;После прохождения схемы Pass Plus","answer_4":"When you pass the driving test first time;При первой сдаче экзамена по вождению","right_answer":3,"explanation":"The cost of insurance varies with your age and how long you’ve been driving. Usually, the younger you are, the more expensive it is, especially if you’re under 25. Pass Plus provides additional training to newly qualified drivers. The scheme is recognized by many insurance companies, and taking this extra training could give you reduced insurance premiums, as well as improving your skills and experience;Стоимость страховки зависит от вашего возраста и продолжительности вождения. Обычно, чем вы моложе, тем она дороже, особенно если вам меньше 25 лет. Pass Plus предоставляет дополнительное обучение новичкам. квалифицированные водители. Эта схема признана многими страховыми компаниями, и прохождение этого дополнительного обучения может снизить ваши страховые взносы, а также улучшить ваши навыки и опыт"},{"id":37,"category":"Documents","hasImage":false,"question":"When should you update your vehicle registration certificate?;Когда следует обновить свидетельство о регистрации транспортного средства?","answer_1":"When you move house;При переезде","answer_2":"When your vehicle needs an MOT;Когда вашему автомобилю требуется ТО","answer_3":"When you pass your driving test;После сдачи экзамена по вождению","answer_4":"When you have a collision;При столкновении","right_answer":1,"explanation":"As the registered keeper of a vehicle, it’s up to you to inform DVLA of any changes in your details; for example, your name or address. You do this by completing and sending off the relevant section of the registration certificate;Как зарегистрированный хранитель транспортного средства, вы должны сообщать DVLA о любых изменениях в ваших данных, например, о вашем имени или адресе. Вы делаете это, заполнив и отправив соответствующий раздел регистрационного свидетельства"}]
+[
+  {
+    "id": 14,
+    "category": "Documents",
+    "hasImage": false,
+    "question": "What does it mean if your insurance policy has an excess of £500?;Что это значит, если ваш страховой полис превышает 500 фунтов стерлингов",
+    "answer_1": "You’ll be paid £500 if you don’t claim within one year;Вам заплатят 500 фунтов стерлингов, если вы не подадите иск в течение одного года. ",
+    "answer_2": "The insurance company will pay the first £500 of any claim;Страховая компания выплатит первые 500 фунтов стерлингов по любой претензии ",
+    "answer_3": "You’ll have to pay the first £500 of the cost of any claim;Вам необходимо будет оплатить первые 500 фунтов стерлингов от стоимости любого требования ",
+    "answer_4": "Your vehicle is insured for a value of £500 if it’s stolen;Ваш автомобиль застрахован на сумму 500 фунтов стерлингов в случае кражи ",
+    "right_answer": 3,
+    "explanation": "Having an excess on your policy will help to keep the premium down. However, if you make a claim, you’ll have to pay the excess yourself – in this case, £500;Превышение вашего полиса поможет снизить размер премии. Однако, если вы подаете претензию, вам придется оплатить франшизу самостоятельно - в данном случае 500 фунтов стерлингов"
+  },
+  {
+    "id": 20,
+    "category": "Documents",
+    "hasImage": false,
+    "question": "When could the cost of your insurance be reduced?;Когда можно будет снизить стоимость вашей страховки?",
+    "answer_1": "When you’re under 25 years old;Когда вам меньше 25 лет",
+    "answer_2": "When you don’t wear glasses;Когда ты без очков",
+    "answer_3": "When you complete the Pass Plus scheme;После прохождения схемы Pass Plus",
+    "answer_4": "When you pass the driving test first time;При первой сдаче экзамена по вождению",
+    "right_answer": 3,
+    "explanation": "The cost of insurance varies with your age and how long you’ve been driving. Usually, the younger you are, the more expensive it is, especially if you’re under 25. Pass Plus provides additional training to newly qualified drivers. The scheme is recognized by many insurance companies, and taking this extra training could give you reduced insurance premiums, as well as improving your skills and experience;Стоимость страховки зависит от вашего возраста и продолжительности вождения. Обычно, чем вы моложе, тем она дороже, особенно если вам меньше 25 лет. Pass Plus предоставляет дополнительное обучение новичкам. квалифицированные водители. Эта схема признана многими страховыми компаниями, и прохождение этого дополнительного обучения может снизить ваши страховые взносы, а также улучшить ваши навыки и опыт"
+  },
+  {
+    "id": 37,
+    "category": "Documents",
+    "hasImage": false,
+    "question": "When should you update your vehicle registration certificate?;Когда следует обновить свидетельство о регистрации транспортного средства?",
+    "answer_1": "When you move house;При переезде",
+    "answer_2": "When your vehicle needs an MOT;Когда вашему автомобилю требуется ТО",
+    "answer_3": "When you pass your driving test;После сдачи экзамена по вождению",
+    "answer_4": "When you have a collision;При столкновении",
+    "right_answer": 1,
+    "explanation": "As the registered keeper of a vehicle, it’s up to you to inform DVLA of any changes in your details; for example, your name or address. You do this by completing and sending off the relevant section of the registration certificate;Как зарегистрированный хранитель транспортного средства, вы должны сообщать DVLA о любых изменениях в ваших данных, например, о вашем имени или адресе. Вы делаете это, заполнив и отправив соответствующий раздел регистрационного свидетельства"
+  }
+]
