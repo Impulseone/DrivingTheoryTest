@@ -3,35 +3,47 @@ import 'package:dirving_theory_test/bloc/question_bloc.dart';
 import 'package:dirving_theory_test/database/model/answered_question.dart';
 import 'package:dirving_theory_test/extension/categories_provider.dart';
 import 'package:dirving_theory_test/extension/custom_text_style.dart';
+import 'package:dirving_theory_test/model/question.dart';
 import 'package:dirving_theory_test/view/question_screen.dart';
 import 'package:flutter/material.dart';
 
-class CategoriesToPracticeScreen extends StatefulWidget {
-  final CategoriesBloc categoriesBloc;
+class SelectCategoryScreen extends StatefulWidget {
+  final AnsweredQuestionsBloc categoriesBloc;
   final List<Category> categoriesList;
 
-  CategoriesToPracticeScreen(this.categoriesBloc, this.categoriesList);
+  SelectCategoryScreen(this.categoriesBloc, this.categoriesList);
 
   @override
-  _CategoriesToPracticeScreenState createState() =>
-      _CategoriesToPracticeScreenState();
+  _SelectCategoryScreenState createState() => _SelectCategoryScreenState();
 }
 
-class _CategoriesToPracticeScreenState
-    extends State<CategoriesToPracticeScreen> {
+class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
   QuestionBloc questionBloc = QuestionBloc();
   List<Category> selectedCategoriesList = List();
   int selectedQuestions = 0;
   bool isChecked = false;
 
-  static const int ALL_QUESTIONS_NUMBER = 757;
+  @override
+  void initState() {
+    super.initState();
+    questionBloc.readAllQuestionsFromDb();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-            "Categories to practice \n$selectedQuestions of $ALL_QUESTIONS_NUMBER selected"),
+        title: StreamBuilder(
+          stream: questionBloc.allQuestions,
+          builder: (ctxt, snap) {
+            if (snap.hasData)
+              return Text(
+                  "Categories to practice \n$selectedQuestions of ${(snap.data as List<Question>).length} selected");
+            else
+              return Text(
+                  "Categories to practice \n$selectedQuestions of 0 selected");
+          },
+        ),
         backgroundColor: Colors.black,
       ),
       body: categoriesList(widget.categoriesList),
@@ -80,7 +92,7 @@ class _CategoriesToPracticeScreenState
 
   Widget categoryWidget(Category category) {
     return StreamBuilder(
-        stream: widget.categoriesBloc.questions,
+        stream: widget.categoriesBloc.answeredQuestions,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List<AnsweredQuestion> categoryAnsweredQuestionsAll = List();
@@ -214,7 +226,7 @@ class _CategoriesToPracticeScreenState
               padding: EdgeInsets.only(left: 10),
             ),
             Text(
-                "${((categoryAnsweredQuestionsTrue.length / questionsMax)*100).round()}%")
+                "${((categoryAnsweredQuestionsTrue.length / questionsMax) * 100).round()}%")
           ],
         ),
         Row(
@@ -234,10 +246,13 @@ class _CategoriesToPracticeScreenState
         Row(
           children: [
             Text(
-                "Answered:${categoryAnsweredQuestionsAll.length}/$questionsMax", style: CustomTextStyle.rusTextStyleBodyBlack(context),),
+              "Answered:${categoryAnsweredQuestionsAll.length}/$questionsMax",
+              style: CustomTextStyle.rusTextStyleBodyBlack(context),
+            ),
             Padding(padding: EdgeInsets.only(left: 60)),
             Text(
-                "Correctly:${categoryAnsweredQuestionsTrue.length}/$questionsMax",style: CustomTextStyle.rusTextStyleBodyBlack(context))
+                "Correctly:${categoryAnsweredQuestionsTrue.length}/$questionsMax",
+                style: CustomTextStyle.rusTextStyleBodyBlack(context))
           ],
         ),
       ],
