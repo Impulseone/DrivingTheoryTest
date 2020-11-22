@@ -1,6 +1,7 @@
 import 'package:dirving_theory_test/bloc/categories_bloc.dart';
 import 'package:dirving_theory_test/extension/categories_provider.dart';
 import 'package:dirving_theory_test/extension/custom_text_style.dart';
+import 'package:dirving_theory_test/model/question.dart';
 import 'package:dirving_theory_test/view/menu_screens/select_category_screen.dart';
 import 'package:dirving_theory_test/view/search_question_screen.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,13 @@ class SelectOperationMenuPage extends StatefulWidget {
 
 class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
   AnsweredQuestionsBloc categoriesBloc = new AnsweredQuestionsBloc();
+  List<Category> categories = List();
+
+  @override
+  void initState() {
+    generateCategories();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +65,10 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
           ],
         ),
         bottomNavigationBar: _bottomNavigationBar());
+  }
+
+  void generateCategories() async {
+    categories = await CategoriesProvider().generateCategoriesInfo();
   }
 
   Widget _header() {
@@ -145,8 +157,8 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
   void _openCategoriesToPracticePage() {
     categoriesBloc.readAnsweredQuestions();
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => SelectCategoryScreen(
-            categoriesBloc, CategoriesProvider().generateCategoriesInfo())));
+        builder: (context) =>
+            SelectCategoryScreen(categoriesBloc, categories)));
   }
 
   void _openMockPage() {}
@@ -182,7 +194,8 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
       ),
     );
   }
-  BottomNavigationBarItem _bottomNavigationBarItem(IconData iconData){
+
+  BottomNavigationBarItem _bottomNavigationBarItem(IconData iconData) {
     return new BottomNavigationBarItem(
       icon: new Icon(
         iconData,

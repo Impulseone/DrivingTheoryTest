@@ -20,6 +20,7 @@ class SelectCategoryScreen extends StatefulWidget {
 class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
   QuestionBloc questionBloc = QuestionBloc();
   List<Category> selectedCategoriesList = List();
+  List<Question> allQuestions = List();
   int selectedQuestions = 0;
   bool isChecked = false;
 
@@ -36,10 +37,11 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
         title: StreamBuilder(
           stream: questionBloc.allQuestions,
           builder: (ctxt, snap) {
-            if (snap.hasData)
+            if (snap.hasData) {
+              allQuestions = (snap.data as List<Question>);
               return Text(
                   "Categories to practice \n$selectedQuestions of ${(snap.data as List<Question>).length} selected");
-            else
+            } else
               return Text(
                   "Categories to practice \n$selectedQuestions of 0 selected");
           },
@@ -47,23 +49,26 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
         backgroundColor: Colors.black,
       ),
       body: categoriesList(widget.categoriesList),
-      bottomNavigationBar: BottomAppBar(
-          color: Colors.green,
-          child: Container(
-              child: new RaisedButton(
-            elevation: 0.0,
-            color: Colors.green,
-            child: Text(
-              "START",
-              style: TextStyle(fontSize: 25, color: Colors.white),
-            ),
-            onPressed: () {
-              questionBloc.getQuestionsForCategories(selectedCategoriesList);
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => QuestionScreen(questionBloc)));
-            },
-          ))),
+      bottomNavigationBar:
+          BottomAppBar(color: Colors.green, child: _startButton()),
     );
+  }
+
+  Widget _startButton() {
+    return Container(
+        child: new RaisedButton(
+      elevation: 0.0,
+      color: Colors.green,
+      child: Text(
+        "START",
+        style: TextStyle(fontSize: 25, color: Colors.white),
+      ),
+      onPressed: () {
+        questionBloc.getQuestionsForCategories(selectedCategoriesList);
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => QuestionScreen(questionBloc)));
+      },
+    ));
   }
 
   Widget categoriesList(List<Category> categories) {
@@ -85,24 +90,20 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
         categoryWidget(findCategory(categories, 'Safety and your vehicle')),
         categoryWidget(findCategory(categories, 'Vulnerable road users')),
         categoryWidget(findCategory(categories, 'Vehicle loading')),
-        categoryWidget(findCategory(categories, 'Videos')),
       ],
     );
   }
 
   Widget categoryWidget(Category category) {
+    List<AnsweredQuestion> categoryAnsweredQuestionsAll = List();
+    List<AnsweredQuestion> categoryAnsweredQuestionsTrue = List();
     return StreamBuilder(
         stream: widget.categoriesBloc.answeredQuestions,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            List<AnsweredQuestion> categoryAnsweredQuestionsAll = List();
-            List<AnsweredQuestion> categoryAnsweredQuestionsTrue = List();
             (snapshot.data as List<AnsweredQuestion>).forEach((element) {
-              if (element.category == category.engName) {
-                categoryAnsweredQuestionsAll.add(element);
-                if (element.answerIsTrue == 1)
-                  categoryAnsweredQuestionsTrue.add(element);
-              }
+              _fillAnsweredQuestions(element, category,
+                  categoryAnsweredQuestionsAll, categoryAnsweredQuestionsTrue);
             });
             return Column(
               children: [
@@ -123,17 +124,38 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
                   ],
                   mainAxisAlignment: MainAxisAlignment.center,
                 ),
-                Container(
-                  margin: EdgeInsets.only(top: 5, bottom: 5),
-                  height: 2,
-                  width: double.infinity,
-                  color: Colors.green,
-                )
+                _divider()
               ],
             );
           } else
             return Container();
         });
+  }
+
+  Widget _divider() {
+    return Container(
+      margin: EdgeInsets.only(top: 5, bottom: 5),
+      height: 2,
+      width: double.infinity,
+      color: Colors.green,
+    );
+  }
+
+  void _fillAnsweredQuestions(
+      AnsweredQuestion element,
+      Category category,
+      List<AnsweredQuestion> categoryAnsweredQuestionsAll,
+      List<AnsweredQuestion> categoryAnsweredQuestionsTrue) {
+    if (element.category == category.engName) {
+      categoryAnsweredQuestionsAll.add(element);
+      _fillAnsweredQuestionsTrue(categoryAnsweredQuestionsTrue, element);
+    }
+  }
+
+  void _fillAnsweredQuestionsTrue(
+      List<AnsweredQuestion> categoryAnsweredQuestionsTrue,
+      AnsweredQuestion element) {
+    if (element.answerIsTrue == 1) categoryAnsweredQuestionsTrue.add(element);
   }
 
   Widget checkbox(int categoriesMax, Category category) {
@@ -187,7 +209,7 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
         allCategories.forEach((element) {
           element.isChecked = true;
         });
-        selectedQuestions = 757;
+        selectedQuestions = allQuestions.length;
       } else {
         selectedCategoriesList = List();
         selectedQuestions = 0;
