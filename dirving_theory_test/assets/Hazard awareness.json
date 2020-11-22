@@ -1,1 +1,74 @@
-[{"id":15,"category":"Hazard awareness","hasImage":true,"question":"Why should you slow down as you approach this hazard;Почему вы должны сбавлять скорость, приближаясь к этой опасности?","answer_1":"Because it’s hard to see to the right;Потому что не видно направо ","answer_2":"Because of animals crossing;Из-за скрещивания животных ","answer_3":"Because of approaching traffic;Из-за приближающегося движения ","answer_4":"Because of the level crossing;Из-за переезда ","right_answer":4,"explanation":"You should be slowing down and selecting the correct gear in case you have to stop at the level crossing. Look for the signals and be prepared to stop if necessary;Вам следует снизить скорость и выбрать правильную передачу, если вам придется остановиться на железнодорожном переезде. Ищите сигналы и будьте готовы остановиться в случае необходимости."},{"id":4,"category":"Hazard awareness","hasImage":true,"question":"Which type of vehicle should you be ready to give way to as you approach this bridge?;Какому типу транспортного средства вы должны быть готовы уступить дорогу при приближении к этому мосту?","answer_1":"Buses;Автобусы","answer_2":"Motorcycles;Мотоциклы","answer_3":"Bicycles;Велосипеды","answer_4":"Cars;Автомобили","right_answer":1,"explanation":"A bus or high-sided lorry will have to take a position in the center of the road to clear the bridge. There’s normally a sign to show this. Look well ahead, past the bridge and be ready to stop and give way to large oncoming vehicle;Автобус или грузовик с высокими бортами должны будут занять место в центре дороги, чтобы освободит мост. Обычно для этого есть табличка. Смотрите вперед, мимо моста и будьте готовы остановиться и уступить дорогу большой встречной машине"},{"id":372,"category":"Hazard awareness","hasImage":false,"question":"When may you use hazard warning lights while you're driving?; Когда можно использовать аварийные световые сигналы во время вождения?","answer_1":"On a motorway or unrestricted dual carriageway, to warn of a hazard ahead;На автомагистрали или неограниченной проезжей части для предупреждения об опасности впереди ","answer_2":"On the approach to toucan crossings, where cyclists are waiting to cross; На подходе к туканским переходам, где велосипедисты ожидают перехода ","answer_3":"On rural routes, after a sign warning of animals; На сельских маршрутах после предупреждения животных ","answer_4":"Instead of sounding the horn in a built-up area between 11.30 pm and 7.00 am; Вместо звукового сигнала в населенном пункте между 11:30 и 7:00 ","right_answer":1,"explanation":"When there's queuing traffic ahead and you have to slow down or even stop, briefly showing your hazard warning lights will help alert the traffic behind to the hazard.; Когда впереди очередь в очередь, и ты должен притормозить или даже остановиться, вкратце показывать сигнальные огни, предупреждающие об опасности. "},{"id":46,"category":"Hazard awareness","hasImage":false,"question":"What should you do if you start to feel drowsy while you’re driving on a motorway?;Что делать, если вы чувствуете сонливость во время движения по автомагистрали ?","answer_1":"Slow down and let other drivers overtake;Снизьте скорость и дайте возможность другим водителям обгонять","answer_2":"Speed up to arrive at your destination sooner;Ускорьтесь, чтобы быстрее добраться до пункта назначения","answer_3":"Open a window and stop as soon as it’s safe and legal;Откройте окно и остановитесь, как только это станет безопасным и законным","answer_4":"Stop on the hard shoulder for a sleep;Стойте на твердом плече, чтобы поспать;","right_answer":3,"explanation":"Never stop on the hard shoulder to rest. If there’s no service area for several miles, leave the motorway at the next exit and find somewhere safe and legal to pull over;Никогда не останавливайтесь на твердой обочине, чтобы отдохнуть. Если на несколько миль нет зоны обслуживания, сверните с автострады на следующем съезде и найдите безопасное и законное место для остановки"},{"id":42,"category":"Hazard awareness","hasImage":false,"question":"How would age affect an older person’s driving ability?;Как возраст повлияет на способность пожилого человека управлять автомобилем ?","answer_1":"They’ll take longer to react to hazards;Им потребуется больше времени, чтобы реагировать на опасности","answer_2":"They won’t signal at junctions;На развязках сигналить не будут","answer_3":"They won’t be able to obtain car insurance;Они не смогут получить автостраховку","answer_4":"They’ll need glasses to read road signs;Им понадобятся очки, чтобы читать дорожные знаки","right_answer":1,"explanation":"As people age, their reaction time gets slower. The rate of decline varies from person to person but you can expect them to take longer to react to a hazard and they may be hesitant in some situations – for example, at a junction;С возрастом время реакции людей замедляется. Скорость снижения варьируется от человека к человеку, но вы можете ожидать, что им потребуется больше времени, чтобы отреагировать на опасность, и они могут колебаться в некоторых ситуациях - например, при соединение"},{"id":10,"category":"Hazard awareness","hasImage":false,"question":"When should you use hazard warning lights?;Когда следует использовать аварийные световые сигналы?","answer_1":"When your vehicle has broken down and is causing an obstruction;Когда ваш автомобиль сломался и создает препятствие","answer_2":"When waring oncoming traffic that you intend to stop;Предупреждая встречный поток, который вы собираетесь остановить","answer_3":"When your direction indicators aren’t working;Когда ваши указателя поворота не работают","answer_4":"When you’re double-parked on a two-way road;Когда вы дважды припарковались на дороге с двусторонним движением ","right_answer":1,"explanation":"Hazard warning lights are an important safety feature and should be used if you’ve broken down and are causing an obstruction. Don’t use them as an excuse to park illegally. You may also use them on motorways to warn traffic behind you of danger ahead; Предупреждающие огни - важная функция безопасности, и их следует использовать, если вы вышли из строя и создаете препятствие. Не используйте их как предлог для незаконной парковки. Вы также можете использовать их на автомагистралях, чтобы предупредить движущихся за вами об опасности впереди"}]
+[
+  {
+    "id": 15,
+    "category": "Hazard awareness",
+    "hasImage": true,
+    "question": "Why should you slow down as you approach this hazard;Почему вы должны сбавлять скорость, приближаясь к этой опасности?",
+    "answer_1": "Because it’s hard to see to the right;Потому что не видно направо ",
+    "answer_2": "Because of animals crossing;Из-за скрещивания животных ",
+    "answer_3": "Because of approaching traffic;Из-за приближающегося движения ",
+    "answer_4": "Because of the level crossing;Из-за переезда ",
+    "right_answer": 4,
+    "explanation": "You should be slowing down and selecting the correct gear in case you have to stop at the level crossing. Look for the signals and be prepared to stop if necessary;Вам следует снизить скорость и выбрать правильную передачу, если вам придется остановиться на железнодорожном переезде. Ищите сигналы и будьте готовы остановиться в случае необходимости."
+  },
+  {
+    "id": 4,
+    "category": "Hazard awareness",
+    "hasImage": true,
+    "question": "Which type of vehicle should you be ready to give way to as you approach this bridge?;Какому типу транспортного средства вы должны быть готовы уступить дорогу при приближении к этому мосту?",
+    "answer_1": "Buses;Автобусы",
+    "answer_2": "Motorcycles;Мотоциклы",
+    "answer_3": "Bicycles;Велосипеды",
+    "answer_4": "Cars;Автомобили",
+    "right_answer": 1,
+    "explanation": "A bus or high-sided lorry will have to take a position in the center of the road to clear the bridge. There’s normally a sign to show this. Look well ahead, past the bridge and be ready to stop and give way to large oncoming vehicle;Автобус или грузовик с высокими бортами должны будут занять место в центре дороги, чтобы освободит мост. Обычно для этого есть табличка. Смотрите вперед, мимо моста и будьте готовы остановиться и уступить дорогу большой встречной машине"
+  },
+  {
+    "id": 372,
+    "category": "Hazard awareness",
+    "hasImage": false,
+    "question": "When may you use hazard warning lights while you're driving?; Когда можно использовать аварийные световые сигналы во время вождения?",
+    "answer_1": "On a motorway or unrestricted dual carriageway, to warn of a hazard ahead;На автомагистрали или неограниченной проезжей части для предупреждения об опасности впереди ",
+    "answer_2": "On the approach to toucan crossings, where cyclists are waiting to cross; На подходе к туканским переходам, где велосипедисты ожидают перехода ",
+    "answer_3": "On rural routes, after a sign warning of animals; На сельских маршрутах после предупреждения животных ",
+    "answer_4": "Instead of sounding the horn in a built-up area between 11.30 pm and 7.00 am; Вместо звукового сигнала в населенном пункте между 11:30 и 7:00 ",
+    "right_answer": 1,
+    "explanation": "When there's queuing traffic ahead and you have to slow down or even stop, briefly showing your hazard warning lights will help alert the traffic behind to the hazard.; Когда впереди очередь в очередь, и ты должен притормозить или даже остановиться, вкратце показывать сигнальные огни, предупреждающие об опасности. "
+  },
+  {
+    "id": 46,
+    "category": "Hazard awareness",
+    "hasImage": false,
+    "question": "What should you do if you start to feel drowsy while you’re driving on a motorway?;Что делать, если вы чувствуете сонливость во время движения по автомагистрали ?",
+    "answer_1": "Slow down and let other drivers overtake;Снизьте скорость и дайте возможность другим водителям обгонять",
+    "answer_2": "Speed up to arrive at your destination sooner;Ускорьтесь, чтобы быстрее добраться до пункта назначения",
+    "answer_3": "Open a window and stop as soon as it’s safe and legal;Откройте окно и остановитесь, как только это станет безопасным и законным",
+    "answer_4": "Stop on the hard shoulder for a sleep;Стойте на твердом плече, чтобы поспать;",
+    "right_answer": 3,
+    "explanation": "Never stop on the hard shoulder to rest. If there’s no service area for several miles, leave the motorway at the next exit and find somewhere safe and legal to pull over;Никогда не останавливайтесь на твердой обочине, чтобы отдохнуть. Если на несколько миль нет зоны обслуживания, сверните с автострады на следующем съезде и найдите безопасное и законное место для остановки"
+  },
+  {
+    "id": 42,
+    "category": "Hazard awareness",
+    "hasImage": false,
+    "question": "How would age affect an older person’s driving ability?;Как возраст повлияет на способность пожилого человека управлять автомобилем ?",
+    "answer_1": "They’ll take longer to react to hazards;Им потребуется больше времени, чтобы реагировать на опасности",
+    "answer_2": "They won’t signal at junctions;На развязках сигналить не будут",
+    "answer_3": "They won’t be able to obtain car insurance;Они не смогут получить автостраховку",
+    "answer_4": "They’ll need glasses to read road signs;Им понадобятся очки, чтобы читать дорожные знаки",
+    "right_answer": 1,
+    "explanation": "As people age, their reaction time gets slower. The rate of decline varies from person to person but you can expect them to take longer to react to a hazard and they may be hesitant in some situations – for example, at a junction;С возрастом время реакции людей замедляется. Скорость снижения варьируется от человека к человеку, но вы можете ожидать, что им потребуется больше времени, чтобы отреагировать на опасность, и они могут колебаться в некоторых ситуациях - например, при соединение"
+  },
+  {
+    "id": 10,
+    "category": "Hazard awareness",
+    "hasImage": false,
+    "question": "When should you use hazard warning lights?;Когда следует использовать аварийные световые сигналы?",
+    "answer_1": "When your vehicle has broken down and is causing an obstruction;Когда ваш автомобиль сломался и создает препятствие",
+    "answer_2": "When waring oncoming traffic that you intend to stop;Предупреждая встречный поток, который вы собираетесь остановить",
+    "answer_3": "When your direction indicators aren’t working;Когда ваши указателя поворота не работают",
+    "answer_4": "When you’re double-parked on a two-way road;Когда вы дважды припарковались на дороге с двусторонним движением ",
+    "right_answer": 1,
+    "explanation": "Hazard warning lights are an important safety feature and should be used if you’ve broken down and are causing an obstruction. Don’t use them as an excuse to park illegally. You may also use them on motorways to warn traffic behind you of danger ahead; Предупреждающие огни - важная функция безопасности, и их следует использовать, если вы вышли из строя и создаете препятствие. Не используйте их как предлог для незаконной парковки. Вы также можете использовать их на автомагистралях, чтобы предупредить движущихся за вами об опасности впереди"
+  }
+]

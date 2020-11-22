@@ -1,1 +1,98 @@
-[{"id":30,"category":"Vehicle handling","hasImage":false,"question":"What should you check before you start a journey in foggy weather?;Что следует проверить перед тем, как отправиться в путь в туманную погоду ?","answer_1":"You have a mobile phone with you;У вас с собой мобильный телефон","answer_2":"The windows and lights are clean an clear;Окна и свет чистые и ясные","answer_3":"You have a warning triangle in the vehicle;У вас в автомобиле аварийный треугольник","answer_4":"The radiator has enough anti-freeze;В радиаторе достаточно антифриза","right_answer":2,"explanation":"If you have to drive in fog, switch your dipped headlights on and keep all your windows clear. You should always be able to pull up within the distance you can see ahead;Если вам нужно ехать в тумане, включите ближний свет и держите все окна открытыми. У вас всегда должна быть возможность подъехать на таком расстоянии, которое вы видите впереди"},{"id":8,"category":"Vehicle handling","hasImage":false,"question":"Why is it dangerous to leave rear fog lights switched on after the fog has cleared?;Почему опасно оставлять противотуманные фары включенными после того, как туман рассеялся? ","answer_1":"Direction indicators may not work properly;Указатели поворота могут работать не правильно","answer_2":"Electrical systems could be overloaded;Электрические системы могут быть перегружены","answer_3":"They may be confused with brake lights;Они могут спутать со стоп-сигналами","answer_4":"The bulbs would fail;Лампочки выйдут из строя","right_answer":3,"explanation":"If you rear fog lights are left on when it isn’t foggy, the glare they cause makes it difficult for road users behind to know whether you’re braking or you’ve just forgotten to turn off your rear fog lights. This can be a particular problem on wet roads and on motorways. If you leave your rear fog lights on at night, road users behind you are likely to be dazzled and this could put them at risk;Если вы оставите задние противотуманные фары включенными, когда нет тумана, из-за яркости, которую они вызывают, участникам дорожного движения будет сложно понять, тормозите ли вы или просто забыли выключить задние противотуманные фары. Это может стать серьезной проблемой на мокрой дороге и на автомагистралях. Если вы оставите задние противотуманные фары включенными на ночь, участники дорожного движения, находящиеся позади вас, могут быть ослеплены, и это может подвергнуть их опасности"},{"id":7,"category":"Vehicle handling","hasImage":true,"question":"When may you wait in a box junction?;Когда вы можете ждать на перекрестке?","answer_1":"When oncoming traffic prevents you turning right;Когда встречный транспорт мешает вам повернуть на право","answer_2":"When approaching a pelican crossing;При приближении к перекрестку с пеликанами","answer_3":"When you’re stationary in a queue of traffic;Когда вы стоите в очереди пробки","answer_4":"When approaching a zebra crossing;При приближении к перекрестку зебра","right_answer":1,"explanation":"The purpose of a box junction is to keep the junction clear by preventing vehicles from stopping in the path of crossing traffic. You mustn’t enter a box junction unless your exit is clear. However, you may enter the box and wait if you want to turn right and are only prevented from doing so by oncoming traffic; Цель прямугольного перекрестка- держать перекресток свободным, предотвращая остановку транспортных средств на пути пересекающего транспорта. Запрещается выезжать на прямоугольний перекресток, если выход не свободен. Однако вы можете войти в прямоугольник и подождать, если хотите повернуть направо, а сделать это не дает вам только встречный транспорт."},{"id":18,"category":"Vehicle handling","hasImage":false,"question":"When may you overtake another vehicle on their left?;Когда вы можете обогнать другой автомобиль слева от них ?","answer_1":"When a slower vehicle is travelling in the right-hand lane of a dual carriageway;Когда более медленное транспортное средство движется по правой полосе дороги с двусторонним движением","answer_2":"When approaching a motorway slip road where you’ll be turning off;При приближении к съезду с автострады, где вы будете свернути","answer_3":"When you’re in a one-way street;Когда вы находитесь на улице с односторонним движением","answer_4":"When the vehicle in front is signalling to turn left;Когда впереди идущий автомобиль подает сигнал поворота налево ","right_answer":3,"explanation":"You may pass slower vehicles on their left while traveling along a one-way street. Be aware of drivers who may need to change lanes and may not expect faster traffic passing on their left;Вы можете обгонять более медленные автомобили слева от них, путешествуя по улице с односторонним движением. Имейте в виду водителей, которым может потребоваться перестроиться в другую полосу движения, и они могут не ожидать более быстрого движения транспорта слева "},{"id":39,"category":"Vehicle handling","hasImage":true,"question":"What’s the purpose of the yellow lines painted across the road;Зачем нужны желтые линии, нарисованные поперек дороги","answer_1":"To keep the area clear of traffic;Не допускать движения транспорта","answer_2":"To show a safe distance between vehicles;Показывать безопасное расстояние между транспортными средствами","answer_3":"To make you aware of your speed;Чтобы вы знали о вашей скорости","answer_4":"To warn you to change direction;Чтобы предупредить вас о смене направления;","right_answer":3,"explanation":"These lines may be painted on the road on the approach to a roundabout, a village or a particular hazard. The lines are raised and painted yellow, and their purpose is to make you aware of your speed. Reduce your speed in good time so that you avoid having to brake harshly over the last few metres before reaching the junction;Эти линии могут быть нарисованы на дороге при приближении к кольцевой развязке, деревне или конкретной опасности. Линии приподняты и окрашены в желтый цвет, и их цель - сообщить вам о вашей скорости. Уменьшите скорость заблаговременно, чтобы избежать резкого торможения на последних нескольких метрах, прежде чем добраться до перекрестка"},{"id":12,"category":"Vehicle handling","hasImage":false,"question":"What would suggest you’re driving on an icy road?;Что может предложить вам ехать по обледенелой дороге ","answer_1":"There’s less transmission noise;Меньше шума при передаче","answer_2":"There’s less engine noise;Меньше шума двигателя","answer_3":"There’s less tyre noise;Меньше шума шин","answer_4":"There’s less wing noise;Меньше шуму крыльев","right_answer":3,"explanation":"Drive extremely carefully when the roads are icy. When travelling on ice, tyres make virtually no noise and the steering feels light and unresponsive. In icy conditions, be very gentle when braking, accelerating and steering;На обледенелой дороге водите машину крайне осторожно. При движении по льду шины практически не издают шума, а рулевое управление кажется легким и нечувствительным. В условиях обледенения будьте очень осторожны при торможении, ускорении и рулевом управлении. "},{"id":177,"category":"Vehicle handling","hasImage":false,"question":"How can you avoid wheelspin when you're driving on an icy road?;Как избежать пробуксовки колес на обледенелой дороге?","answer_1":"Brake gently and repeatedly;Тормозите мягко и многократно","answer_2":"Drive in a low gear at all times;Всегда ездить на пониженной передаче","answer_3":"Drive at a slow speed in the highest gear possible;Двигайтесь с небольшой скоростью на максимально возможной передаче.","answer_4":"Use the parking brake if the wheels start to slip;Использовать стояночный тормоз, если колеса начинают буксовать.і","right_answer":3,"explanation":"If you're travelling on an icy road, extra caution will be required to avoid loss of control. Keeping your speed down and using the highest gear possible will reduce the risk of the tyres losing their grip on this slippery surface.;Если вы путешествуете по ледяной дороге, потребуется дополнительная осторожность, чтобы избежать потери контроля. Снижение скорости и использование наиболее высокой передачи снизит риск потери сцепления шин с этой скользкой поверхностью"},{"id":169,"category":"Vehicle handling","hasImage":false,"question":"What requires extra care when you're driving or riding in windy conditions?;Что требует особой осторожности, когда вы едете в ветреную погоду?","answer_1":"Using the brakes;Использование тормозов","answer_2":"Turning into a narrow road;Сворачивание на узкую дорогу","answer_3":"Moving off on a hill;Двигаясь на холме","answer_4":"Passing pedal cyclists;Велосипедисты, проезжающие мимо","right_answer":4,"explanation":"Always give cyclists plenty of room when overtaking them. You need to give them even more room when it's windy. A sudden gust could easily blow them off course and into your path.;Всегда оставляйте велосипедистам достаточно места при обгоне. Вам нужно дать им еще больше места, когда ветрено. Внезапный порыв может легко сбить их с курса и вступить на ваш путь "}]
+[
+  {
+    "id": 30,
+    "category": "Vehicle handling",
+    "hasImage": false,
+    "question": "What should you check before you start a journey in foggy weather?;Что следует проверить перед тем, как отправиться в путь в туманную погоду ?",
+    "answer_1": "You have a mobile phone with you;У вас с собой мобильный телефон",
+    "answer_2": "The windows and lights are clean an clear;Окна и свет чистые и ясные",
+    "answer_3": "You have a warning triangle in the vehicle;У вас в автомобиле аварийный треугольник",
+    "answer_4": "The radiator has enough anti-freeze;В радиаторе достаточно антифриза",
+    "right_answer": 2,
+    "explanation": "If you have to drive in fog, switch your dipped headlights on and keep all your windows clear. You should always be able to pull up within the distance you can see ahead;Если вам нужно ехать в тумане, включите ближний свет и держите все окна открытыми. У вас всегда должна быть возможность подъехать на таком расстоянии, которое вы видите впереди"
+  },
+  {
+    "id": 8,
+    "category": "Vehicle handling",
+    "hasImage": false,
+    "question": "Why is it dangerous to leave rear fog lights switched on after the fog has cleared?;Почему опасно оставлять противотуманные фары включенными после того, как туман рассеялся? ",
+    "answer_1": "Direction indicators may not work properly;Указатели поворота могут работать не правильно",
+    "answer_2": "Electrical systems could be overloaded;Электрические системы могут быть перегружены",
+    "answer_3": "They may be confused with brake lights;Они могут спутать со стоп-сигналами",
+    "answer_4": "The bulbs would fail;Лампочки выйдут из строя",
+    "right_answer": 3,
+    "explanation": "If you rear fog lights are left on when it isn’t foggy, the glare they cause makes it difficult for road users behind to know whether you’re braking or you’ve just forgotten to turn off your rear fog lights. This can be a particular problem on wet roads and on motorways. If you leave your rear fog lights on at night, road users behind you are likely to be dazzled and this could put them at risk;Если вы оставите задние противотуманные фары включенными, когда нет тумана, из-за яркости, которую они вызывают, участникам дорожного движения будет сложно понять, тормозите ли вы или просто забыли выключить задние противотуманные фары. Это может стать серьезной проблемой на мокрой дороге и на автомагистралях. Если вы оставите задние противотуманные фары включенными на ночь, участники дорожного движения, находящиеся позади вас, могут быть ослеплены, и это может подвергнуть их опасности"
+  },
+  {
+    "id": 7,
+    "category": "Vehicle handling",
+    "hasImage": true,
+    "question": "When may you wait in a box junction?;Когда вы можете ждать на перекрестке?",
+    "answer_1": "When oncoming traffic prevents you turning right;Когда встречный транспорт мешает вам повернуть на право",
+    "answer_2": "When approaching a pelican crossing;При приближении к перекрестку с пеликанами",
+    "answer_3": "When you’re stationary in a queue of traffic;Когда вы стоите в очереди пробки",
+    "answer_4": "When approaching a zebra crossing;При приближении к перекрестку зебра",
+    "right_answer": 1,
+    "explanation": "The purpose of a box junction is to keep the junction clear by preventing vehicles from stopping in the path of crossing traffic. You mustn’t enter a box junction unless your exit is clear. However, you may enter the box and wait if you want to turn right and are only prevented from doing so by oncoming traffic; Цель прямугольного перекрестка- держать перекресток свободным, предотвращая остановку транспортных средств на пути пересекающего транспорта. Запрещается выезжать на прямоугольний перекресток, если выход не свободен. Однако вы можете войти в прямоугольник и подождать, если хотите повернуть направо, а сделать это не дает вам только встречный транспорт."
+  },
+  {
+    "id": 18,
+    "category": "Vehicle handling",
+    "hasImage": false,
+    "question": "When may you overtake another vehicle on their left?;Когда вы можете обогнать другой автомобиль слева от них ?",
+    "answer_1": "When a slower vehicle is travelling in the right-hand lane of a dual carriageway;Когда более медленное транспортное средство движется по правой полосе дороги с двусторонним движением",
+    "answer_2": "When approaching a motorway slip road where you’ll be turning off;При приближении к съезду с автострады, где вы будете свернути",
+    "answer_3": "When you’re in a one-way street;Когда вы находитесь на улице с односторонним движением",
+    "answer_4": "When the vehicle in front is signalling to turn left;Когда впереди идущий автомобиль подает сигнал поворота налево ",
+    "right_answer": 3,
+    "explanation": "You may pass slower vehicles on their left while traveling along a one-way street. Be aware of drivers who may need to change lanes and may not expect faster traffic passing on their left;Вы можете обгонять более медленные автомобили слева от них, путешествуя по улице с односторонним движением. Имейте в виду водителей, которым может потребоваться перестроиться в другую полосу движения, и они могут не ожидать более быстрого движения транспорта слева "
+  },
+  {
+    "id": 39,
+    "category": "Vehicle handling",
+    "hasImage": true,
+    "question": "What’s the purpose of the yellow lines painted across the road;Зачем нужны желтые линии, нарисованные поперек дороги",
+    "answer_1": "To keep the area clear of traffic;Не допускать движения транспорта",
+    "answer_2": "To show a safe distance between vehicles;Показывать безопасное расстояние между транспортными средствами",
+    "answer_3": "To make you aware of your speed;Чтобы вы знали о вашей скорости",
+    "answer_4": "To warn you to change direction;Чтобы предупредить вас о смене направления;",
+    "right_answer": 3,
+    "explanation": "These lines may be painted on the road on the approach to a roundabout, a village or a particular hazard. The lines are raised and painted yellow, and their purpose is to make you aware of your speed. Reduce your speed in good time so that you avoid having to brake harshly over the last few metres before reaching the junction;Эти линии могут быть нарисованы на дороге при приближении к кольцевой развязке, деревне или конкретной опасности. Линии приподняты и окрашены в желтый цвет, и их цель - сообщить вам о вашей скорости. Уменьшите скорость заблаговременно, чтобы избежать резкого торможения на последних нескольких метрах, прежде чем добраться до перекрестка"
+  },
+  {
+    "id": 12,
+    "category": "Vehicle handling",
+    "hasImage": false,
+    "question": "What would suggest you’re driving on an icy road?;Что может предложить вам ехать по обледенелой дороге ",
+    "answer_1": "There’s less transmission noise;Меньше шума при передаче",
+    "answer_2": "There’s less engine noise;Меньше шума двигателя",
+    "answer_3": "There’s less tyre noise;Меньше шума шин",
+    "answer_4": "There’s less wing noise;Меньше шуму крыльев",
+    "right_answer": 3,
+    "explanation": "Drive extremely carefully when the roads are icy. When travelling on ice, tyres make virtually no noise and the steering feels light and unresponsive. In icy conditions, be very gentle when braking, accelerating and steering;На обледенелой дороге водите машину крайне осторожно. При движении по льду шины практически не издают шума, а рулевое управление кажется легким и нечувствительным. В условиях обледенения будьте очень осторожны при торможении, ускорении и рулевом управлении. "
+  },
+  {
+    "id": 177,
+    "category": "Vehicle handling",
+    "hasImage": false,
+    "question": "How can you avoid wheelspin when you're driving on an icy road?;Как избежать пробуксовки колес на обледенелой дороге?",
+    "answer_1": "Brake gently and repeatedly;Тормозите мягко и многократно",
+    "answer_2": "Drive in a low gear at all times;Всегда ездить на пониженной передаче",
+    "answer_3": "Drive at a slow speed in the highest gear possible;Двигайтесь с небольшой скоростью на максимально возможной передаче.",
+    "answer_4": "Use the parking brake if the wheels start to slip;Использовать стояночный тормоз, если колеса начинают буксовать.і",
+    "right_answer": 3,
+    "explanation": "If you're travelling on an icy road, extra caution will be required to avoid loss of control. Keeping your speed down and using the highest gear possible will reduce the risk of the tyres losing their grip on this slippery surface.;Если вы путешествуете по ледяной дороге, потребуется дополнительная осторожность, чтобы избежать потери контроля. Снижение скорости и использование наиболее высокой передачи снизит риск потери сцепления шин с этой скользкой поверхностью"
+  },
+  {
+    "id": 169,
+    "category": "Vehicle handling",
+    "hasImage": false,
+    "question": "What requires extra care when you're driving or riding in windy conditions?;Что требует особой осторожности, когда вы едете в ветреную погоду?",
+    "answer_1": "Using the brakes;Использование тормозов",
+    "answer_2": "Turning into a narrow road;Сворачивание на узкую дорогу",
+    "answer_3": "Moving off on a hill;Двигаясь на холме",
+    "answer_4": "Passing pedal cyclists;Велосипедисты, проезжающие мимо",
+    "right_answer": 4,
+    "explanation": "Always give cyclists plenty of room when overtaking them. You need to give them even more room when it's windy. A sudden gust could easily blow them off course and into your path.;Всегда оставляйте велосипедистам достаточно места при обгоне. Вам нужно дать им еще больше места, когда ветрено. Внезапный порыв может легко сбить их с курса и вступить на ваш путь "
+  }
+]

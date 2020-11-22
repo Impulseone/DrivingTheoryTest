@@ -1,1 +1,38 @@
-[{"id":50,"category":"Safety","hasImage":true,"question":"What does it mean if this light comes on while you’re driving?Что означает, если этот свет загорается во время движения ?;","answer_1":"Your seat belt isn’t fastened;Ваш ремень безопасности не пристегнут","answer_2":"A fault in the braking system;Неисправность в тормозной системе","answer_3":"The engine oil is  low;Низкий уровень моторного масла","answer_4":"A rear light has failed;Неисправен задний фонарь","right_answer":2,"explanation":"If this light comes on, you should have the brake system checked immediately. A faulty braking system could have dangerous consequences;Если эта лампочка загорится, вам следует немедленно проверить тормозную систему. Неисправная тормозная система может иметь опасные последствия"},{"id":2,"category":"Safety","hasImage":false,"question":"You're carrying two 13-year-old children and their parents in your car. Who’s responsible for seeing that the children wear seat belts?;Вы везете в машине двух 13-летних детей и их родителей. Кто отвечает за то, чтобы дети пристегивались ремнями безопасности?","answer_1":"The front-seat passenger;Пассажир на переднем сиденье","answer_2":"You, the driver;Вы, водитель","answer_3":"The children;Дети","answer_4":"The children’s parents;Родители детей","right_answer":2,"explanation":"Seat belts save lives and reduce the risk of injury. If you’re carrying passengers under 14 years old, it’s your responsibility as the driver to ensure that their seat belts are fastened or they’re seated in an approved child restraint.;Ремни безопасности спасают жизни и снижают риск травм. Если вы перевозите пассажиров младше 14 лет, вы как водитель несете ответственность за то, чтобы их ремни безопасности были пристегнуты или они сидели  в разрешенных детских удерживающих устройствах."},{"id":31,"category":"Safety","hasImage":false,"question":"What can you do to reduce environmental damage caused by your vehicle?;Что вы можете сделать, чтобы уменьшить экологический ущерб, наносимый вашим автомобилем?","answer_1":"Avoid making a lot of short journeys;Избегайте частых поездок","answer_2":"Avoid using the cruise control;Не пользуйтесь круиз-контролем","answer_3":"Use the air conditioning whenever you drive;Включайте кондиционер, когда едете","answer_4":"Use the gears to slow the vehicle;Используйте передачи, чтобы замедлить автомобиль","right_answer":1,"explanation":"Avoid using your car for short journeys. On a short journey, the engine is unlikely to warm up fully and will therefore be running less efficiently. This will result in the car using more fuel and emitting higher levels of harmful emissions;Избегайте использования автомобиля для коротких поездок. В короткой поездке двигатель вряд ли полностью прогреется и, следовательно, будет работать менее эффективно. Это приведет к тому, что автомобиль будет потреблять больше топлива и выделять более высокие уровни вредных выбросов"}]
+[
+  {
+    "id": 50,
+    "category": "Safety",
+    "hasImage": true,
+    "question": "What does it mean if this light comes on while you’re driving?Что означает, если этот свет загорается во время движения ?;",
+    "answer_1": "Your seat belt isn’t fastened;Ваш ремень безопасности не пристегнут",
+    "answer_2": "A fault in the braking system;Неисправность в тормозной системе",
+    "answer_3": "The engine oil is  low;Низкий уровень моторного масла",
+    "answer_4": "A rear light has failed;Неисправен задний фонарь",
+    "right_answer": 2,
+    "explanation": "If this light comes on, you should have the brake system checked immediately. A faulty braking system could have dangerous consequences;Если эта лампочка загорится, вам следует немедленно проверить тормозную систему. Неисправная тормозная система может иметь опасные последствия"
+  },
+  {
+    "id": 2,
+    "category": "Safety",
+    "hasImage": false,
+    "question": "You're carrying two 13-year-old children and their parents in your car. Who’s responsible for seeing that the children wear seat belts?;Вы везете в машине двух 13-летних детей и их родителей. Кто отвечает за то, чтобы дети пристегивались ремнями безопасности?",
+    "answer_1": "The front-seat passenger;Пассажир на переднем сиденье",
+    "answer_2": "You, the driver;Вы, водитель",
+    "answer_3": "The children;Дети",
+    "answer_4": "The children’s parents;Родители детей",
+    "right_answer": 2,
+    "explanation": "Seat belts save lives and reduce the risk of injury. If you’re carrying passengers under 14 years old, it’s your responsibility as the driver to ensure that their seat belts are fastened or they’re seated in an approved child restraint.;Ремни безопасности спасают жизни и снижают риск травм. Если вы перевозите пассажиров младше 14 лет, вы как водитель несете ответственность за то, чтобы их ремни безопасности были пристегнуты или они сидели  в разрешенных детских удерживающих устройствах."
+  },
+  {
+    "id": 31,
+    "category": "Safety",
+    "hasImage": false,
+    "question": "What can you do to reduce environmental damage caused by your vehicle?;Что вы можете сделать, чтобы уменьшить экологический ущерб, наносимый вашим автомобилем?",
+    "answer_1": "Avoid making a lot of short journeys;Избегайте частых поездок",
+    "answer_2": "Avoid using the cruise control;Не пользуйтесь круиз-контролем",
+    "answer_3": "Use the air conditioning whenever you drive;Включайте кондиционер, когда едете",
+    "answer_4": "Use the gears to slow the vehicle;Используйте передачи, чтобы замедлить автомобиль",
+    "right_answer": 1,
+    "explanation": "Avoid using your car for short journeys. On a short journey, the engine is unlikely to warm up fully and will therefore be running less efficiently. This will result in the car using more fuel and emitting higher levels of harmful emissions;Избегайте использования автомобиля для коротких поездок. В короткой поездке двигатель вряд ли полностью прогреется и, следовательно, будет работать менее эффективно. Это приведет к тому, что автомобиль будет потреблять больше топлива и выделять более высокие уровни вредных выбросов"
+  }
+]
