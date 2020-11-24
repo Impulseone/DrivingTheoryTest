@@ -12,7 +12,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   void initState() {
     super.initState();
@@ -53,8 +52,7 @@ class _HomePageState extends State<HomePage> {
       data: Theme.of(context).copyWith(
           canvasColor: Colors.black,
           primaryColor: Colors.white,
-          textTheme: Theme
-              .of(context)
+          textTheme: Theme.of(context)
               .textTheme
               .copyWith(caption: new TextStyle(color: Colors.white))),
       child: new BottomNavigationBar(
@@ -75,8 +73,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  BottomNavigationBarItem bottomMenuItem(IconData iconData){
-   return new BottomNavigationBarItem(
+  BottomNavigationBarItem bottomMenuItem(IconData iconData) {
+    return new BottomNavigationBarItem(
       icon: new Icon(
         iconData,
         size: 30,
@@ -85,32 +83,34 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget menuButton(Color color, IconData icon, String engText,
-      String rusText) {
+  Widget menuButton(
+      Color color, IconData icon, String engText, String rusText) {
     return RaisedButton(
-      color: color,
-      child: Column(
-        children: [
-          Icon(
-            icon,
-            size: 80,
-            color: Colors.white,
-          ),
-          Text("$engText",
-              textAlign: TextAlign.center,
-              style: CustomTextStyle.engTextStyleBody(context)),
-          Padding(padding: EdgeInsets.all(4)),
-          Text("$rusText",
-              textAlign: TextAlign.center,
-              style: CustomTextStyle.rusTextStyleBody(context))
-        ],
-      ),
-      onPressed: () {
-        if (engText == "THEORY TEST")
-          Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => SelectOperationMenuPage()));
-      },
-    );
+        color: color,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              size: 80,
+              color: Colors.white,
+            ),
+            Text("$engText",
+                textAlign: TextAlign.center,
+                style: CustomTextStyle.engTextStyleMenu(context)),
+            Padding(padding: EdgeInsets.all(4)),
+            Text("$rusText",
+                textAlign: TextAlign.center,
+                style: CustomTextStyle.rusTextStyleMenu(context))
+          ],
+        ),
+        onPressed: () => openPage(engText));
+  }
+
+  void openPage(String engText) {
+    if (engText == "THEORY TEST")
+      Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => SelectOperationMenuPage()));
   }
 
   void initAndWriteQuestionsToDb() async {

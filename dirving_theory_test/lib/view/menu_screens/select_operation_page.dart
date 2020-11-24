@@ -45,7 +45,9 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
         body: Column(
           children: [
             _header(),
-            Padding(padding: EdgeInsets.only(top: 18)),
+            SizedBox(
+              height: 40.0,
+            ),
             _button("Practice all questions", "Практиковать все вопросы",
                 Icons.arrow_right, PageType.PRACTICE_ALL_QUESTIONS),
             _button(
@@ -97,14 +99,15 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
     return Padding(
         padding: EdgeInsets.only(top: 5),
         child: SizedBox(
-          width: 300.0,
+          width: MediaQuery.of(context).size.width * 0.9,
           child: RaisedButton(
               elevation: 0,
               color: Colors.green,
               child: Row(
                 children: [
                   Container(
-                      width: 215, child: _textInsideButton(engText, rusText)),
+                      width: MediaQuery.of(context).size.width * 0.7,
+                      child: _textInsideButton(engText, rusText)),
                   Icon(iconData, color: Colors.white, size: 50)
                 ],
               ),
@@ -134,19 +137,21 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
   }
 
   Widget _textInsideButton(String engText, String rusText) {
-    return Column(
+    return Container(
+      padding: EdgeInsets.only(top: 12,bottom: 12),
+        child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           engText,
-          style: CustomTextStyle.engTextStyleBody(context),
+          style: CustomTextStyle.engTextStyleMenuBig(context),
         ),
         Text(
           rusText,
-          style: CustomTextStyle.rusTextStyleBody(context),
+          style: CustomTextStyle.rusTextStyleMenuBig(context),
         ),
       ],
-    );
+    ));
   }
 
   void _openFavoritesScreen() {

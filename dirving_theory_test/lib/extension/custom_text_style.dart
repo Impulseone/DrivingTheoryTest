@@ -14,6 +14,23 @@ class CustomTextStyle {
   static TextStyle rusTextStyleBody(BuildContext context) {
     return Theme.of(context).textTheme.bodyText1.copyWith(fontSize: 10.0, color: Colors.white);
   }
+
+  static TextStyle engTextStyleMenu(BuildContext context) {
+    return Theme.of(context).textTheme.bodyText1.copyWith(fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.white);
+  }
+
+  static TextStyle rusTextStyleMenu(BuildContext context) {
+    return Theme.of(context).textTheme.bodyText1.copyWith(fontSize: 12.0, color: Colors.white);
+  }
+
+  static TextStyle engTextStyleMenuBig(BuildContext context) {
+    return Theme.of(context).textTheme.bodyText1.copyWith(fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.white);
+  }
+
+  static TextStyle rusTextStyleMenuBig(BuildContext context) {
+    return Theme.of(context).textTheme.bodyText1.copyWith(fontSize: 14.0, color: Colors.white);
+  }
+
   static TextStyle engTextStyleBodyBlack(BuildContext context) {
     return Theme.of(context).textTheme.bodyText1.copyWith(fontSize: 14.0, fontWeight: FontWeight.bold, color: Colors.black);
   }

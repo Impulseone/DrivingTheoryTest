@@ -120,18 +120,6 @@
     "explanation": "Except for emergencies, it's illegal to use a hand-held mobile phone while you're driving. Even using a hands-free kit can severely distract your attention;За исключением чрезвычайных ситуаций, использование портативного мобильного телефона во время вождения запрещено. Даже использование комплекта громкой связи может серьезно отвлечь ваше внимание"
   },
   {
-    "id": 85,
-    "category": "Alertness",
-    "hasImage": false,
-    "question": "What should you do if you can't see clearly behind when you're reversing?;Что делать, если при движении задним ходом вы плохо видите сзади? ",
-    "answer_1": "Open the door to look behind;Откройте дверь, чтобы посмотреть назад",
-    "answer_2": "Ask someone to guide you;Попросите кого-нибудь направить вас",
-    "answer_3": "Look in the nearside mirror;Посмотрите в зеркало",
-    "answer_4": "Open the window to look behind;Откройте окно, чтобы посмотреть назад",
-    "right_answer": 2,
-    "explanation": "If you want to turn your car around, try to find a place where you have good all-round vision. If this isn't possible, and you're unable to see clearly, then get someone to guide you;Если вы хотите развернуть машину, попробуйте найти место, где у вас есть хорошие всестороннее видение. Если это невозможно, и вы не можете четко видеть, попросите кого-нибудь направить вас"
-  },
-  {
     "id": 95,
     "category": "Alertness",
     "hasImage": false,
@@ -230,7 +218,7 @@
   {
     "id": 91,
     "category": "Alertness",
-    "hasImage": true,
+    "hasImage": false,
     "question": "You're turning right onto a dual carriageway. What should you do before emerging?;Вы поворачиваете направо на проезжую часть с двусторонним движением. Что делать перед выходом?",
     "answer_1": "Stop, apply the parking brake and then select a low gear;Остановитесь, включите стояночный тормоз, а затем выберите пониженную передачу",
     "answer_2": "Position your vehicle well to the left of the side road;Расположите автомобиль слева от обочины",

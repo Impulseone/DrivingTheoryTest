@@ -8,10 +8,10 @@ import 'package:dirving_theory_test/view/question_screen.dart';
 import 'package:flutter/material.dart';
 
 class SelectCategoryScreen extends StatefulWidget {
-  final AnsweredQuestionsBloc categoriesBloc;
+  final AnsweredQuestionsBloc answeredQuestionsBloc;
   final List<Category> categoriesList;
 
-  SelectCategoryScreen(this.categoriesBloc, this.categoriesList);
+  SelectCategoryScreen(this.answeredQuestionsBloc, this.categoriesList);
 
   @override
   _SelectCategoryScreenState createState() => _SelectCategoryScreenState();
@@ -57,18 +57,23 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
   Widget _startButton() {
     return Container(
         child: new RaisedButton(
-      elevation: 0.0,
-      color: Colors.green,
-      child: Text(
-        "START",
-        style: TextStyle(fontSize: 25, color: Colors.white),
-      ),
-      onPressed: () {
-        questionBloc.getQuestionsForCategories(selectedCategoriesList);
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => QuestionScreen(questionBloc)));
-      },
-    ));
+            elevation: 0.0,
+            color: Colors.green,
+            child: Text(
+              "START",
+              style: TextStyle(fontSize: 25, color: Colors.white),
+            ),
+            onPressed: () => _startQuestionScreen()));
+  }
+
+  void _startQuestionScreen() {
+    if (selectedCategoriesList.length > 0) {
+      questionBloc.getQuestionsForCategories(selectedCategoriesList);
+      Navigator.of(context)
+          .push(MaterialPageRoute(
+              builder: (context) => QuestionScreen(questionBloc)))
+          .then((value) => setState(() => {widget.answeredQuestionsBloc.readAnsweredQuestions()}));
+    }
   }
 
   Widget categoriesList(List<Category> categories) {
@@ -98,7 +103,7 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
     List<AnsweredQuestion> categoryAnsweredQuestionsAll = List();
     List<AnsweredQuestion> categoryAnsweredQuestionsTrue = List();
     return StreamBuilder(
-        stream: widget.categoriesBloc.answeredQuestions,
+        stream: widget.answeredQuestionsBloc.answeredQuestions,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             (snapshot.data as List<AnsweredQuestion>).forEach((element) {
@@ -271,7 +276,9 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
               "Answered:${categoryAnsweredQuestionsAll.length}/$questionsMax",
               style: CustomTextStyle.rusTextStyleBodyBlack(context),
             ),
-            Padding(padding: EdgeInsets.only(left: 60)),
+            SizedBox(
+              width: 100,
+            ),
             Text(
                 "Correctly:${categoryAnsweredQuestionsTrue.length}/$questionsMax",
                 style: CustomTextStyle.rusTextStyleBodyBlack(context))
