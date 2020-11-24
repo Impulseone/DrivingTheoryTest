@@ -129,7 +129,7 @@ class _QuestionAfterSearchScreenState extends State<QuestionAfterSearchScreen> {
                   ),
                 ],
               )),
-          Container(height: 180, width: 180, child: Image.asset("assets/1.jpg"))
+          Container(height: 180, width: 180, child: Image.asset("${question.id}.jpg"))
         ],
       );
     } else

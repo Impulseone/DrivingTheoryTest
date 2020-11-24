@@ -163,7 +163,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                   ),
                 ],
               )),
-          Container(height: 180, width: 180, child: Image.asset("assets/1.jpg"))
+          Container(height: 180, width: 180, child: Image.asset("assets/${question.id}.jpg"))
         ],
       );
     } else
