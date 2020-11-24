@@ -1,6 +1,6 @@
 import 'package:dirving_theory_test/bloc/search_question_bloc.dart';
 import 'package:dirving_theory_test/model/question.dart';
-import 'package:dirving_theory_test/view/questions_after_search_screen.dart';
+import 'package:dirving_theory_test/view/questions_screens/questions_after_search_screen.dart';
 import 'package:flutter/material.dart';
 
 class SearchQuestionScreen extends StatefulWidget {

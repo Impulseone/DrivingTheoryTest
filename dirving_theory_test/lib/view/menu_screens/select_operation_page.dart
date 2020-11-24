@@ -1,12 +1,10 @@
 import 'package:dirving_theory_test/bloc/categories_bloc.dart';
 import 'package:dirving_theory_test/extension/categories_provider.dart';
 import 'package:dirving_theory_test/extension/custom_text_style.dart';
-import 'package:dirving_theory_test/model/question.dart';
 import 'package:dirving_theory_test/view/menu_screens/select_category_screen.dart';
-import 'package:dirving_theory_test/view/search_question_screen.dart';
+import 'package:dirving_theory_test/view/questions_screens/favorite_questions_screen.dart';
+import 'package:dirving_theory_test/view/questions_screens/search_question_screen.dart';
 import 'package:flutter/material.dart';
-
-import '../favorite_questions_screen.dart';
 
 enum PageType {
   PRACTICE_ALL_QUESTIONS,

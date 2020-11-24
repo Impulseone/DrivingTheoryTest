@@ -3,8 +3,10 @@ import 'package:dirving_theory_test/database/database.dart';
 import 'package:dirving_theory_test/database/model/answered_question.dart';
 import 'package:dirving_theory_test/extension/custom_text_style.dart';
 import 'package:dirving_theory_test/model/question.dart';
-import 'package:dirving_theory_test/view/question_info_screen.dart';
+import 'package:dirving_theory_test/view/questions_screens/question_info_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../test_result_screen.dart';
 
 class QuestionScreen extends StatefulWidget {
   final QuestionBloc questionBloc;
@@ -60,6 +62,21 @@ class _QuestionScreenState extends State<QuestionScreen> {
             }),
           ],
         ));
+  }
+
+  Widget _finishButton() {
+    return RaisedButton(
+        child: Text(
+          "finish",
+          style: CustomTextStyle.engTextStyleBody(context),
+        ),
+        color: Colors.black,
+        onPressed: _openResultScreen);
+  }
+
+  void _openResultScreen() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (ctx) => ResultScreen()));
   }
 
   Widget _scaffoldBody() {
@@ -128,20 +145,24 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   Widget bottomBarWidget(double width, double height, IconData iconData,
       double iconSize, Function function) {
-    return GestureDetector(
-        child: Container(
-            margin: EdgeInsets.only(left: 10, right: 10),
-            width: width,
-            height: height,
-            child: Center(
-              child: Icon(
-                iconData,
-                size: iconSize,
-              ),
-            )),
-        onTap: () {
-          function();
-        });
+    if (iconData == Icons.keyboard_arrow_right &&
+        questionNumber+1 == questionsSize)
+      return _finishButton();
+    else
+      return GestureDetector(
+          child: Container(
+              margin: EdgeInsets.only(left: 10, right: 10),
+              width: width,
+              height: height,
+              child: Center(
+                child: Icon(
+                  iconData,
+                  size: iconSize,
+                ),
+              )),
+          onTap: () {
+            function();
+          });
   }
 
   Widget progressIndicator() {

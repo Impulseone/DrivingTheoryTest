@@ -4,7 +4,7 @@ import 'package:dirving_theory_test/database/model/answered_question.dart';
 import 'package:dirving_theory_test/extension/categories_provider.dart';
 import 'package:dirving_theory_test/extension/custom_text_style.dart';
 import 'package:dirving_theory_test/model/question.dart';
-import 'package:dirving_theory_test/view/question_screen.dart';
+import 'package:dirving_theory_test/view/questions_screens/question_screen.dart';
 import 'package:flutter/material.dart';
 
 class SelectCategoryScreen extends StatefulWidget {
