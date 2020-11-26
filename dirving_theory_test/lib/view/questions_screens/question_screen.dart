@@ -1,12 +1,10 @@
 import 'package:dirving_theory_test/bloc/question_bloc.dart';
-import 'package:dirving_theory_test/database/database.dart';
-import 'package:dirving_theory_test/database/model/answered_question.dart';
 import 'package:dirving_theory_test/extension/custom_text_style.dart';
 import 'package:dirving_theory_test/model/question.dart';
 import 'package:dirving_theory_test/view/questions_screens/question_info_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../test_result_screen.dart';
+import '../result_screen.dart';
 
 class QuestionScreen extends StatefulWidget {
   final QuestionBloc questionBloc;
@@ -18,14 +16,16 @@ class QuestionScreen extends StatefulWidget {
 }
 
 class _QuestionScreenState extends State<QuestionScreen> {
+  List<Question> _allQuestions = new List();
   List<Question> _flaggedQuestions = new List();
+  List<Question> _rightAnsweredQuestions = new List();
 
-  QuestionBloc questionBloc;
-  Question selectedQuestion;
-  int questionsSize = 0;
-  int questionNumber = 0;
+  QuestionBloc _questionBloc;
 
-  _QuestionScreenState(this.questionBloc);
+  Question _selectedQuestion;
+  int _questionNumber = 0;
+
+  _QuestionScreenState(this._questionBloc);
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +34,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
         appBar: AppBar(
             centerTitle: true,
             backgroundColor: Colors.green,
-            title: appBarTitle()),
-        body: _scaffoldBody(),
+            title: _appBarTitle()),
+        body: _body(),
         bottomNavigationBar: _bottomNavigationBar());
   }
 
@@ -45,20 +45,20 @@ class _QuestionScreenState extends State<QuestionScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            bottomBarWidget(60, 60, Icons.keyboard_arrow_left, 60, () {
-              decreaseQuestionNumber();
+            _bottomBarWidget(60, 60, Icons.keyboard_arrow_left, 60, () {
+              _decreaseQuestionNumber();
             }),
-            bottomBarWidget(50, 50, Icons.flag, 40, () {
-              _flaggedQuestions.add(selectedQuestion);
+            _bottomBarWidget(50, 50, Icons.flag, 40, () {
+              _flaggedQuestions.add(_selectedQuestion);
             }),
-            bottomBarWidget(50, 50, Icons.info, 40, () {
-              toExplanationScreen();
+            _bottomBarWidget(50, 50, Icons.info, 40, () {
+              _toExplanationScreen();
             }),
-            bottomBarWidget(50, 50, Icons.favorite, 40, () {
-              insertQuestionIntoFavorites(selectedQuestion);
+            _bottomBarWidget(50, 50, Icons.favorite, 40, () {
+              _questionBloc.insertQuestionIntoFavorites(_selectedQuestion);
             }),
-            bottomBarWidget(60, 60, Icons.keyboard_arrow_right, 60, () {
-              increaseQuestionNumber();
+            _bottomBarWidget(60, 60, Icons.keyboard_arrow_right, 60, () {
+              _increaseQuestionNumber();
             }),
           ],
         ));
@@ -71,32 +71,27 @@ class _QuestionScreenState extends State<QuestionScreen> {
           style: CustomTextStyle.engTextStyleBody(context),
         ),
         color: Colors.black,
-        onPressed: _openResultScreen);
+        onPressed: () =>
+            _openResultScreen());
   }
 
-  void _openResultScreen() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (ctx) => ResultScreen()));
-  }
-
-  Widget _scaffoldBody() {
+  Widget _body() {
     return StreamBuilder<List<Question>>(
-      stream: questionBloc.questions,
+      stream: _questionBloc.questions,
       builder: (context, snapshot) {
         if (snapshot.hasData && snapshot.data.length > 0) {
-          if (questionsSize != snapshot.data.length)
-            questionsSize = snapshot.data.length;
-          selectedQuestion = snapshot.data[questionNumber];
+            _allQuestions = snapshot.data;
+          _selectedQuestion = snapshot.data[_questionNumber];
           return Column(
             children: [
-              progressIndicator(),
-              questionTextWidget(selectedQuestion),
+              _progressIndicator(),
+              _questionTextWidget(_selectedQuestion),
               Column(
                 children: [
-                  answerButton(selectedQuestion, 1),
-                  answerButton(selectedQuestion, 2),
-                  answerButton(selectedQuestion, 3),
-                  answerButton(selectedQuestion, 4),
+                  _answerButton(_selectedQuestion, 1),
+                  _answerButton(_selectedQuestion, 2),
+                  _answerButton(_selectedQuestion, 3),
+                  _answerButton(_selectedQuestion, 4),
                 ],
               ),
             ],
@@ -107,46 +102,21 @@ class _QuestionScreenState extends State<QuestionScreen> {
     );
   }
 
-  Widget appBarTitle() {
+  Widget _appBarTitle() {
     return StreamBuilder<List<Question>>(
-        stream: questionBloc.questions,
+        stream: _questionBloc.questions,
         builder: (context, snapshot) {
           if (snapshot.hasData && snapshot.data.length > 0)
-            return Text("Q${questionNumber + 1} of ${snapshot.data.length}");
+            return Text("Q${_questionNumber + 1} of ${snapshot.data.length}");
           else
-            return Text("Q${questionNumber + 1} of 0");
+            return Text("Q${_questionNumber + 1} of 0");
         });
   }
 
-  void insertQuestionIntoFavorites(Question question) async {
-    if ((await DBProvider.db.getFavoriteQuestions()).contains(question))
-      DBProvider.db.deleteFavoriteQuestion(question.id);
-    else
-      DBProvider.db.insertFavoriteQuestion(question);
-  }
-
-  void decreaseQuestionNumber() {
-    setState(() {
-      if (questionNumber > 0) questionNumber--;
-    });
-  }
-
-  void increaseQuestionNumber() {
-    setState(() {
-      if (questionNumber + 1 < questionsSize) questionNumber++;
-    });
-  }
-
-  void toExplanationScreen() {
-    Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) =>
-            QuestionInfoScreen(selectedQuestion.explanation)));
-  }
-
-  Widget bottomBarWidget(double width, double height, IconData iconData,
+  Widget _bottomBarWidget(double width, double height, IconData iconData,
       double iconSize, Function function) {
     if (iconData == Icons.keyboard_arrow_right &&
-        questionNumber+1 == questionsSize)
+        _questionNumber + 1 == _allQuestions.length)
       return _finishButton();
     else
       return GestureDetector(
@@ -165,8 +135,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
           });
   }
 
-  Widget progressIndicator() {
-    double k = (questionNumber + 1) / questionsSize;
+  Widget _progressIndicator() {
+    double k = (_questionNumber + 1) / _allQuestions.length;
     return LinearProgressIndicator(
       value: k,
       minHeight: 10,
@@ -174,7 +144,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
     );
   }
 
-  Widget questionTextWidget(Question question) {
+  Widget _questionTextWidget(Question question) {
     if (question.hasImage) {
       return _questionTextWithImage(question);
     } else
@@ -192,11 +162,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
               child: Column(
                 children: [
                   Text(
-                    getEngText(question.question),
+                    _getEngText(question.question),
                     style: CustomTextStyle.engTextStyleMenu(context),
                   ),
                   Text(
-                    getRusText(question.question),
+                    _getRusText(question.question),
                     style: CustomTextStyle.rusTextStyleMenu(context),
                   ),
                 ],
@@ -218,27 +188,19 @@ class _QuestionScreenState extends State<QuestionScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              getEngText(question.question),
+              _getEngText(question.question),
               style: CustomTextStyle.engTextStyleMenu(context),
             ),
             Text(
-              getRusText(question.question),
+              _getRusText(question.question),
               style: CustomTextStyle.rusTextStyleMenu(context),
             ),
           ],
         ));
   }
 
-  String getRusText(String question) {
-    return question.split(";")[1];
-  }
-
-  String getEngText(String question) {
-    return question.split(";")[0];
-  }
-
-  Widget answerButton(Question question, int numberOfAnswer) {
-    String answer = findQuestionAnswer(question, numberOfAnswer);
+  Widget _answerButton(Question question, int numberOfAnswer) {
+    String answer = _findQuestionAnswer(question, numberOfAnswer);
     String rightAnswer = question.findRightAnswer(question.rightAnswer);
     return Padding(
         padding: EdgeInsets.only(left: 1, right: 1, top: 6),
@@ -251,31 +213,30 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    getEngText(answer),
+                    _getEngText(answer),
                     style: CustomTextStyle.engTextStyleBody(context),
                   ),
                   Text(
-                    getRusText(answer),
+                    _getRusText(answer),
                     style: CustomTextStyle.rusTextStyleBody(context),
                   ),
                 ],
               ),
               onPressed: () {
-                if (answer == rightAnswer) {
-                  DBProvider.db.insertAnsweredQuestion(
-                      AnsweredQuestion(question.id, question.category, 1));
-                } else {
-                  DBProvider.db.insertAnsweredQuestion(
-                      AnsweredQuestion(question.id, question.category, 0));
-                }
-                setState(() {
-                  if (questionNumber + 1 < questionsSize) questionNumber++;
-                });
+                _answerQuestion(answer,rightAnswer,question);
               }),
         ));
   }
 
-  String findQuestionAnswer(Question question, int numberOfAnswer) {
+  String _getRusText(String question) {
+    return question.split(";")[1];
+  }
+
+  String _getEngText(String question) {
+    return question.split(";")[0];
+  }
+
+  String _findQuestionAnswer(Question question, int numberOfAnswer) {
     switch (numberOfAnswer) {
       case 1:
         return question.answer1;
@@ -288,5 +249,42 @@ class _QuestionScreenState extends State<QuestionScreen> {
       default:
         return question.answer1;
     }
+  }
+
+  void _answerQuestion(String answer, String rightAnswer, Question question){
+    if(answer==rightAnswer){
+      _rightAnsweredQuestions.add(question);
+    }
+    _questionBloc.insertAnsweredQuestion(
+        question, answer, rightAnswer);
+    setState(() {
+      if (_questionNumber + 1 < _allQuestions.length) _questionNumber++;
+    });
+  }
+
+  void _openResultScreen() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (ctx) =>
+                ResultScreen(_allQuestions, _rightAnsweredQuestions)));
+  }
+
+  void _decreaseQuestionNumber() {
+    setState(() {
+      if (_questionNumber > 0) _questionNumber--;
+    });
+  }
+
+  void _increaseQuestionNumber() {
+    setState(() {
+      if (_questionNumber + 1 < _allQuestions.length) _questionNumber++;
+    });
+  }
+
+  void _toExplanationScreen() {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) =>
+            QuestionInfoScreen(_selectedQuestion.explanation)));
   }
 }

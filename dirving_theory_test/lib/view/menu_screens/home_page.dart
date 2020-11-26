@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    initAndWriteQuestionsToDb();
+    _initAndWriteQuestionsToDb();
   }
 
   @override
@@ -33,21 +33,21 @@ class _HomePageState extends State<HomePage> {
             mainAxisSpacing: 10,
             crossAxisCount: 2,
             children: <Widget>[
-              menuButton(Colors.green, Icons.menu_book, "THEORY TEST",
+              _menuButton(Colors.green, Icons.menu_book, "THEORY TEST",
                   "ТЕСТ ПО ТЕОРИИ"),
-              menuButton(Colors.red, Icons.warning_amber_outlined,
+              _menuButton(Colors.red, Icons.warning_amber_outlined,
                   "HAZARD PERCEPTION", "ВОСПРИЯТИЕ ОПАСНОСТИ"),
-              menuButton(Colors.lightBlue, Icons.list_alt, "HIGHWAY CODE",
+              _menuButton(Colors.lightBlue, Icons.list_alt, "HIGHWAY CODE",
                   "ПРАВИЛА ДОРОЖНОГО ДВИЖЕНИЯ"),
-              menuButton(Colors.orange, Icons.edit_road, "ROAD SIGNS",
+              _menuButton(Colors.orange, Icons.edit_road, "ROAD SIGNS",
                   "ДОРОЖНЫЕ ЗНАКИ"),
             ],
           ),
         ),
-        bottomNavigationBar: bottomNavigationBar());
+        bottomNavigationBar: _bottomNavigationBar());
   }
 
-  Widget bottomNavigationBar() {
+  Widget _bottomNavigationBar() {
     return Theme(
       data: Theme.of(context).copyWith(
           canvasColor: Colors.black,
@@ -64,16 +64,16 @@ class _HomePageState extends State<HomePage> {
           print(tappedIcon);
         },
         items: [
-          bottomMenuItem(Icons.settings),
-          bottomMenuItem(Icons.camera_alt),
-          bottomMenuItem(Icons.more),
-          bottomMenuItem(Icons.shop),
+          _bottomMenuItem(Icons.settings),
+          _bottomMenuItem(Icons.camera_alt),
+          _bottomMenuItem(Icons.more),
+          _bottomMenuItem(Icons.shop),
         ],
       ),
     );
   }
 
-  BottomNavigationBarItem bottomMenuItem(IconData iconData) {
+  BottomNavigationBarItem _bottomMenuItem(IconData iconData) {
     return new BottomNavigationBarItem(
       icon: new Icon(
         iconData,
@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget menuButton(
+  Widget _menuButton(
       Color color, IconData icon, String engText, String rusText) {
     return RaisedButton(
         color: color,
@@ -104,16 +104,16 @@ class _HomePageState extends State<HomePage> {
                 style: CustomTextStyle.rusTextStyleMenu(context))
           ],
         ),
-        onPressed: () => openPage(engText));
+        onPressed: () => _openPage(engText));
   }
 
-  void openPage(String engText) {
+  void _openPage(String engText) {
     if (engText == "THEORY TEST")
       Navigator.of(context).push(
           MaterialPageRoute(builder: (context) => SelectOperationMenuPage()));
   }
 
-  void initAndWriteQuestionsToDb() async {
+  void _initAndWriteQuestionsToDb() async {
     List<Question> questions = await QuestionBloc().readQuestionsFromFile();
     questions.forEach((element) {
       DBProvider.db.insertQuestion(element);

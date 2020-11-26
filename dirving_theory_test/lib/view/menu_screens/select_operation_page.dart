@@ -29,7 +29,7 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
 
   @override
   void initState() {
-    generateCategories();
+    _generateCategories();
     super.initState();
   }
 
@@ -65,10 +65,6 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
           ],
         ),
         bottomNavigationBar: _bottomNavigationBar());
-  }
-
-  void generateCategories() async {
-    categories = await CategoriesProvider().generateCategoriesInfo();
   }
 
   Widget _header() {
@@ -113,27 +109,6 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
         ));
   }
 
-  Function _openPage(PageType pageType) {
-    return () {
-      switch (pageType) {
-        case PageType.PRACTICE_ALL_QUESTIONS:
-          _openCategoriesToPracticePage();
-          return;
-        case PageType.MOCK_TEST:
-          _openMockPage();
-          return;
-        case PageType.SEARCH_QUESTIONS:
-          _openSearchQuestionsPage();
-          return;
-        case PageType.MY_QUESTIONS:
-          _openFavoritesScreen();
-          return;
-        default:
-          return;
-      }
-    };
-  }
-
   Widget _textInsideButton(String engText, String rusText) {
     return Container(
       padding: EdgeInsets.only(top: 12,bottom: 12),
@@ -150,25 +125,6 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
         ),
       ],
     ));
-  }
-
-  void _openFavoritesScreen() {
-    Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => FavoriteQuestionsScreen()));
-  }
-
-  void _openCategoriesToPracticePage() {
-    categoriesBloc.readAnsweredQuestions();
-    Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) =>
-            SelectCategoryScreen(categoriesBloc, categories)));
-  }
-
-  void _openMockPage() {}
-
-  void _openSearchQuestionsPage() {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => SearchQuestionScreen()));
   }
 
   Widget _bottomNavigationBar() {
@@ -206,5 +162,49 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
       ),
       label: "",
     );
+  }
+
+  Function _openPage(PageType pageType) {
+    return () {
+      switch (pageType) {
+        case PageType.PRACTICE_ALL_QUESTIONS:
+          _openCategoriesToPracticePage();
+          return;
+        case PageType.MOCK_TEST:
+          _openMockPage();
+          return;
+        case PageType.SEARCH_QUESTIONS:
+          _openSearchQuestionsPage();
+          return;
+        case PageType.MY_QUESTIONS:
+          _openFavoritesScreen();
+          return;
+        default:
+          return;
+      }
+    };
+  }
+
+  void _generateCategories() async {
+    categories = await CategoriesProvider().generateCategoriesInfo();
+  }
+
+  void _openFavoritesScreen() {
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => FavoriteQuestionsScreen()));
+  }
+
+  void _openCategoriesToPracticePage() {
+    categoriesBloc.readAnsweredQuestions();
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) =>
+            SelectCategoryScreen(categoriesBloc, categories)));
+  }
+
+  void _openMockPage() {}
+
+  void _openSearchQuestionsPage() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => SearchQuestionScreen()));
   }
 }

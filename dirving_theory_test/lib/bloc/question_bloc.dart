@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dirving_theory_test/database/database.dart';
+import 'package:dirving_theory_test/database/model/answered_question.dart';
 import 'package:dirving_theory_test/extension/categories_provider.dart';
 import 'package:dirving_theory_test/model/question.dart';
 import 'package:flutter/services.dart';
@@ -46,6 +47,23 @@ class QuestionBloc {
 
   Future<List<Question>> getQuestionsForCategory(Category category) async {
     return await DBProvider.db.getQuestionsForCategory(category.engName);
+  }
+
+  void insertQuestionIntoFavorites(Question question) async {
+    if ((await DBProvider.db.getFavoriteQuestions()).contains(question))
+      DBProvider.db.deleteFavoriteQuestion(question.id);
+    else
+      DBProvider.db.insertFavoriteQuestion(question);
+  }
+
+  void insertAnsweredQuestion(Question question, String answer, String rightAnswer) async {
+    if (answer == rightAnswer) {
+      DBProvider.db.insertAnsweredQuestion(
+          AnsweredQuestion(question.id, question.category, 1));
+    } else {
+      DBProvider.db.insertAnsweredQuestion(
+          AnsweredQuestion(question.id, question.category, 0));
+    }
   }
 
   void dispose() {
