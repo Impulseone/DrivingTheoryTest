@@ -1,6 +1,7 @@
 import 'package:dirving_theory_test/extension/custom_text_style.dart';
 import 'package:dirving_theory_test/model/question.dart';
 import 'package:dirving_theory_test/view/menu_screens/home_page.dart';
+import 'package:dirving_theory_test/view/review_answers_screen.dart';
 import 'package:flutter/material.dart';
 
 class ResultScreen extends StatefulWidget {
@@ -70,7 +71,10 @@ class _ResultScreenState extends State<ResultScreen> {
         onPressed: _openMenuScreen);
   }
 
-  void _openReviewAnswersScreen() {}
+  void _openReviewAnswersScreen() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => ReviewAnswersScreen(_allQuestions)));
+  }
 
   void _openMenuScreen() {
     Navigator.of(context).pushAndRemoveUntil(

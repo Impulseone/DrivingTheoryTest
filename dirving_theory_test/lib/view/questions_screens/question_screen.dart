@@ -263,11 +263,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
   }
 
   void _openResultScreen() {
-    Navigator.push(
+    Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
             builder: (ctx) =>
-                ResultScreen(_allQuestions, _rightAnsweredQuestions)));
+                ResultScreen(_allQuestions, _rightAnsweredQuestions)),(Route<dynamic> route) => false);
   }
 
   void _decreaseQuestionNumber() {
