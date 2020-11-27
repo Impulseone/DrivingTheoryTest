@@ -1,4 +1,7 @@
+import 'package:dirving_theory_test/bloc/question_bloc.dart';
+import 'package:dirving_theory_test/extension/custom_text_style.dart';
 import 'package:dirving_theory_test/model/question.dart';
+import 'package:dirving_theory_test/view/questions_screens/question_info_screen.dart';
 import 'package:flutter/material.dart';
 
 class AnsweredQuestionReviewScreen extends StatefulWidget {
@@ -13,18 +16,234 @@ class AnsweredQuestionReviewScreen extends StatefulWidget {
 
 class _AnsweredQuestionReviewScreenState
     extends State<AnsweredQuestionReviewScreen> {
-  List<Question> _questions;
-  int selectedQuestion = 1;
+  final List<Question> _questions;
+  final QuestionBloc _questionBloc = QuestionBloc();
+  Question _selectedQuestion;
+  int _questionNumber = 0;
 
   _AnsweredQuestionReviewScreenState(this._questions);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Q$selectedQuestion of ${_questions.length}"),
-      ),
-      body: Container(),
+        backgroundColor: Colors.black,
+        appBar: AppBar(
+            centerTitle: true,
+            backgroundColor: Colors.green,
+            title: _appBarTitle()),
+        body: _body(),
+        bottomNavigationBar: _bottomNavigationBar());
+  }
+
+  Widget _appBarTitle() {
+    return Text("Q${_questionNumber + 1} of ${_questions.length}");
+  }
+
+  Widget _body() {
+    _selectedQuestion = _questions[_questionNumber];
+    return Column(
+      children: [
+        _progressIndicator(),
+        _questionTextWidget(_selectedQuestion),
+        Column(
+          children: [
+            _answer(_selectedQuestion, 1),
+            _answer(_selectedQuestion, 2),
+            _answer(_selectedQuestion, 3),
+            _answer(_selectedQuestion, 4),
+          ],
+        ),
+      ],
     );
+  }
+
+  Widget _bottomNavigationBar() {
+    return BottomAppBar(
+        color: Colors.white,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _bottomBarWidget(60, 60, Icons.keyboard_arrow_left, 60, () {
+              _decreaseQuestionNumber();
+            }),
+            _bottomBarWidget(50, 50, Icons.info, 40, () {
+              _toExplanationScreen();
+            }),
+            _bottomBarWidget(50, 50, Icons.favorite, 40, () {
+              _questionBloc.insertQuestionIntoFavorites(_selectedQuestion);
+            }),
+            _bottomBarWidget(60, 60, Icons.keyboard_arrow_right, 60, () {
+              _increaseQuestionNumber();
+            }),
+          ],
+        ));
+  }
+
+  Widget _finishButton() {
+    return RaisedButton(
+        child: Text(
+          "finish",
+          style: CustomTextStyle.engTextStyleBody(context),
+        ),
+        color: Colors.black,
+        onPressed: () => _backToReviewAnswersScreen());
+  }
+
+  Widget _bottomBarWidget(double width, double height, IconData iconData,
+      double iconSize, Function function) {
+    if (iconData == Icons.keyboard_arrow_right &&
+        _questionNumber + 1 == _questions.length)
+      return _finishButton();
+    else
+      return GestureDetector(
+          child: Container(
+              margin: EdgeInsets.only(left: 10, right: 10),
+              width: width,
+              height: height,
+              child: Center(
+                child: Icon(
+                  iconData,
+                  size: iconSize,
+                ),
+              )),
+          onTap: () {
+            function();
+          });
+  }
+
+  Widget _progressIndicator() {
+    double k = (_questionNumber + 1) / _questions.length;
+    return LinearProgressIndicator(
+      value: k,
+      minHeight: 10,
+      backgroundColor: Colors.white,
+    );
+  }
+
+  Widget _questionTextWidget(Question question) {
+    if (question.hasImage) {
+      return _questionTextWithImage(question);
+    } else
+      return _questionTextWithoutImage(question);
+  }
+
+  Widget _questionTextWithImage(Question question) {
+    return Container(
+      height: MediaQuery.of(context).size.height / 2.3,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+              padding: EdgeInsets.only(top: 20),
+              child: Column(
+                children: [
+                  Text(
+                    _getEngText(question.question),
+                    style: CustomTextStyle.engTextStyleMenu(context),
+                  ),
+                  Text(
+                    _getRusText(question.question),
+                    style: CustomTextStyle.rusTextStyleMenu(context),
+                  ),
+                ],
+              )),
+          Container(
+              height: 180,
+              width: 180,
+              child: Image.asset("assets/${question.id}.jpg"))
+        ],
+      ),
+    );
+  }
+
+  Widget _questionTextWithoutImage(Question question) {
+    return Container(
+        padding: EdgeInsets.only(top: 20),
+        height: MediaQuery.of(context).size.height / 2.3,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              _getEngText(question.question),
+              style: CustomTextStyle.engTextStyleMenu(context),
+            ),
+            Text(
+              _getRusText(question.question),
+              style: CustomTextStyle.rusTextStyleMenu(context),
+            ),
+          ],
+        ));
+  }
+
+  Widget _answer(Question question, int numberOfAnswer) {
+    String answer = _findQuestionAnswer(question, numberOfAnswer);
+    String rightAnswer = question.findRightAnswer(question.rightAnswer);
+    return Padding(
+        padding: EdgeInsets.only(left: 1, right: 1, top: 6),
+        child: SizedBox(
+          width: 500.0,
+          height: 64,
+          child: Container(
+            color: answer == rightAnswer ? Colors.white : Colors.green,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  _getEngText(answer),
+                  style: answer == rightAnswer ? CustomTextStyle.engTextStyleBodyBlack(context):CustomTextStyle.engTextStyleBody(context),
+                ),
+                Text(
+                  _getRusText(answer),
+                  style: answer == rightAnswer ? CustomTextStyle.rusTextStyleBodyBlack(context):CustomTextStyle.rusTextStyleBody(context),
+                ),
+              ],
+            ),
+          ),
+        ));
+  }
+
+  String _getRusText(String question) {
+    return question.split(";")[1];
+  }
+
+  String _getEngText(String question) {
+    return question.split(";")[0];
+  }
+
+  String _findQuestionAnswer(Question question, int numberOfAnswer) {
+    switch (numberOfAnswer) {
+      case 1:
+        return question.answer1;
+      case 2:
+        return question.answer2;
+      case 3:
+        return question.answer3;
+      case 4:
+        return question.answer4;
+      default:
+        return question.answer1;
+    }
+  }
+
+  void _decreaseQuestionNumber() {
+    setState(() {
+      if (_questionNumber > 0) _questionNumber--;
+    });
+  }
+
+  void _increaseQuestionNumber() {
+    setState(() {
+      if (_questionNumber + 1 < _questions.length) _questionNumber++;
+    });
+  }
+
+  void _toExplanationScreen() {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) =>
+            QuestionInfoScreen(_selectedQuestion.explanation)));
+  }
+
+  void _backToReviewAnswersScreen(){
+    Navigator.pop(context);
   }
 }
