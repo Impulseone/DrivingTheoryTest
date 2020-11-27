@@ -45,6 +45,9 @@ class _ResultScreenState extends State<ResultScreen> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _answeredCorrectlyText(_allQuestions, _trueAnsweredQuestions),
+        SizedBox(
+          height: 40,
+        ),
         _reviewAnswersButton(),
         _backToMenuButton()
       ],
@@ -54,26 +57,51 @@ class _ResultScreenState extends State<ResultScreen> {
   Widget _answeredCorrectlyText(
       List<Question> allQuestions, List<Question> trueAnsweredQuestions) {
     return Text(
-        "You have answered ${trueAnsweredQuestions.length} out of ${allQuestions.length} questions correctly");
+      "You have answered ${trueAnsweredQuestions.length} out of ${allQuestions.length} questions correctly.\nВы ответили верно на ${trueAnsweredQuestions.length} вопросов из ${allQuestions.length}.",
+      style: CustomTextStyle.rusTextStyleHeadlineBlack(context),
+    );
   }
 
   Widget _reviewAnswersButton() {
     return RaisedButton(
-        child: Text("Review Answers"),
+        child: Column(
+          children: [
+            Text(
+              "Review Answers",
+              style: CustomTextStyle.engTextStyleBody(context),
+            ),
+            Text(
+              "Посмотреть ответы",
+              style: CustomTextStyle.rusTextStyleBody(context),
+            ),
+          ],
+        ),
         color: Colors.green,
         onPressed: _openReviewAnswersScreen);
   }
 
   Widget _backToMenuButton() {
     return RaisedButton(
-        child: Text("Main Menu"),
+        child: Column(
+          children: [
+            Text(
+              "Main Menu",
+              style: CustomTextStyle.engTextStyleBody(context),
+            ),
+            Text(
+              "Главное меню",
+              style: CustomTextStyle.rusTextStyleBody(context),
+            ),
+          ],
+        ),
         color: Colors.green,
         onPressed: _openMenuScreen);
   }
 
   void _openReviewAnswersScreen() {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => ReviewAnswersScreen(_allQuestions)));
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) =>
+            ReviewAnswersScreen(_allQuestions, _trueAnsweredQuestions)));
   }
 
   void _openMenuScreen() {
