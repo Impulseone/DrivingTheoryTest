@@ -1,7 +1,7 @@
 import 'package:dirving_theory_test/extension/custom_text_style.dart';
 import 'package:dirving_theory_test/model/question.dart';
 import 'package:dirving_theory_test/view/menu_screens/home_page.dart';
-import 'package:dirving_theory_test/view/review_answers_screen.dart';
+import 'package:dirving_theory_test/view/questions_screens/review_answers_screen.dart';
 import 'package:flutter/material.dart';
 
 class ResultScreen extends StatefulWidget {

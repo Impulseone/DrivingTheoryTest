@@ -1,6 +1,6 @@
 import 'package:dirving_theory_test/extension/custom_text_style.dart';
 import 'package:dirving_theory_test/model/question.dart';
-import 'package:dirving_theory_test/view/answered_question_review_screen.dart';
+import 'package:dirving_theory_test/view/questions_screens/answered_question_review_screen.dart';
 import 'package:flutter/material.dart';
 
 class ReviewAnswersScreen extends StatefulWidget {
@@ -46,31 +46,30 @@ class _ReviewAnswersScreenState extends State<ReviewAnswersScreen> {
 
   Widget _questionTileWidget(int index) {
     return Container(
-      height: 100,
+        height: 100,
         margin: EdgeInsets.only(top: 10, left: 15, right: 15),
         padding: EdgeInsets.only(top: 10, left: 10, right: 10),
         color: _trueAnsweredQuestions.contains(_questions[index])
             ? Colors.green
             : Colors.red,
         child: Center(
-          child:
-          Column(children: [
-            Text(
-              _getEngText(_questions[index].question),
-              style: CustomTextStyle.engTextStyleMenu(context),
-            ),
-            Text(
-              _getRusText(_questions[index].question),
-              style: CustomTextStyle.rusTextStyleMenuBig(context),
-            ),
-          ])
-        ));
+            child: Column(children: [
+          Text(
+            _getEngText(_questions[index].question),
+            style: CustomTextStyle.engTextStyleMenu(context),
+          ),
+          Text(
+            _getRusText(_questions[index].question),
+            style: CustomTextStyle.rusTextStyleMenuBig(context),
+          ),
+        ])));
   }
 
   void _openAnswersReviewScreen() {
     Navigator.of(context).push(MaterialPageRoute(
         builder: (ctxt) => AnsweredQuestionReviewScreen(_questions)));
   }
+
   String _getRusText(String question) {
     return question.split(";")[1];
   }

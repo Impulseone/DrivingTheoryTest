@@ -1,3 +1,4 @@
+import 'package:dirving_theory_test/bloc/answered_questions_bloc.dart';
 import 'package:dirving_theory_test/bloc/categories_bloc.dart';
 import 'package:dirving_theory_test/bloc/question_bloc.dart';
 import 'package:dirving_theory_test/database/model/answered_question.dart';
@@ -9,9 +10,11 @@ import 'package:flutter/material.dart';
 
 class SelectCategoryScreen extends StatefulWidget {
   final AnsweredQuestionsBloc answeredQuestionsBloc;
+  final CategoriesBloc categoriesBloc;
   final List<Category> categoriesList;
 
-  SelectCategoryScreen(this.answeredQuestionsBloc, this.categoriesList);
+  SelectCategoryScreen(
+      this.answeredQuestionsBloc, this.categoriesList, this.categoriesBloc);
 
   @override
   _SelectCategoryScreenState createState() => _SelectCategoryScreenState();
@@ -48,7 +51,7 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
         ),
         backgroundColor: Colors.black,
       ),
-      body: categoriesList(widget.categoriesList),
+      body: _categoriesList(),
       bottomNavigationBar:
           BottomAppBar(color: Colors.green, child: _startButton()),
     );
@@ -72,31 +75,41 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
       Navigator.of(context)
           .push(MaterialPageRoute(
               builder: (context) => QuestionScreen(questionBloc)))
-          .then((value) => setState(() => {widget.answeredQuestionsBloc.readAnsweredQuestions()}));
+          .then((value) => setState(
+              () => {widget.answeredQuestionsBloc.readAnsweredQuestions()}));
     }
   }
 
-  Widget categoriesList(List<Category> categories) {
-    return ListView(
-      children: [
-        categoryWidget(findCategory(categories, 'All categories')),
-        categoryWidget(findCategory(categories, 'Alertness')),
-        categoryWidget(findCategory(categories, 'Attitude')),
-        categoryWidget(findCategory(categories, 'Documents')),
-        categoryWidget(findCategory(categories, 'Hazard awareness')),
-        categoryWidget(findCategory(categories, 'Road and traffic signs')),
-        categoryWidget(
-            findCategory(categories, 'Incidents, accidents and emergencies')),
-        categoryWidget(findCategory(categories, 'Other types of vehicle')),
-        categoryWidget(findCategory(categories, 'Vehicle handling')),
-        categoryWidget(findCategory(categories, 'Motorway rules')),
-        categoryWidget(findCategory(categories, 'Rules of the road')),
-        categoryWidget(findCategory(categories, 'Safety margins')),
-        categoryWidget(findCategory(categories, 'Safety and your vehicle')),
-        categoryWidget(findCategory(categories, 'Vulnerable road users')),
-        categoryWidget(findCategory(categories, 'Vehicle loading')),
-      ],
-    );
+  Widget _categoriesList() {
+    return StreamBuilder(
+        stream: widget.categoriesBloc.categories,
+        builder: (ctx, snap) {
+          if(snap.hasData)
+          return ListView(
+            children: [
+              categoryWidget(findCategory(snap.data, 'All categories')),
+              categoryWidget(findCategory(snap.data, 'Alertness')),
+              categoryWidget(findCategory(snap.data, 'Attitude')),
+              categoryWidget(findCategory(snap.data, 'Documents')),
+              categoryWidget(findCategory(snap.data, 'Hazard awareness')),
+              categoryWidget(
+                  findCategory(snap.data, 'Road and traffic signs')),
+              categoryWidget(findCategory(
+                  snap.data, 'Incidents, accidents and emergencies')),
+              categoryWidget(
+                  findCategory(snap.data, 'Other types of vehicle')),
+              categoryWidget(findCategory(snap.data, 'Vehicle handling')),
+              categoryWidget(findCategory(snap.data, 'Motorway rules')),
+              categoryWidget(findCategory(snap.data, 'Rules of the road')),
+              categoryWidget(findCategory(snap.data, 'Safety margins')),
+              categoryWidget(
+                  findCategory(snap.data, 'Safety and your vehicle')),
+              categoryWidget(findCategory(snap.data, 'Vulnerable road users')),
+              categoryWidget(findCategory(snap.data, 'Vehicle loading')),
+            ],
+          );
+          else return Container();
+        });
   }
 
   Widget categoryWidget(Category category) {

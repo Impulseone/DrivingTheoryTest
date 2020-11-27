@@ -114,9 +114,14 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _initAndWriteQuestionsToDb() async {
-    List<Question> questions = await QuestionBloc().readQuestionsFromFile();
-    questions.forEach((element) {
-      DBProvider.db.insertQuestion(element);
-    });
+    List<Question> questions = await DBProvider.db.getQuestions();
+    if (questions != null && questions.length > 0)
+      return;
+    else {
+      List<Question> questions = await QuestionBloc().readQuestionsFromFile();
+      questions.forEach((element) {
+        DBProvider.db.insertQuestion(element);
+      });
+    }
   }
 }

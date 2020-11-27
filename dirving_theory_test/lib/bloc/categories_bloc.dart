@@ -1,21 +1,20 @@
-import 'package:dirving_theory_test/database/database.dart';
-import 'package:dirving_theory_test/database/model/answered_question.dart';
+import 'package:dirving_theory_test/extension/categories_provider.dart';
 import 'package:rxdart/rxdart.dart';
 
-class AnsweredQuestionsBloc {
-  final BehaviorSubject<List<AnsweredQuestion>> _answeredQuestionsController =
-      BehaviorSubject<List<AnsweredQuestion>>();
+class CategoriesBloc {
+  final BehaviorSubject<List<Category>> _categoriesController =
+      BehaviorSubject<List<Category>>();
 
-  Stream<List<AnsweredQuestion>> get answeredQuestions =>
-      _answeredQuestionsController.stream;
+  Stream<List<Category>> get categories => _categoriesController.stream;
 
-  void readAnsweredQuestions() async {
-    List<AnsweredQuestion> answeredQuestions = List();
-    answeredQuestions = await DBProvider.db.getAnsweredQuestions();
-    _answeredQuestionsController.sink.add(answeredQuestions);
+  Future<List<Category>> generateCategories() async {
+    List<Category> categories = List();
+    categories = await CategoriesProvider().generateCategoriesInfo();
+    _categoriesController.sink.add(categories);
+    return categories;
   }
 
   void dispose() {
-    _answeredQuestionsController.close();
+    _categoriesController.close();
   }
 }

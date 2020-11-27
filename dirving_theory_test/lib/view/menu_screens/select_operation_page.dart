@@ -1,3 +1,4 @@
+import 'package:dirving_theory_test/bloc/answered_questions_bloc.dart';
 import 'package:dirving_theory_test/bloc/categories_bloc.dart';
 import 'package:dirving_theory_test/extension/categories_provider.dart';
 import 'package:dirving_theory_test/extension/custom_text_style.dart';
@@ -24,7 +25,8 @@ class SelectOperationMenuPage extends StatefulWidget {
 }
 
 class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
-  AnsweredQuestionsBloc categoriesBloc = new AnsweredQuestionsBloc();
+  AnsweredQuestionsBloc _answeredQuestionsBloc = new AnsweredQuestionsBloc();
+  CategoriesBloc _categoriesBloc = CategoriesBloc();
   List<Category> categories = List();
 
   @override
@@ -186,7 +188,7 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
   }
 
   void _generateCategories() async {
-    categories = await CategoriesProvider().generateCategoriesInfo();
+    categories = await _categoriesBloc.generateCategories();
   }
 
   void _openFavoritesScreen() {
@@ -195,10 +197,10 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
   }
 
   void _openCategoriesToPracticePage() {
-    categoriesBloc.readAnsweredQuestions();
+    _answeredQuestionsBloc.readAnsweredQuestions();
     Navigator.of(context).push(MaterialPageRoute(
         builder: (context) =>
-            SelectCategoryScreen(categoriesBloc, categories)));
+            SelectCategoryScreen(_answeredQuestionsBloc, categories, _categoriesBloc)));
   }
 
   void _openMockPage() {}
