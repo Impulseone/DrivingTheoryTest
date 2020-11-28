@@ -19,7 +19,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
   List<Question> _allQuestions = new List();
   List<Question> _flaggedQuestions = new List();
   List<Question> _rightAnsweredQuestions = new List();
-
+  Map<int, String> _selectedAnswers = Map<int, String>();
   QuestionBloc _questionBloc;
 
   Question _selectedQuestion;
@@ -71,8 +71,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
           style: CustomTextStyle.engTextStyleBody(context),
         ),
         color: Colors.black,
-        onPressed: () =>
-            _openResultScreen());
+        onPressed: () => _openResultScreen());
   }
 
   Widget _body() {
@@ -80,7 +79,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
       stream: _questionBloc.questions,
       builder: (context, snapshot) {
         if (snapshot.hasData && snapshot.data.length > 0) {
-            _allQuestions = snapshot.data;
+          _allQuestions = snapshot.data;
           _selectedQuestion = snapshot.data[_questionNumber];
           return Column(
             children: [
@@ -223,7 +222,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 ],
               ),
               onPressed: () {
-                _answerQuestion(answer,rightAnswer,question);
+                _answerQuestion(answer, rightAnswer, question);
               }),
         ));
   }
@@ -251,12 +250,12 @@ class _QuestionScreenState extends State<QuestionScreen> {
     }
   }
 
-  void _answerQuestion(String answer, String rightAnswer, Question question){
-    if(answer==rightAnswer){
+  void _answerQuestion(String answer, String rightAnswer, Question question) {
+    _selectedAnswers.putIfAbsent(question.id, () => answer);
+    if (answer == rightAnswer) {
       _rightAnsweredQuestions.add(question);
     }
-    _questionBloc.insertAnsweredQuestion(
-        question, answer, rightAnswer);
+    _questionBloc.insertAnsweredQuestion(question, answer, rightAnswer);
     setState(() {
       if (_questionNumber + 1 < _allQuestions.length) _questionNumber++;
     });
@@ -267,7 +266,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
         context,
         MaterialPageRoute(
             builder: (ctx) =>
-                ResultScreen(_allQuestions, _rightAnsweredQuestions)),(Route<dynamic> route) => false);
+                ResultScreen(_allQuestions, _rightAnsweredQuestions, _selectedAnswers)),
+        (Route<dynamic> route) => false);
   }
 
   void _decreaseQuestionNumber() {

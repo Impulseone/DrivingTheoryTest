@@ -7,19 +7,21 @@ import 'package:flutter/material.dart';
 class ResultScreen extends StatefulWidget {
   final List<Question> _allQuestions;
   final List<Question> _trueAnsweredQuestions;
+  final Map<int,String> _selectedAnswers;
 
-  ResultScreen(this._allQuestions, this._trueAnsweredQuestions);
+  ResultScreen(this._allQuestions, this._trueAnsweredQuestions, this._selectedAnswers);
 
   @override
   _ResultScreenState createState() =>
-      _ResultScreenState(_allQuestions, _trueAnsweredQuestions);
+      _ResultScreenState(_allQuestions, _trueAnsweredQuestions,_selectedAnswers);
 }
 
 class _ResultScreenState extends State<ResultScreen> {
   final List<Question> _allQuestions;
   final List<Question> _trueAnsweredQuestions;
+  final Map<int,String> _selectedAnswers;
 
-  _ResultScreenState(this._allQuestions, this._trueAnsweredQuestions);
+  _ResultScreenState(this._allQuestions, this._trueAnsweredQuestions, this._selectedAnswers);
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +103,7 @@ class _ResultScreenState extends State<ResultScreen> {
   void _openReviewAnswersScreen() {
     Navigator.of(context).push(MaterialPageRoute(
         builder: (context) =>
-            ReviewAnswersScreen(_allQuestions, _trueAnsweredQuestions)));
+            ReviewAnswersScreen(_allQuestions, _trueAnsweredQuestions,_selectedAnswers)));
   }
 
   void _openMenuScreen() {

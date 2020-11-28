@@ -6,22 +6,24 @@ import 'package:flutter/material.dart';
 
 class AnsweredQuestionReviewScreen extends StatefulWidget {
   final List<Question> _questions;
+  final Map<int, String> _selectedAnswers;
 
-  AnsweredQuestionReviewScreen(this._questions);
+  AnsweredQuestionReviewScreen(this._questions, this._selectedAnswers);
 
   @override
   _AnsweredQuestionReviewScreenState createState() =>
-      _AnsweredQuestionReviewScreenState(_questions);
+      _AnsweredQuestionReviewScreenState(_questions, _selectedAnswers);
 }
 
 class _AnsweredQuestionReviewScreenState
     extends State<AnsweredQuestionReviewScreen> {
   final List<Question> _questions;
   final QuestionBloc _questionBloc = QuestionBloc();
+  final Map<int, String> _selectedAnswers;
   Question _selectedQuestion;
   int _questionNumber = 0;
 
-  _AnsweredQuestionReviewScreenState(this._questions);
+  _AnsweredQuestionReviewScreenState(this._questions, this._selectedAnswers);
 
   @override
   Widget build(BuildContext context) {
@@ -184,22 +186,37 @@ class _AnsweredQuestionReviewScreenState
           width: 500.0,
           height: 64,
           child: Container(
-            color: answer == rightAnswer ? Colors.white : Colors.green,
+            color: _getColor(rightAnswer, answer, question.id),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   _getEngText(answer),
-                  style: answer == rightAnswer ? CustomTextStyle.engTextStyleBodyBlack(context):CustomTextStyle.engTextStyleBody(context),
+                  style: answer == rightAnswer
+                      ? CustomTextStyle.engTextStyleBodyBlack(context)
+                      : CustomTextStyle.engTextStyleBody(context),
                 ),
                 Text(
                   _getRusText(answer),
-                  style: answer == rightAnswer ? CustomTextStyle.rusTextStyleBodyBlack(context):CustomTextStyle.rusTextStyleBody(context),
+                  style: answer == rightAnswer
+                      ? CustomTextStyle.rusTextStyleBodyBlack(context)
+                      : CustomTextStyle.rusTextStyleBody(context),
                 ),
               ],
             ),
           ),
         ));
+  }
+
+  Color _getColor(String rightAnswer, String answer, int questionId) {
+    if (answer == rightAnswer)
+      return Colors.white;
+    else {
+      if (answer == _selectedAnswers[questionId])
+        return Colors.red;
+      else
+        return Colors.green;
+    }
   }
 
   String _getRusText(String question) {
@@ -243,7 +260,7 @@ class _AnsweredQuestionReviewScreenState
             QuestionInfoScreen(_selectedQuestion.explanation)));
   }
 
-  void _backToReviewAnswersScreen(){
+  void _backToReviewAnswersScreen() {
     Navigator.pop(context);
   }
 }

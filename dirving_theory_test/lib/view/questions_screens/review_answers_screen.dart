@@ -6,19 +6,23 @@ import 'package:flutter/material.dart';
 class ReviewAnswersScreen extends StatefulWidget {
   final List<Question> _questions;
   final List<Question> _trueAnsweredQuestions;
+  final Map<int, String> _selectedAnswers;
 
-  ReviewAnswersScreen(this._questions, this._trueAnsweredQuestions);
+  ReviewAnswersScreen(
+      this._questions, this._trueAnsweredQuestions, this._selectedAnswers);
 
   @override
-  _ReviewAnswersScreenState createState() =>
-      _ReviewAnswersScreenState(_questions, _trueAnsweredQuestions);
+  _ReviewAnswersScreenState createState() => _ReviewAnswersScreenState(
+      _questions, _trueAnsweredQuestions, _selectedAnswers);
 }
 
 class _ReviewAnswersScreenState extends State<ReviewAnswersScreen> {
-  List<Question> _questions;
-  List<Question> _trueAnsweredQuestions;
+  final List<Question> _questions;
+  final List<Question> _trueAnsweredQuestions;
+  final Map<int, String> _selectedAnswers;
 
-  _ReviewAnswersScreenState(this._questions, this._trueAnsweredQuestions);
+  _ReviewAnswersScreenState(
+      this._questions, this._trueAnsweredQuestions, this._selectedAnswers);
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +43,7 @@ class _ReviewAnswersScreenState extends State<ReviewAnswersScreen> {
         itemCount: _questions.length,
         itemBuilder: (BuildContext ctxt, int index) {
           return GestureDetector(
-              onTap: _openAnswersReviewScreen,
+              onTap: _openAnsweredQuestionReviewScreen,
               child: _questionTileWidget(index));
         });
   }
@@ -65,9 +69,9 @@ class _ReviewAnswersScreenState extends State<ReviewAnswersScreen> {
         ])));
   }
 
-  void _openAnswersReviewScreen() {
+  void _openAnsweredQuestionReviewScreen() {
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (ctxt) => AnsweredQuestionReviewScreen(_questions)));
+        builder: (ctxt) => AnsweredQuestionReviewScreen(_questions, _selectedAnswers)));
   }
 
   String _getRusText(String question) {
