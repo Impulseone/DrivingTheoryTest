@@ -456,18 +456,6 @@
     "explanation": "A toucan crossing is designed to allow pedestrians and cyclists to cross at the same time. Look out for cyclists approaching the crossing at speed;Тукан-переход предназначен для того, чтобы пешеходы и велосипедисты могли переходить дорогу на то же время. Обратите внимание на велосипедистов, приближающихся к перекрестку на большой скорости"
   },
   {
-    "id": 133,
-    "category": "Attitude",
-    "hasImage": true,
-    "question": "Which instrument-panel warning light would show that headlights are on main beam?;Какая сигнальная лампа на панели приборов показывает, что фары включены дальним светом?",
-    "answer_1": " ",
-    "answer_2": " ",
-    "answer_3": " ",
-    "answer_4": " ",
-    "right_answer": 3,
-    "explanation": "You should be aware of all the warning lights and visual aids on the vehicle you're driving. If you're driving a vehicle for the first time, you should familiarise yourself with all the controls, warning lights and visual aids before you set off;Вы должны знать обо всех сигнальных огнях и наглядных пособиях на транспортном средстве, которым вы управляете. Если вы ведете автомобиль впервые, вам следует ознакомиться со всеми элементами управления, сигнальными огнями и визуальными помощь перед тем, как отправиться в путь"
-  },
-  {
     "id": 145,
     "category": "Attitude",
     "hasImage": false,
@@ -708,18 +696,6 @@
     "explanation": "As the registered keeper of a vehicle, it’s up to you to inform DVLA of any changes in your details; for example, your name or address. You do this by completing and sending off the relevant section of the registration certificate;Как зарегистрированный хранитель транспортного средства, вы должны сообщать DVLA о любых изменениях в ваших данных, например, о вашем имени или адресе. Вы делаете это, заполнив и отправив соответствующий раздел регистрационного свидетельства"
   },
   {
-    "id": 15,
-    "category": "Hazard awareness",
-    "hasImage": true,
-    "question": "Why should you slow down as you approach this hazard;Почему вы должны сбавлять скорость, приближаясь к этой опасности?",
-    "answer_1": "Because it’s hard to see to the right;Потому что не видно направо ",
-    "answer_2": "Because of animals crossing;Из-за скрещивания животных ",
-    "answer_3": "Because of approaching traffic;Из-за приближающегося движения ",
-    "answer_4": "Because of the level crossing;Из-за переезда ",
-    "right_answer": 4,
-    "explanation": "You should be slowing down and selecting the correct gear in case you have to stop at the level crossing. Look for the signals and be prepared to stop if necessary;Вам следует снизить скорость и выбрать правильную передачу, если вам придется остановиться на железнодорожном переезде. Ищите сигналы и будьте готовы остановиться в случае необходимости."
-  },
-  {
     "id": 4,
     "category": "Hazard awareness",
     "hasImage": true,
@@ -842,7 +818,7 @@
   {
     "id": 11,
     "category": "Motorway rules",
-    "hasImage": true,
+    "hasImage": false,
     "question": "What should you do when going through a contraflow system on a motorway?; Что делать при прохождении системы противотока на автомагистрали?",
     "answer_1": "Switch lanes to keep the traffic flowing;Переключайте полосу движения, чтобы движение продолжалось",
     "answer_2": "Use dipped headlights;Используйте ближний свет",
@@ -1812,18 +1788,6 @@
     "explanation": "Don't wait until the last moment before moving into the left-hand lane. Plan ahead and don't rely on other traffic letting you in.;Не ждите до последнего момента, прежде чем выехать на левую полосу движения. План впереди и не полагайтесь на то, что вас впустят другой транспортный поток. "
   },
   {
-    "id": 296,
-    "category": "Road and traffic signs",
-    "hasImage": true,
-    "question": "What shape are traffic signs giving orders?;Какую форму принимают дорожные знаки?",
-    "answer_1": " ",
-    "answer_2": " ",
-    "answer_3": " ",
-    "answer_4": " ",
-    "right_answer": 3,
-    "explanation": "Road signs in the shape of a circle give orders. Those with a red circle are mostly prohibitive. The 'stop' sign is octagonal to give it greater prominence. Signs giving orders must always be obeyed.;Дорожные знаки в форме круга отдают приказы. Дорожные знаки с красным кругом в большинстве своем являются запретительными. Знак 'стоп' восьмиугольный, чтобы придать ему большую известность. Знаки, дающие приказы, должны всегда выполняться."
-  },
-  {
     "id": 313,
     "category": "Road and traffic signs",
     "hasImage": true,
@@ -1870,18 +1834,6 @@
     "answer_4": "Green alone; Только зеленый",
     "right_answer": 1,
     "explanation": "At junctions controlled by traffic lights, you must stop behind the white line until the lights change to green. A red light, an amber light, and red and amber lights showing together all mean stop. You may proceed when the light is green unless your exit road is blocked or pedestrians are crossing in front of you. If you're approaching traffic lights that are visible from a distance and the light has been green for some time, be ready to slow down and stop, because the lights are likely to change.; На перекрестках, контролируемых светофорами, вы должны остановиться за белой линией, пока свет не сменится на зелёный. Красный, янтарный, красный и янтарный огни Вы можете продолжать движение при зеленом освещении, если только дорога к выходу не заблокирована или пешеходы не переходят перед вами. Если вы приближаетесь к светофорам, видимым с расстояния, и свет был зеленым некоторое время, будьте готовы замедлиться и остановиться, потому что свет, вероятно, изменится."
-  },
-  {
-    "id": 338,
-    "category": "Road and traffic signs",
-    "hasImage": true,
-    "question": "What does this motorway sign mean?; Что означает этот знак автомагистрали?",
-    "answer_1": "No services for 50 miles; В радиусе 50 миль нету обслужевания",
-    "answer_2": "Obstruction 50 metres (164 feet) ahead; Препятствие через 50 метров (164 футов) вперед ",
-    "answer_3": "Temporary maximum speed 50 mph;’ Временная максимальная скорость 50 миль в час ",
-    "answer_4": "Temporary minimum speed 50 mph; Временная минимальная скорость 50 миль в час ",
-    "right_answer": 3,
-    "explanation": "Look out for signs above your lane or on the central reservation. These will give you important information or warnings about the road ahead. To allow for the high speed of motorway traffic, these signs may light up some distance from any hazard. Don't ignore the signs just because the road looks clear to you.; Обратите внимание на знаки, установленные над вашей полосой движения или в центральном резервации. Они предоставят Вам важную информацию или предупреждения о предстоящей дороге. Для обеспечения высокой скорости движения по автомагистралям эти знаки могут освещать определенное расстояние от любой опасности. Не игнорируй знаки только потому, что дорога кажется тебе чистой."
   },
   {
     "id": 336,
@@ -1980,18 +1932,6 @@
     "explanation": "Signs with a brown background give directions to places of interest. They're often seen on a motorway, directing you along the easiest route to the attraction.; Знаки с коричневым фоном дают направление интересующим их местам. Они часто на автостраде, направляя вас по самому легкому пути к аттракциону. "
   },
   {
-    "id": 287,
-    "category": "Road and traffic signs",
-    "hasImage": true,
-    "question": "Which type of sign tells you what you must not do?; Какой тип знака говорит вам, что вы не должны делать?",
-    "answer_1": " ",
-    "answer_2": " ",
-    "answer_3": " ",
-    "answer_4": " ",
-    "right_answer": 4,
-    "explanation": "Signs in the shape of a circle give orders. A sign with a red circle means that you aren't allowed to do something. Study Know Your Traffic Signs to ensure that you understand what the different traffic signs mean.; Знаки в форме круга отдают приказы. Знак с красным кругом означает, что вам нельзя что-либо делать. Изучите свои дорожные знаки, чтобы убедиться, что вы понимаете, что означают различные дорожные знаки."
-  },
-  {
     "id": 362,
     "category": "Road and traffic signs",
     "hasImage": false,
@@ -2088,18 +2028,6 @@
     "explanation": "Whatever light is showing, you should know which light is going to appear next and be able to take appropriate action. For example, when amber is showing on its own, you'll know that red will appear next. This should give you ample time to anticipate and respond safely.; Что бы ни показывал свет, вы должны знать, какой свет будет следующим и сможете принять соответствующие меры. Например, когда Эмбер появится сама, вы будете знать, что красный будет следующим. Это даст вам достаточно времени, чтобы предвидеть и ответить безопасно."
   },
   {
-    "id": 299,
-    "category": "Road and traffic signs",
-    "hasImage": true,
-    "question": "Which sign means you have priority over oncoming vehicles?; Какой знак означает, что у вас приоритет перед встречными машинами?",
-    "answer_1": " ",
-    "answer_2": " ",
-    "answer_3": " ",
-    "answer_4": " ",
-    "right_answer": 2,
-    "explanation": "Even though you have priority, be prepared to give way if other drivers don't. This will help to avoid congestion, confrontation or even a collision.; Даже если у вас есть приоритет, будьте готовы уступить дорогу, если другие водители нет. Это поможет избежать заторов, конфронтации или даже столкновения"
-  },
-  {
     "id": 368,
     "category": "Road and traffic signs",
     "hasImage": true,
@@ -2122,18 +2050,6 @@
     "answer_4": "The driver is slowing down;Водитель замедляет скорость ",
     "right_answer": 3,
     "explanation": "There might be an occasion where another driver uses an arm signal. This may be because the vehicle's indicators are obscured by other traffic. In order for such signals to be effective, all drivers should know their meaning. Be aware that the 'left turn' signal might look similar to the 'slowing down' signal.; Может быть случай, когда другой водитель использует сигнал руки. Это может быть связано с тем, что индикаторы транспортного средства не видны при движении других транспортных средств. Для того чтобы такие сигналы были эффективными, все водители должны знать их значение. Помните, что сигнал левого поворота может быть похож на сигнал замедления."
-  },
-  {
-    "id": 288,
-    "category": "Road and traffic signs",
-    "hasImage": true,
-    "question": "Which is the sign for a ring road?; Какой знак у кольцевой дороги?",
-    "answer_1": " ",
-    "answer_2": " ",
-    "answer_3": " ",
-    "answer_4": " ",
-    "right_answer": 2,
-    "explanation": "Ring roads are designed to relieve congestion in towns and city centres.; Кольцевые дороги предназначены для уменьшения заторов в городах и центрах городов. "
   },
   {
     "id": 271,
@@ -2328,23 +2244,11 @@
     "explanation": "Leaving your indicators on could confuse other road users and may even lead to a crash. Be aware that if you haven't turned sharply, your indicators may not self-cancel and you'll need to turn them off manually.; Если оставить индикаторы на месте, это может привести к путанице в работе других участников дорожного движения и даже к аварии. Имейте в виду, что если вы не повернули резко, ваши индикаторы могут не самоаннулировать и вам придется выключить их вручную."
   },
   {
-    "id": 269,
-    "category": "Road and traffic signs",
-    "hasImage": true,
-    "question": "Which shape is used for a 'give way' sign?; Какая форма используется для знака отказа?",
-    "answer_1": " ",
-    "answer_2": " ",
-    "answer_3": "  ",
-    "answer_4": " ",
-    "right_answer": 3,
-    "explanation": "Other warning signs are the same shape and colour, but the 'give way' triangle points downwards. When you see this sign, you must give way to traffic on the road that you're about to enter.;Другие предупреждающие знаки имеют одинаковую форму и цвет, но треугольник указывает вниз. Когда вы увидите этот знак, вы должны уступить дорогу, на которую вы собираетесь въехать."
-  },
-  {
     "id": 304,
     "category": "Road and traffic signs",
     "hasImage": false,
     "question": "What should you do when you're approaching traffic lights that have red and amber showing together?;Что делать, когда вы приближаетесь к светофорам с красным и желтыми огнями?",
-    "answer_1": "Wait for the green light",
+    "answer_1": "Wait for the green light;ждать зеленого света",
     "answer_2": "Stop because the lights are changing to red; Остановитсь, потому что свет меняется на красный",
     "answer_3": "Take care because there's a fault with the lights; Беспокоится, потому что свет неисправен",
     "answer_4": "Pass the lights if the road is clear; Пропустить свет, если дорога свободна",
@@ -2460,18 +2364,6 @@
     "explanation": "When there's queuing traffic ahead and you have to slow down or even stop, briefly showing your hazard warning lights will help alert the traffic behind to the hazard.; Когда впереди очередь в очередь, и ты должен притормозить или даже остановиться, вкратце показывать сигнальные огни, предупреждающие об опасности. "
   },
   {
-    "id": 305,
-    "category": "Road and traffic signs",
-    "hasImage": true,
-    "question": "Which sign means 'no entry'?;Какой знак означает, что вход запрещен?",
-    "answer_1": " ",
-    "answer_2": " ",
-    "answer_3": " ",
-    "answer_4": " ",
-    "right_answer": 2,
-    "explanation": "Look for and obey traffic signs. Disobeying or not seeing a sign could be dangerous. It may also be an offence for which you could be prosecuted.;Искать и подчиняться дорожным знакам. Неподчинение или отсутствие знака может быть опасным. Это также может быть правонарушением, за которое вас могут привлечь к ответственности."
-  },
-  {
     "id": 268,
     "category": "Road and traffic signs",
     "hasImage": true,
@@ -2506,18 +2398,6 @@
     "answer_4": "They're rectangular with a yellow border; Они прямоугольные с желтой рамкой ",
     "right_answer": 2,
     "explanation": "There are three basic types of traffic sign: those that warn, those that inform and those that give orders. Generally, triangular signs warn, rectangular signs give information or directions and circular signs give orders. An exception is the eight-sided 'stop' sign.; Есть три основных типа дорожных знаков: предупреждающие, информирующие и приказывающие. Как правило, треугольные знаки предупреждают, прямоугольные знаки дают информацию или указания, а круглые знаки - приказы. Исключение составляет восьмисторонний знак “стоп”."
-  },
-  {
-    "id": 289,
-    "category": "Road and traffic signs",
-    "hasImage": true,
-    "question": "Which sign means turn left ahead?; Какой знак означает повернуть налево?",
-    "answer_1": " ",
-    "answer_2": " ",
-    "answer_3": " ",
-    "answer_4": " ",
-    "right_answer": 1,
-    "explanation": "Blue circles tell you what you must do and this sign gives a clear instruction to turn left ahead. You should be looking out for signs at all times and know what they mean.; Синие круги говорят вам, что вы должны делать, и этот знак дает четкие указания поворачивать налево. Ты должен постоянно следить за знаками и знать, что они значат."
   },
   {
     "id": 316,
@@ -2614,18 +2494,6 @@
     "answer_4": "Crossroads;Перекресток",
     "right_answer": 2,
     "explanation": "The 'stop' sign is the only road sign that's octagonal. This is so that it can be recognised and obeyed even if it's obscured (for example, by snow).; Знак остановки является единственным дорожным знаком, который имеет восьмиугольную форму. Это позволяет распознавать его и подчиняться ему, даже если он скрыт (например, снегом)."
-  },
-  {
-    "id": 282,
-    "category": "Road and traffic signs",
-    "hasImage": true,
-    "question": "Which sign means there will be two-way traffic crossing your route ahead?; Какой знак означает, что будет двустороннее движение, пересекающее ваш маршрут?",
-    "answer_1": " ",
-    "answer_2": " ",
-    "answer_3": " ",
-    "answer_4": " ",
-    "right_answer": 2,
-    "explanation": "This sign is found in or at the end of a one-way system. It warns you that traffic will be crossing your path from both directions.; Этот знак находится в или в конце одностороннего движения. Он предупреждает вас, что трафик будет пересекать ваш путь с обоих направлений. "
   },
   {
     "id": 329,
@@ -3350,7 +3218,7 @@
   {
     "id": 249,
     "category": "Vulnerable road users",
-    "hasImage": true,
+    "hasImage": false,
     "question": "What would you do if you see older people crossing the road ahead?;Что бы вы сделали, если бы увидели, как пожилые люди переходят дорогу?",
     "answer_1": "Be patient and allow them to cross in their own time;Буду терпеливым и позволю им перейти в свое время",
     "answer_2": "Tap the horn in case they're hard of hearing;Нажимать на гудок на случай, если они плохо слышат",
@@ -3612,18 +3480,6 @@
     "explanation": "Parking here would block other road users' view of the school entrance and would endanger the lives of children on their way to and from school.;Парковка здесь будет блокировать доступ других участников дорожного движения к школьному входу и поставит под угрозу жизнь детей по пути в школу и из школы."
   },
   {
-    "id": 255,
-    "category": "Vulnerable road users",
-    "hasImage": true,
-    "question": "What's the purpose of these road markings?;Какова цель этих дорожных разметок?",
-    "answer_1": "To enable teachers to have clear access to the school;Обеспечить учителям беспрепятственный доступ в школу.",
-    "answer_2": "To ensure children can see and be seen when they're crossing the road;Чтобы дети могли видеть и быть замеченными, когда они пересекают дорогу.",
-    "answer_3": "To ensure delivery vehicles have easy access to the school;Обеспечение легкого доступа к школе для транспортных средств.",
-    "answer_4": "To enable parents to pick up or drop off children safely;Для того чтобы родители могли безопасно забирать или привозить детей.",
-    "right_answer": 2,
-    "explanation": "These markings are found on the road outside schools. Don't stop or park on them, even to set down or pick up children. The markings are there to ensure that drivers, riders, children and other pedestrians have a clear view of the road in all directions.;Эти отметины найдены на дороге за пределами школ. Не останавливайтесь и не паркуйтесь на них, даже чтобы установить или забрать детей. Эта маркировка предназначена для обеспечения того, чтобы водители, дети и другие пешеходы имели четкое представление о дороге во всех направлениях."
-  },
-  {
     "id": 236,
     "category": "Vulnerable road users",
     "hasImage": true,
@@ -3674,7 +3530,7 @@
   {
     "id": 239,
     "category": "Vulnerable road users",
-    "hasImage": true,
+    "hasImage": false,
     "question": "What should you do if you want to turn left at a junction where pedestrians have started to cross?; Что делать, если вы хотите повернуть налево на перекрестке, где пешеходы начали переходить дорогу?",
     "answer_1": "Sound your horn and proceed;Гудите и продолжайте",
     "answer_2": "Give way to them;Уступать им дорогу",
@@ -3694,30 +3550,6 @@
     "answer_4": "Slow down and be prepared to stop for children;Притормозить и быть готовым остановиться для детей",
     "right_answer": 4,
     "explanation": "Beware of children playing in the street and running out into the road. If a ball bounces out from the pavement, slow down and be prepared to stop. Don't encourage anyone to retrieve it. Other road users may not see your signal and you might lead a child into a dangerous situation.; Остерегайтесь детей, играющих на улице и выбегающих на дорогу. Если мяч вылетает с тротуара, притормозите и будьте готовы остановиться. Не заставляйте никого искать его. Другие участники дорожного движения могут не видеть вашего сигнала, и вы можете привести ребенка в опасную ситуацию."
-  },
-  {
-    "id": 245,
-    "category": "Vulnerable road users",
-    "hasImage": true,
-    "question": "Where would you see this sign?;Где вы увидите этот знак?",
-    "answer_1": "Near a school crossing;Рядом со школьным переходом",
-    "answer_2": "At a 'pedestrians only' area; В зоне, предназначенной только для пешеходов",
-    "answer_3": "At a playground entrance;У входа на детскую площадку",
-    "answer_4": "On a school bus;На школьном автобусе",
-    "right_answer": 4,
-    "explanation": "School buses can stop to pick up or drop off schoolchildren at places that aren't designated bus stops. Watch out for children crossing the road to catch the bus or from the far side of the bus if they've just been dropped off.; Школьные автобусы могут останавливаться, чтобы забрать или высадить школьников в местах, которые не являются автобусными остановками. Остерегайтесь детей, пересекающих дорогу, чтобы поймать автобус или с дальней стороны автобуса, если их только что высадили"
-  },
-  {
-    "id": 262,
-    "category": "Vulnerable road users",
-    "hasImage": true,
-    "question": "Where would you see this sign?;Где вы видите этот знак?",
-    "answer_1": "At playground areas;На детской площадке",
-    "answer_2": "On the rear of a school bus or coach;В задней части школьного автобуса или автобуса",
-    "answer_3": "In the window of a car taking children to school;В окне автомобиля, который везет детей в школу",
-    "answer_4": "At the side of the road;На обочине дороги",
-    "right_answer": 2,
-    "explanation": "Vehicles that are used to carry children to and from school will be travelling at busy times of the day. If you're following a vehicle with this sign, be prepared for it to make frequent stops. It might pick up or set down passengers in places other than normal bus stops.;Автотранспортные средства, используемые для перевозки детей в школу и из школы, будут использоваться в напряженное время суток. Если вы следите за автомобилем с этим знаком, будьте готовы к частым остановкам. Он может подбирать или сажать пассажиров в местах, отличных от обычных автобусных остановок."
   },
   {
     "id": 256,
@@ -3911,18 +3743,7 @@
     "right_answer": 4,
     "explanation": "Motorcycles and scooters are generally smaller than other vehicles and can be difficult to see. Wearing bright clothing makes it easier for other road users to see a motorcyclist approaching, especially at junctions.;Мотоциклы и скутеры, как правило, меньше других транспортных средств и могут быть трудноразличимы. Ношение яркой одежды позволяет другим участникам дорожного движения видеть приближающегося мотоциклиста, особенно на перекрестках."
   },
-  {
-    "id": 243,
-    "category": "Vulnerable road users",
-    "hasImage": true,
-    "question": "Which sign means that there may be people walking along the road?;Какой знак означает, что по дороге могут идти люди?",
-    "answer_1": " ",
-    "answer_2": " ",
-    "answer_3": " ",
-    "answer_4": " ",
-    "right_answer": 4,
-    "explanation": "Always check the road signs. Triangular signs are warning signs: they inform you about hazards ahead and help you to anticipate any problems. There are a number of different signs showing pedestrians. Learn the meaning of each one.; Всегда проверяйте дорожные знаки. Треугольные знаки - это предупреждающие знаки: они информируют вас о предстоящих опасностях и помогают предвидеть любые проблемы. З. Имеется ряд различных знаков, указывающих на пешеходов"
-  },
+
   {
     "id": 209,
     "category": "Vulnerable road users",

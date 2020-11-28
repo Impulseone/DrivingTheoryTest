@@ -140,7 +140,11 @@ class _QuestionAfterSearchScreenState extends State<QuestionAfterSearchScreen> {
   }
 
   String getRusText(String question) {
-    return question.split(";")[1];
+    List<String> split = question.split(";");
+    if (split.length < 2)
+      return split[0];
+    else
+      return split[1];
   }
 
   String getEngText(String question) {

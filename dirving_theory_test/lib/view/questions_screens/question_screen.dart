@@ -144,6 +144,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
   }
 
   Widget _questionTextWidget(Question question) {
+    print(question.id);
     if (question.hasImage) {
       return _questionTextWithImage(question);
     } else
@@ -228,7 +229,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
   }
 
   String _getRusText(String question) {
-    return question.split(";")[1];
+    List<String> split = question.split(";");
+    if (split.length < 2)
+      return split[0];
+    else
+      return split[1];
   }
 
   String _getEngText(String question) {
@@ -265,8 +270,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
     Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
-            builder: (ctx) =>
-                ResultScreen(_allQuestions, _rightAnsweredQuestions, _selectedAnswers)),
+            builder: (ctx) => ResultScreen(
+                _allQuestions, _rightAnsweredQuestions, _selectedAnswers)),
         (Route<dynamic> route) => false);
   }
 

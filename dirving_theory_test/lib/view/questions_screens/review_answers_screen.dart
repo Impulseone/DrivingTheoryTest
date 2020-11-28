@@ -50,7 +50,7 @@ class _ReviewAnswersScreenState extends State<ReviewAnswersScreen> {
 
   Widget _questionTileWidget(int index) {
     return Container(
-        height: 100,
+        height: 139,
         margin: EdgeInsets.only(top: 10, left: 15, right: 15),
         padding: EdgeInsets.only(top: 10, left: 10, right: 10),
         color: _trueAnsweredQuestions.contains(_questions[index])
@@ -75,7 +75,11 @@ class _ReviewAnswersScreenState extends State<ReviewAnswersScreen> {
   }
 
   String _getRusText(String question) {
-    return question.split(";")[1];
+    List<String> split = question.split(";");
+    if (split.length < 2)
+      return split[0];
+    else
+      return split[1];
   }
 
   String _getEngText(String question) {
