@@ -19,27 +19,27 @@ class _SearchQuestionScreenState extends State<SearchQuestionScreen> {
         backgroundColor: Colors.black,
         title: Text("Search Questions"),
       ),
-      body: Container(
-          child: Column(
+      body: Column(
         children: [
           TextField(
             onSubmitted: (text) => searchQuestionBloc.searchQuestions(text),
           ),
-          StreamBuilder(
-              stream: searchQuestionBloc.questions,
-              builder: (ctx, snap) {
-                if (snap.hasData) {
-                  questions = snap.data;
-                  return ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: snap.data.length,
-                      itemBuilder: (ctx, index) =>
-                          questionWidget((snap.data[index] as Question)));
-                } else
-                  return Container();
-              })
+          Expanded(
+              child: StreamBuilder(
+                  stream: searchQuestionBloc.questions,
+                  builder: (ctx, snap) {
+                    if (snap.hasData) {
+                      questions = snap.data;
+                      return ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: snap.data.length,
+                          itemBuilder: (ctx, index) =>
+                              questionWidget((snap.data[index] as Question)));
+                    } else
+                      return Container();
+                  }))
         ],
-      )),
+      ),
     );
   }
 
@@ -55,7 +55,7 @@ class _SearchQuestionScreenState extends State<SearchQuestionScreen> {
     return Row(
       children: [
         Container(
-          width: MediaQuery.of(context).size.width*0.8,
+          width: MediaQuery.of(context).size.width * 0.8,
           child: Text(text),
         ),
         Padding(padding: EdgeInsets.only(left: 40)),

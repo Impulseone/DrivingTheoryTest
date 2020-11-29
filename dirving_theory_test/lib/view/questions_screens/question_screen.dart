@@ -153,7 +153,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   Widget _questionTextWithImage(Question question) {
     return Container(
-      height: MediaQuery.of(context).size.height / 2.3,
+      height: MediaQuery.of(context).size.height / 2.7,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -183,7 +183,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
   Widget _questionTextWithoutImage(Question question) {
     return Container(
         padding: EdgeInsets.only(top: 20),
-        height: MediaQuery.of(context).size.height / 2.3,
+        height: MediaQuery.of(context).size.height / 2.7,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
