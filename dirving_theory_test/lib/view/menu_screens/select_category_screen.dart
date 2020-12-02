@@ -69,17 +69,6 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
             onPressed: () => _startQuestionScreen()));
   }
 
-  void _startQuestionScreen() {
-    if (selectedCategoriesList.length > 0) {
-      questionBloc.getQuestionsForCategories(selectedCategoriesList);
-      Navigator.of(context)
-          .push(MaterialPageRoute(
-              builder: (context) => QuestionScreen(questionBloc)))
-          .then((value) => setState(
-              () => {widget.answeredQuestionsBloc.readAnsweredQuestions()}));
-    }
-  }
-
   Widget _categoriesList() {
     return StreamBuilder(
         stream: widget.categoriesBloc.categories,
@@ -87,32 +76,32 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
           if(snap.hasData)
           return ListView(
             children: [
-              categoryWidget(findCategory(snap.data, 'All categories')),
-              categoryWidget(findCategory(snap.data, 'Alertness')),
-              categoryWidget(findCategory(snap.data, 'Attitude')),
-              categoryWidget(findCategory(snap.data, 'Documents')),
-              categoryWidget(findCategory(snap.data, 'Hazard awareness')),
-              categoryWidget(
-                  findCategory(snap.data, 'Road and traffic signs')),
-              categoryWidget(findCategory(
+              _categoryWidget(_findCategory(snap.data, 'All categories')),
+              _categoryWidget(_findCategory(snap.data, 'Alertness')),
+              _categoryWidget(_findCategory(snap.data, 'Attitude')),
+              _categoryWidget(_findCategory(snap.data, 'Documents')),
+              _categoryWidget(_findCategory(snap.data, 'Hazard awareness')),
+              _categoryWidget(
+                  _findCategory(snap.data, 'Road and traffic signs')),
+              _categoryWidget(_findCategory(
                   snap.data, 'Incidents, accidents and emergencies')),
-              categoryWidget(
-                  findCategory(snap.data, 'Other types of vehicle')),
-              categoryWidget(findCategory(snap.data, 'Vehicle handling')),
-              categoryWidget(findCategory(snap.data, 'Motorway rules')),
-              categoryWidget(findCategory(snap.data, 'Rules of the road')),
-              categoryWidget(findCategory(snap.data, 'Safety margins')),
-              categoryWidget(
-                  findCategory(snap.data, 'Safety and your vehicle')),
-              categoryWidget(findCategory(snap.data, 'Vulnerable road users')),
-              categoryWidget(findCategory(snap.data, 'Vehicle loading')),
+              _categoryWidget(
+                  _findCategory(snap.data, 'Other types of vehicle')),
+              _categoryWidget(_findCategory(snap.data, 'Vehicle handling')),
+              _categoryWidget(_findCategory(snap.data, 'Motorway rules')),
+              _categoryWidget(_findCategory(snap.data, 'Rules of the road')),
+              _categoryWidget(_findCategory(snap.data, 'Safety margins')),
+              _categoryWidget(
+                  _findCategory(snap.data, 'Safety and your vehicle')),
+              _categoryWidget(_findCategory(snap.data, 'Vulnerable road users')),
+              _categoryWidget(_findCategory(snap.data, 'Vehicle loading')),
             ],
           );
           else return Container();
         });
   }
 
-  Widget categoryWidget(Category category) {
+  Widget _categoryWidget(Category category) {
     List<AnsweredQuestion> categoryAnsweredQuestionsAll = List();
     List<AnsweredQuestion> categoryAnsweredQuestionsTrue = List();
     return StreamBuilder(
@@ -132,13 +121,13 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
                       size: 45,
                       color: Colors.green,
                     ),
-                    centerCategoryInfo(
+                    _centerCategoryInfo(
                         category.engName,
                         category.rusName,
                         categoryAnsweredQuestionsAll,
                         categoryAnsweredQuestionsTrue,
                         category.allQuestionsNumber),
-                    checkbox(category.allQuestionsNumber, category),
+                    _checkbox(category.allQuestionsNumber, category),
                   ],
                   mainAxisAlignment: MainAxisAlignment.center,
                 ),
@@ -159,86 +148,7 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
     );
   }
 
-  void _fillAnsweredQuestions(
-      AnsweredQuestion element,
-      Category category,
-      List<AnsweredQuestion> categoryAnsweredQuestionsAll,
-      List<AnsweredQuestion> categoryAnsweredQuestionsTrue) {
-    if (element.category == category.engName) {
-      categoryAnsweredQuestionsAll.add(element);
-      _fillAnsweredQuestionsTrue(categoryAnsweredQuestionsTrue, element);
-    }
-  }
-
-  void _fillAnsweredQuestionsTrue(
-      List<AnsweredQuestion> categoryAnsweredQuestionsTrue,
-      AnsweredQuestion element) {
-    if (element.answerIsTrue == 1) categoryAnsweredQuestionsTrue.add(element);
-  }
-
-  Widget checkbox(int categoriesMax, Category category) {
-    return Checkbox(
-      onChanged: (isChecked) {
-        setState(() {
-          if (category.engName == 'All categories') {
-            setAllChecked(widget.categoriesList, isChecked);
-            return;
-          } else {
-            if (isChecked) {
-              selectedCategoriesList.add(category);
-              category.isChecked = isChecked;
-              selectedQuestions += categoriesMax;
-              if (checkAllChecked(widget.categoriesList))
-                setAllChecked(widget.categoriesList, true);
-            } else {
-              selectedCategoriesList.remove(category);
-              setAllUnchecked(widget.categoriesList);
-              selectedQuestions -= categoriesMax;
-              category.isChecked = isChecked;
-            }
-          }
-        });
-      },
-      value: category.isChecked,
-      activeColor: Colors.green,
-    );
-  }
-
-  bool checkAllChecked(List<Category> allCategories) {
-    bool isAllChecked = true;
-    List<Category> categoriesWithoutAll = List();
-    categoriesWithoutAll.addAll(allCategories);
-    categoriesWithoutAll.remove(findCategory(allCategories, "All categories"));
-    categoriesWithoutAll.forEach((element) {
-      if (!element.isChecked) isAllChecked = false;
-    });
-    return isAllChecked;
-  }
-
-  void setAllUnchecked(List<Category> allCategories) {
-    Category category = findCategory(allCategories, "All categories");
-    category.isChecked = false;
-  }
-
-  void setAllChecked(List<Category> allCategories, isChecked) {
-    setState(() {
-      if (isChecked) {
-        selectedCategoriesList.addAll(allCategories);
-        allCategories.forEach((element) {
-          element.isChecked = true;
-        });
-        selectedQuestions = allQuestions.length;
-      } else {
-        selectedCategoriesList = List();
-        selectedQuestions = 0;
-        allCategories.forEach((element) {
-          element.isChecked = false;
-        });
-      }
-    });
-  }
-
-  Widget centerCategoryInfo(
+  Widget _centerCategoryInfo(
       String engText,
       String rusText,
       List<AnsweredQuestion> categoryAnsweredQuestionsAll,
@@ -262,8 +172,7 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
                   ),
                 ],
               ),
-              width: 250,
-              padding: EdgeInsets.only(left: 10),
+              width: 195,
             ),
             Text(
                 "${((categoryAnsweredQuestionsTrue.length / questionsMax) * 100).round()}%")
@@ -272,7 +181,7 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
         Row(
           children: [
             Container(
-              width: 250,
+              width: 225,
               height: 10,
               margin: EdgeInsets.only(top: 2, bottom: 2),
               child: LinearProgressIndicator(
@@ -290,7 +199,7 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
               style: CustomTextStyle.rusTextStyleBodyBlack(context),
             ),
             SizedBox(
-              width: 100,
+              width: 65,
             ),
             Text(
                 "Correctly:${categoryAnsweredQuestionsTrue.length}/$questionsMax",
@@ -301,7 +210,63 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
     );
   }
 
-  Category findCategory(List<Category> categories, String categoryName) {
+  Widget _checkbox(int categoriesMax, Category category) {
+    return Checkbox(
+      onChanged: (isChecked) {
+        setState(() {
+          if (category.engName == 'All categories') {
+            _setAllChecked(widget.categoriesList, isChecked);
+            return;
+          } else {
+            if (isChecked) {
+              selectedCategoriesList.add(category);
+              category.isChecked = isChecked;
+              selectedQuestions += categoriesMax;
+              if (_checkAllChecked(widget.categoriesList))
+                _setAllChecked(widget.categoriesList, true);
+            } else {
+              selectedCategoriesList.remove(category);
+              _setAllUnchecked(widget.categoriesList);
+              selectedQuestions -= categoriesMax;
+              category.isChecked = isChecked;
+            }
+          }
+        });
+      },
+      value: category.isChecked,
+      activeColor: Colors.green,
+    );
+  }
+
+  void _startQuestionScreen() {
+    if (selectedCategoriesList.length > 0) {
+      questionBloc.getQuestionsForCategories(selectedCategoriesList);
+      Navigator.of(context)
+          .push(MaterialPageRoute(
+          builder: (context) => QuestionScreen(questionBloc)))
+          .then((value) => setState(
+              () => {widget.answeredQuestionsBloc.readAnsweredQuestions()}));
+    }
+  }
+
+  void _fillAnsweredQuestions(
+      AnsweredQuestion element,
+      Category category,
+      List<AnsweredQuestion> categoryAnsweredQuestionsAll,
+      List<AnsweredQuestion> categoryAnsweredQuestionsTrue) {
+    if (element.category == category.engName) {
+      categoryAnsweredQuestionsAll.add(element);
+      _fillAnsweredQuestionsTrue(categoryAnsweredQuestionsTrue, element);
+    }
+  }
+
+  void _fillAnsweredQuestionsTrue(
+      List<AnsweredQuestion> categoryAnsweredQuestionsTrue,
+      AnsweredQuestion element) {
+    if (element.answerIsTrue == 1) categoryAnsweredQuestionsTrue.add(element);
+  }
+
+  Category _findCategory(List<Category> categories, String categoryName) {
     Category category = categories.first;
     categories.forEach((element) {
       if (element.engName == categoryName) {
@@ -309,5 +274,39 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
       }
     });
     return category;
+  }
+
+  bool _checkAllChecked(List<Category> allCategories) {
+    bool isAllChecked = true;
+    List<Category> categoriesWithoutAll = List();
+    categoriesWithoutAll.addAll(allCategories);
+    categoriesWithoutAll.remove(_findCategory(allCategories, "All categories"));
+    categoriesWithoutAll.forEach((element) {
+      if (!element.isChecked) isAllChecked = false;
+    });
+    return isAllChecked;
+  }
+
+  void _setAllUnchecked(List<Category> allCategories) {
+    Category category = _findCategory(allCategories, "All categories");
+    category.isChecked = false;
+  }
+
+  void _setAllChecked(List<Category> allCategories, isChecked) {
+    setState(() {
+      if (isChecked) {
+        selectedCategoriesList.addAll(allCategories);
+        allCategories.forEach((element) {
+          element.isChecked = true;
+        });
+        selectedQuestions = allQuestions.length;
+      } else {
+        selectedCategoriesList = List();
+        selectedQuestions = 0;
+        allCategories.forEach((element) {
+          element.isChecked = false;
+        });
+      }
+    });
   }
 }

@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             Icon(
               icon,
-              size: 80,
+              size: 50,
               color: Colors.white,
             ),
             Text("$engText",

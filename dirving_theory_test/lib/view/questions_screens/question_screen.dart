@@ -45,19 +45,19 @@ class _QuestionScreenState extends State<QuestionScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _bottomBarWidget(60, 60, Icons.keyboard_arrow_left, 60, () {
+            _bottomBarWidget(50, 50, Icons.keyboard_arrow_left, 50, () {
               _decreaseQuestionNumber();
             }),
-            _bottomBarWidget(50, 50, Icons.flag, 40, () {
+            _bottomBarWidget(40, 40, Icons.flag, 30, () {
               _flaggedQuestions.add(_selectedQuestion);
             }),
-            _bottomBarWidget(50, 50, Icons.info, 40, () {
+            _bottomBarWidget(40, 40, Icons.info, 30, () {
               _toExplanationScreen();
             }),
-            _bottomBarWidget(50, 50, Icons.favorite, 40, () {
+            _bottomBarWidget(40, 40, Icons.favorite, 30, () {
               _questionBloc.insertQuestionIntoFavorites(_selectedQuestion);
             }),
-            _bottomBarWidget(60, 60, Icons.keyboard_arrow_right, 60, () {
+            _bottomBarWidget(50, 50, Icons.keyboard_arrow_right, 50, () {
               _increaseQuestionNumber();
             }),
           ],
@@ -65,13 +65,13 @@ class _QuestionScreenState extends State<QuestionScreen> {
   }
 
   Widget _finishButton() {
-    return RaisedButton(
+    return Container(width: 67, child: RaisedButton(
         child: Text(
           "finish",
-          style: CustomTextStyle.engTextStyleBody(context),
+          style: CustomTextStyle.engTextStyleBodyAnswer(context),
         ),
         color: Colors.black,
-        onPressed: () => _openResultScreen());
+        onPressed: () => _openResultScreen()));
   }
 
   Widget _body() {
@@ -172,8 +172,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 ],
               )),
           Container(
-              height: 180,
-              width: 180,
+              height: 110,
               child: Image.asset("assets/${question.id}.jpg"))
         ],
       ),
@@ -206,7 +205,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
         padding: EdgeInsets.only(left: 1, right: 1, top: 6),
         child: SizedBox(
           width: 500.0,
-          height: 64,
+          height: 52,
           child: RaisedButton(
               color: Colors.green,
               child: Column(
@@ -214,11 +213,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 children: [
                   Text(
                     _getEngText(answer),
-                    style: CustomTextStyle.engTextStyleBody(context),
+                    style: CustomTextStyle.engTextStyleBodyAnswer(context),
                   ),
                   Text(
                     _getRusText(answer),
-                    style: CustomTextStyle.rusTextStyleBody(context),
+                    style: CustomTextStyle.rusTextStyleBodyAnswer(context),
                   ),
                 ],
               ),

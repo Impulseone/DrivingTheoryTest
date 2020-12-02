@@ -22,6 +22,9 @@ class _SearchQuestionScreenState extends State<SearchQuestionScreen> {
       body: Column(
         children: [
           TextField(
+            decoration: InputDecoration(
+              hintText: 'Enter the text (Введите текст)...',
+            ),
             onSubmitted: (text) => searchQuestionBloc.searchQuestions(text),
           ),
           Expanded(
@@ -58,7 +61,7 @@ class _SearchQuestionScreenState extends State<SearchQuestionScreen> {
           width: MediaQuery.of(context).size.width * 0.8,
           child: Text(text),
         ),
-        Padding(padding: EdgeInsets.only(left: 40)),
+        Padding(padding: EdgeInsets.only(left: 20)),
         Icon(Icons.arrow_forward_ios)
       ],
     );

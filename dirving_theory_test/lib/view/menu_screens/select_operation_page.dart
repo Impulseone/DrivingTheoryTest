@@ -46,24 +46,32 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
           children: [
             _header(),
             SizedBox(
-              height: 40.0,
+              height: 12.0,
             ),
-            _button("Practice all questions", "Практиковать все вопросы",
-                Icons.arrow_right, PageType.PRACTICE_ALL_QUESTIONS),
-            _button(
-                "Mock test", "Пробный тест", Icons.timer, PageType.MOCK_TEST),
-            _button("Search questions", "Поиск вопросов", Icons.search,
-                PageType.SEARCH_QUESTIONS),
-            _button("My questions", "Мои вопросы", Icons.favorite,
-                PageType.MY_QUESTIONS),
-            _button("Progress monitor", "Индикатор прогресса", Icons.graphic_eq,
-                PageType.PROGRESS_MONITOR),
-            _button("Stopping distances", "Тормозные пути",
-                Icons.arrow_right_alt_outlined, PageType.STOPPING_DISTANCES),
-            _button("Help & Support", "Помощь и поддержка", Icons.mail_outline,
-                PageType.HELP_SUPPORT),
-            _button("Offers and Rewards", "Предложения и награды", Icons.star,
-                PageType.OFFERS_REWARDS),
+           Expanded(
+                child: Container(width: MediaQuery.of(context).size.width * 0.9, child: ListView(
+              children: [
+                _button("Practice all questions", "Практиковать все вопросы",
+                    Icons.arrow_right, PageType.PRACTICE_ALL_QUESTIONS),
+                _button("Mock test", "Пробный тест", Icons.timer,
+                    PageType.MOCK_TEST),
+                _button("Search questions", "Поиск вопросов", Icons.search,
+                    PageType.SEARCH_QUESTIONS),
+                _button("My questions", "Мои вопросы", Icons.favorite,
+                    PageType.MY_QUESTIONS),
+                _button("Progress monitor", "Индикатор прогресса",
+                    Icons.graphic_eq, PageType.PROGRESS_MONITOR),
+                _button(
+                    "Stopping distances",
+                    "Тормозные пути",
+                    Icons.arrow_right_alt_outlined,
+                    PageType.STOPPING_DISTANCES),
+                _button("Help & Support", "Помощь и поддержка",
+                    Icons.mail_outline, PageType.HELP_SUPPORT),
+                _button("Offers and Rewards", "Предложения и награды",
+                    Icons.star, PageType.OFFERS_REWARDS),
+              ],
+            )))
           ],
         ),
         bottomNavigationBar: _bottomNavigationBar());
@@ -102,9 +110,9 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
               child: Row(
                 children: [
                   Container(
-                      width: MediaQuery.of(context).size.width * 0.7,
+                      width: MediaQuery.of(context).size.width * 0.6,
                       child: _textInsideButton(engText, rusText)),
-                  Icon(iconData, color: Colors.white, size: 50)
+                  Icon(iconData, color: Colors.white, size: 40)
                 ],
               ),
               onPressed: _openPage(pageType)),
@@ -113,20 +121,20 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
 
   Widget _textInsideButton(String engText, String rusText) {
     return Container(
-      padding: EdgeInsets.only(top: 12,bottom: 12),
+        padding: EdgeInsets.only(top: 12, bottom: 12),
         child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          engText,
-          style: CustomTextStyle.engTextStyleMenuBig(context),
-        ),
-        Text(
-          rusText,
-          style: CustomTextStyle.rusTextStyleMenuBig(context),
-        ),
-      ],
-    ));
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              engText,
+              style: CustomTextStyle.engTextStyleMenu(context),
+            ),
+            Text(
+              rusText,
+              style: CustomTextStyle.rusTextStyleMenu(context),
+            ),
+          ],
+        ));
   }
 
   Widget _bottomNavigationBar() {
@@ -199,8 +207,8 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
   void _openCategoriesToPracticePage() {
     _answeredQuestionsBloc.readAnsweredQuestions();
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) =>
-            SelectCategoryScreen(_answeredQuestionsBloc, categories, _categoriesBloc)));
+        builder: (context) => SelectCategoryScreen(
+            _answeredQuestionsBloc, categories, _categoriesBloc)));
   }
 
   void _openMockPage() {}
