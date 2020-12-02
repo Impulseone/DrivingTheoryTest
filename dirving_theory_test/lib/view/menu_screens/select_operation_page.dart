@@ -177,7 +177,6 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
     return () {
       switch (pageType) {
         case PageType.PRACTICE_ALL_QUESTIONS:
-          _generateCategories();
           _openCategoriesToPracticePage();
           return;
         case PageType.MOCK_TEST:
@@ -195,10 +194,6 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
     };
   }
 
-  void _generateCategories() async {
-    _categories = await _categoriesBloc.generateCategories();
-  }
-
   void _openFavoritesScreen() {
     Navigator.of(context).push(
         MaterialPageRoute(builder: (context) => FavoriteQuestionsScreen()));
@@ -208,7 +203,7 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
     _answeredQuestionsBloc.readAnsweredQuestions();
     Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => SelectCategoryScreen(
-            _answeredQuestionsBloc, _categories, _categoriesBloc)));
+            _answeredQuestionsBloc, _categoriesBloc)));
   }
 
   void _openMockPage() {}

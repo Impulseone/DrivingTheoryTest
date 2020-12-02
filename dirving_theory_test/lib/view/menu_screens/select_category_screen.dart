@@ -11,10 +11,8 @@ import 'package:flutter/material.dart';
 class SelectCategoryScreen extends StatefulWidget {
   final AnsweredQuestionsBloc answeredQuestionsBloc;
   final CategoriesBloc categoriesBloc;
-  final List<Category> categoriesList;
 
-  SelectCategoryScreen(
-      this.answeredQuestionsBloc, this.categoriesList, this.categoriesBloc);
+  SelectCategoryScreen(this.answeredQuestionsBloc, this.categoriesBloc);
 
   @override
   _SelectCategoryScreenState createState() => _SelectCategoryScreenState();
@@ -34,6 +32,7 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
     _allQuestions = List();
     _selectedQuestions = 0;
     _questionBloc.readAllQuestionsFromDb();
+    widget.categoriesBloc.generateCategories();
   }
 
   @override
@@ -76,7 +75,7 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
     return StreamBuilder(
         stream: widget.categoriesBloc.categories,
         builder: (ctx, snap) {
-          if (snap.hasData)
+          if (snap.hasData){
             return ListView(
               children: [
                 _categoryWidget(_findCategory(snap.data, 'All categories')),
@@ -101,6 +100,7 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
                 _categoryWidget(_findCategory(snap.data, 'Vehicle loading')),
               ],
             );
+        }
           else
             return Container();
         });
@@ -154,93 +154,116 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
   }
 
   Widget _centerCategoryInfo(
-      String engText,
-      String rusText,
+      String engName,
+      String rusName,
       List<AnsweredQuestion> categoryAnsweredQuestionsAll,
       List<AnsweredQuestion> categoryAnsweredQuestionsTrue,
       int questionsMax) {
     return Column(
       children: [
-        Row(
-          children: [
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    engText,
-                    style: CustomTextStyle.engTextStyleBodyBlack(context),
-                  ),
-                  Text(
-                    rusText,
-                    style: CustomTextStyle.rusTextStyleBodyBlack(context),
-                  ),
-                ],
+        _categoryName(
+            engName, rusName, categoryAnsweredQuestionsTrue, questionsMax),
+        _progressIndicator(categoryAnsweredQuestionsAll, questionsMax),
+        _answeredInfo(categoryAnsweredQuestionsAll,
+            categoryAnsweredQuestionsTrue, questionsMax)
+      ],
+    );
+  }
+
+  Widget _categoryName(String engName, String rusName,
+      List<AnsweredQuestion> categoryAnsweredQuestionsTrue, int questionsMax) {
+    return Row(
+      children: [
+        Container(
+          width: 195,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                engName,
+                style: CustomTextStyle.engTextStyleBodyBlack(context),
               ),
-              width: 195,
-            ),
-            Text(
-                "${((categoryAnsweredQuestionsTrue.length / questionsMax) * 100).round()}%")
-          ],
-        ),
-        Row(
-          children: [
-            Container(
-              width: 225,
-              height: 10,
-              margin: EdgeInsets.only(top: 2, bottom: 2),
-              child: LinearProgressIndicator(
-                value: categoryAnsweredQuestionsAll.length / questionsMax,
-                valueColor: new AlwaysStoppedAnimation<Color>(Colors.green),
-                backgroundColor: Colors.red,
+              Text(
+                rusName,
+                style: CustomTextStyle.rusTextStyleBodyBlack(context),
               ),
-            )
-          ],
+            ],
+          ),
         ),
-        Row(
-          children: [
-            Text(
-              "Answered:${categoryAnsweredQuestionsAll.length}/$questionsMax",
-              style: CustomTextStyle.rusTextStyleBodyBlack(context),
-            ),
-            SizedBox(
-              width: 65,
-            ),
-            Text(
-                "Correctly:${categoryAnsweredQuestionsTrue.length}/$questionsMax",
-                style: CustomTextStyle.rusTextStyleBodyBlack(context))
-          ],
+        Text(
+            "${((categoryAnsweredQuestionsTrue.length / questionsMax) * 100).round()}%")
+      ],
+    );
+  }
+
+  Widget _progressIndicator(
+      List<AnsweredQuestion> categoryAnsweredQuestionsAll, int questionsMax) {
+    return Row(
+      children: [
+        Container(
+          width: 225,
+          height: 10,
+          margin: EdgeInsets.only(top: 2, bottom: 2),
+          child: LinearProgressIndicator(
+            value: categoryAnsweredQuestionsAll.length / questionsMax,
+            valueColor: new AlwaysStoppedAnimation<Color>(Colors.green),
+            backgroundColor: Colors.red,
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget _answeredInfo(List<AnsweredQuestion> categoryAnsweredQuestionsAll,
+      List<AnsweredQuestion> categoryAnsweredQuestionsTrue, int questionsMax) {
+    return Row(
+      children: [
+        Text(
+          "Answered:${categoryAnsweredQuestionsAll.length}/$questionsMax",
+          style: CustomTextStyle.rusTextStyleBodyBlack(context),
         ),
+        SizedBox(
+          width: 65,
+        ),
+        Text("Correctly:${categoryAnsweredQuestionsTrue.length}/$questionsMax",
+            style: CustomTextStyle.rusTextStyleBodyBlack(context))
       ],
     );
   }
 
   Widget _checkbox(int categoriesMax, Category category) {
-    return Checkbox(
-      onChanged: (isChecked) {
-        setState(() {
-          if (category.engName == 'All categories') {
-            _setAllChecked(widget.categoriesList, isChecked);
-            return;
-          } else {
-            if (isChecked) {
-              _selectedCategoriesList.add(category);
-              category.isChecked = isChecked;
-              _selectedQuestions += categoriesMax;
-              if (_checkAllChecked(widget.categoriesList))
-                _setAllChecked(widget.categoriesList, true);
-            } else {
-              _selectedCategoriesList.remove(category);
-              _setAllUnchecked(widget.categoriesList);
-              _selectedQuestions -= categoriesMax;
-              category.isChecked = isChecked;
-            }
-          }
+    return StreamBuilder(
+        stream: widget.categoriesBloc.categories,
+        builder: (ctx, snap) {
+          if (snap.hasData)
+            return Checkbox(
+              onChanged: (isChecked) {
+                setState(() {
+                  if (category.engName == 'All categories') {
+                    _setAllChecked(snap.data, isChecked);
+                    return;
+                  } else {
+                    if (isChecked) {
+                      _selectedCategoriesList.add(category);
+                      category.isChecked = isChecked;
+                      _selectedQuestions += categoriesMax;
+                      if (_checkAllChecked(snap.data))
+                        _setAllChecked(snap.data, true);
+                    } else {
+                      _selectedCategoriesList.remove(category);
+                      _setAllUnchecked(snap.data);
+                      _selectedQuestions -= categoriesMax;
+                      category.isChecked = isChecked;
+                    }
+                  }
+                });
+              },
+              value: category.isChecked,
+              activeColor: Colors.green,
+            );
+          else
+            return CircularProgressIndicator();
         });
-      },
-      value: category.isChecked,
-      activeColor: Colors.green,
-    );
   }
 
   void _startQuestionScreen() {

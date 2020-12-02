@@ -3,7 +3,7 @@ import 'package:rxdart/rxdart.dart';
 
 class CategoriesBloc {
   final BehaviorSubject<List<Category>> _categoriesController =
-      BehaviorSubject<List<Category>>();
+  BehaviorSubject<List<Category>>();
 
   Stream<List<Category>> get categories => _categoriesController.stream;
 
