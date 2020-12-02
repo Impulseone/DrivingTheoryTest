@@ -43,7 +43,13 @@ class CustomTextStyle {
   static TextStyle engTextStyleBodyBlack(BuildContext context) {
     return Theme.of(context).textTheme.bodyText1.copyWith(fontSize: 14.0, fontWeight: FontWeight.bold, color: Colors.black);
   }
+  static TextStyle engTextStyleBodyBlackAnswer(BuildContext context) {
+    return Theme.of(context).textTheme.bodyText1.copyWith(fontSize: 12.0, fontWeight: FontWeight.bold, color: Colors.black);
+  }
   static TextStyle rusTextStyleBodyBlack(BuildContext context) {
     return Theme.of(context).textTheme.bodyText1.copyWith(fontSize: 10.0, color: Colors.black);
+  }
+  static TextStyle rusTextStyleBodyBlackAnswer(BuildContext context) {
+    return Theme.of(context).textTheme.bodyText1.copyWith(fontSize: 8.0, color: Colors.black);
   }
 }

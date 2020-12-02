@@ -65,16 +65,16 @@ class _AnsweredQuestionReviewScreenState
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _bottomBarWidget(60, 60, Icons.keyboard_arrow_left, 60, () {
+            _bottomBarWidget(50, 50, Icons.keyboard_arrow_left, 50, () {
               _decreaseQuestionNumber();
             }),
-            _bottomBarWidget(50, 50, Icons.info, 40, () {
+            _bottomBarWidget(40, 40, Icons.info, 30, () {
               _toExplanationScreen();
             }),
-            _bottomBarWidget(50, 50, Icons.favorite, 40, () {
+            _bottomBarWidget(40, 40, Icons.favorite, 30, () {
               _questionBloc.insertQuestionIntoFavorites(_selectedQuestion);
             }),
-            _bottomBarWidget(60, 60, Icons.keyboard_arrow_right, 60, () {
+            _bottomBarWidget(50, 50, Icons.keyboard_arrow_right, 50, () {
               _increaseQuestionNumber();
             }),
           ],
@@ -83,9 +83,12 @@ class _AnsweredQuestionReviewScreenState
 
   Widget _finishButton() {
     return RaisedButton(
-        child: Text(
-          "finish",
-          style: CustomTextStyle.engTextStyleBody(context),
+        child: Container(
+          width: 67,
+          child: Text(
+            "finish",
+            style: CustomTextStyle.engTextStyleBodyAnswer(context),
+          ),
         ),
         color: Colors.black,
         onPressed: () => _backToReviewAnswersScreen());
@@ -131,7 +134,7 @@ class _AnsweredQuestionReviewScreenState
 
   Widget _questionTextWithImage(Question question) {
     return Container(
-      height: MediaQuery.of(context).size.height / 2.3,
+      height: MediaQuery.of(context).size.height / 2.7,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -150,8 +153,7 @@ class _AnsweredQuestionReviewScreenState
                 ],
               )),
           Container(
-              height: 180,
-              width: 180,
+              height: 110,
               child: Image.asset("assets/${question.id}.jpg"))
         ],
       ),
@@ -161,7 +163,7 @@ class _AnsweredQuestionReviewScreenState
   Widget _questionTextWithoutImage(Question question) {
     return Container(
         padding: EdgeInsets.only(top: 20),
-        height: MediaQuery.of(context).size.height / 2.3,
+        height: MediaQuery.of(context).size.height / 2.7,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -184,7 +186,7 @@ class _AnsweredQuestionReviewScreenState
         padding: EdgeInsets.only(left: 1, right: 1, top: 6),
         child: SizedBox(
           width: 500.0,
-          height: 64,
+          height: 52,
           child: Container(
             color: _getColor(rightAnswer, answer, question.id),
             child: Column(
@@ -193,14 +195,14 @@ class _AnsweredQuestionReviewScreenState
                 Text(
                   _getEngText(answer),
                   style: answer == rightAnswer
-                      ? CustomTextStyle.engTextStyleBodyBlack(context)
-                      : CustomTextStyle.engTextStyleBody(context),
+                      ? CustomTextStyle.engTextStyleBodyBlackAnswer(context)
+                      : CustomTextStyle.engTextStyleBodyAnswer(context),
                 ),
                 Text(
                   _getRusText(answer),
                   style: answer == rightAnswer
-                      ? CustomTextStyle.rusTextStyleBodyBlack(context)
-                      : CustomTextStyle.rusTextStyleBody(context),
+                      ? CustomTextStyle.rusTextStyleBodyBlackAnswer(context)
+                      : CustomTextStyle.rusTextStyleBodyAnswer(context),
                 ),
               ],
             ),

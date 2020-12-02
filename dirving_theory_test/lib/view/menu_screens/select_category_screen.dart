@@ -21,16 +21,19 @@ class SelectCategoryScreen extends StatefulWidget {
 }
 
 class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
-  QuestionBloc questionBloc = QuestionBloc();
-  List<Category> selectedCategoriesList = List();
-  List<Question> allQuestions = List();
-  int selectedQuestions = 0;
-  bool isChecked = false;
+  QuestionBloc _questionBloc;
+  List<Category> _selectedCategoriesList;
+  List<Question> _allQuestions;
+  int _selectedQuestions;
 
   @override
   void initState() {
     super.initState();
-    questionBloc.readAllQuestionsFromDb();
+    _questionBloc = QuestionBloc();
+    _selectedCategoriesList = List();
+    _allQuestions = List();
+    _selectedQuestions = 0;
+    _questionBloc.readAllQuestionsFromDb();
   }
 
   @override
@@ -38,15 +41,15 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
     return Scaffold(
       appBar: AppBar(
         title: StreamBuilder(
-          stream: questionBloc.allQuestions,
+          stream: _questionBloc.allQuestions,
           builder: (ctxt, snap) {
             if (snap.hasData) {
-              allQuestions = (snap.data as List<Question>);
+              _allQuestions = (snap.data as List<Question>);
               return Text(
-                  "Categories to practice \n$selectedQuestions of ${(snap.data as List<Question>).length} selected");
+                  "Categories to practice \n$_selectedQuestions of ${(snap.data as List<Question>).length} selected");
             } else
               return Text(
-                  "Categories to practice \n$selectedQuestions of 0 selected");
+                  "Categories to practice \n$_selectedQuestions of 0 selected");
           },
         ),
         backgroundColor: Colors.black,
@@ -73,31 +76,33 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
     return StreamBuilder(
         stream: widget.categoriesBloc.categories,
         builder: (ctx, snap) {
-          if(snap.hasData)
-          return ListView(
-            children: [
-              _categoryWidget(_findCategory(snap.data, 'All categories')),
-              _categoryWidget(_findCategory(snap.data, 'Alertness')),
-              _categoryWidget(_findCategory(snap.data, 'Attitude')),
-              _categoryWidget(_findCategory(snap.data, 'Documents')),
-              _categoryWidget(_findCategory(snap.data, 'Hazard awareness')),
-              _categoryWidget(
-                  _findCategory(snap.data, 'Road and traffic signs')),
-              _categoryWidget(_findCategory(
-                  snap.data, 'Incidents, accidents and emergencies')),
-              _categoryWidget(
-                  _findCategory(snap.data, 'Other types of vehicle')),
-              _categoryWidget(_findCategory(snap.data, 'Vehicle handling')),
-              _categoryWidget(_findCategory(snap.data, 'Motorway rules')),
-              _categoryWidget(_findCategory(snap.data, 'Rules of the road')),
-              _categoryWidget(_findCategory(snap.data, 'Safety margins')),
-              _categoryWidget(
-                  _findCategory(snap.data, 'Safety and your vehicle')),
-              _categoryWidget(_findCategory(snap.data, 'Vulnerable road users')),
-              _categoryWidget(_findCategory(snap.data, 'Vehicle loading')),
-            ],
-          );
-          else return Container();
+          if (snap.hasData)
+            return ListView(
+              children: [
+                _categoryWidget(_findCategory(snap.data, 'All categories')),
+                _categoryWidget(_findCategory(snap.data, 'Alertness')),
+                _categoryWidget(_findCategory(snap.data, 'Attitude')),
+                _categoryWidget(_findCategory(snap.data, 'Documents')),
+                _categoryWidget(_findCategory(snap.data, 'Hazard awareness')),
+                _categoryWidget(
+                    _findCategory(snap.data, 'Road and traffic signs')),
+                _categoryWidget(_findCategory(
+                    snap.data, 'Incidents, accidents and emergencies')),
+                _categoryWidget(
+                    _findCategory(snap.data, 'Other types of vehicle')),
+                _categoryWidget(_findCategory(snap.data, 'Vehicle handling')),
+                _categoryWidget(_findCategory(snap.data, 'Motorway rules')),
+                _categoryWidget(_findCategory(snap.data, 'Rules of the road')),
+                _categoryWidget(_findCategory(snap.data, 'Safety margins')),
+                _categoryWidget(
+                    _findCategory(snap.data, 'Safety and your vehicle')),
+                _categoryWidget(
+                    _findCategory(snap.data, 'Vulnerable road users')),
+                _categoryWidget(_findCategory(snap.data, 'Vehicle loading')),
+              ],
+            );
+          else
+            return Container();
         });
   }
 
@@ -219,15 +224,15 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
             return;
           } else {
             if (isChecked) {
-              selectedCategoriesList.add(category);
+              _selectedCategoriesList.add(category);
               category.isChecked = isChecked;
-              selectedQuestions += categoriesMax;
+              _selectedQuestions += categoriesMax;
               if (_checkAllChecked(widget.categoriesList))
                 _setAllChecked(widget.categoriesList, true);
             } else {
-              selectedCategoriesList.remove(category);
+              _selectedCategoriesList.remove(category);
               _setAllUnchecked(widget.categoriesList);
-              selectedQuestions -= categoriesMax;
+              _selectedQuestions -= categoriesMax;
               category.isChecked = isChecked;
             }
           }
@@ -239,11 +244,11 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
   }
 
   void _startQuestionScreen() {
-    if (selectedCategoriesList.length > 0) {
-      questionBloc.getQuestionsForCategories(selectedCategoriesList);
+    if (_selectedCategoriesList.length > 0) {
+      _questionBloc.getQuestionsForCategories(_selectedCategoriesList);
       Navigator.of(context)
           .push(MaterialPageRoute(
-          builder: (context) => QuestionScreen(questionBloc)))
+              builder: (context) => QuestionScreen(_questionBloc)))
           .then((value) => setState(
               () => {widget.answeredQuestionsBloc.readAnsweredQuestions()}));
     }
@@ -295,14 +300,14 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
   void _setAllChecked(List<Category> allCategories, isChecked) {
     setState(() {
       if (isChecked) {
-        selectedCategoriesList.addAll(allCategories);
+        _selectedCategoriesList.addAll(allCategories);
         allCategories.forEach((element) {
           element.isChecked = true;
         });
-        selectedQuestions = allQuestions.length;
+        _selectedQuestions = _allQuestions.length;
       } else {
-        selectedCategoriesList = List();
-        selectedQuestions = 0;
+        _selectedCategoriesList = List();
+        _selectedQuestions = 0;
         allCategories.forEach((element) {
           element.isChecked = false;
         });

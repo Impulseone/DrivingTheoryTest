@@ -27,11 +27,10 @@ class SelectOperationMenuPage extends StatefulWidget {
 class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
   AnsweredQuestionsBloc _answeredQuestionsBloc = new AnsweredQuestionsBloc();
   CategoriesBloc _categoriesBloc = CategoriesBloc();
-  List<Category> categories = List();
+  List<Category> _categories = List();
 
   @override
   void initState() {
-    _generateCategories();
     super.initState();
   }
 
@@ -178,6 +177,7 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
     return () {
       switch (pageType) {
         case PageType.PRACTICE_ALL_QUESTIONS:
+          _generateCategories();
           _openCategoriesToPracticePage();
           return;
         case PageType.MOCK_TEST:
@@ -196,7 +196,7 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
   }
 
   void _generateCategories() async {
-    categories = await _categoriesBloc.generateCategories();
+    _categories = await _categoriesBloc.generateCategories();
   }
 
   void _openFavoritesScreen() {
@@ -208,7 +208,7 @@ class _SelectOperationMenuPageState extends State<SelectOperationMenuPage> {
     _answeredQuestionsBloc.readAnsweredQuestions();
     Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => SelectCategoryScreen(
-            _answeredQuestionsBloc, categories, _categoriesBloc)));
+            _answeredQuestionsBloc, _categories, _categoriesBloc)));
   }
 
   void _openMockPage() {}
