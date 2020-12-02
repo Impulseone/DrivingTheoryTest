@@ -8,15 +8,17 @@ import '../result_screen.dart';
 
 class QuestionScreen extends StatefulWidget {
   final QuestionBloc questionBloc;
+  final List<Question> allQuestions;
 
-  QuestionScreen(this.questionBloc);
+  QuestionScreen(this.questionBloc, this.allQuestions);
 
   @override
-  _QuestionScreenState createState() => _QuestionScreenState(questionBloc);
+  _QuestionScreenState createState() =>
+      _QuestionScreenState(questionBloc, allQuestions);
 }
 
 class _QuestionScreenState extends State<QuestionScreen> {
-  List<Question> _allQuestions = new List();
+  final List<Question> _allQuestions;
   List<Question> _flaggedQuestions = new List();
   List<Question> _rightAnsweredQuestions = new List();
   Map<int, String> _selectedAnswers = Map<int, String>();
@@ -25,7 +27,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
   Question _selectedQuestion;
   int _questionNumber = 0;
 
-  _QuestionScreenState(this._questionBloc);
+  _QuestionScreenState(this._questionBloc, this._allQuestions);
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +36,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
         appBar: AppBar(
             centerTitle: true,
             backgroundColor: Colors.green,
-            title: _appBarTitle()),
-        body: _body(),
+            title: _appBarTitle2()),
+        body: _body2(),
         bottomNavigationBar: _bottomNavigationBar());
   }
 
@@ -65,13 +67,33 @@ class _QuestionScreenState extends State<QuestionScreen> {
   }
 
   Widget _finishButton() {
-    return Container(width: 67, child: RaisedButton(
-        child: Text(
-          "finish",
-          style: CustomTextStyle.engTextStyleBodyAnswer(context),
+    return Container(
+        width: 67,
+        child: RaisedButton(
+            child: Text(
+              "finish",
+              style: CustomTextStyle.engTextStyleBodyAnswer(context),
+            ),
+            color: Colors.black,
+            onPressed: () => _openResultScreen()));
+  }
+
+  Widget _body2(){
+    _selectedQuestion = _allQuestions[_questionNumber];
+    return Column(
+      children: [
+        _progressIndicator(),
+        _questionTextWidget(_selectedQuestion),
+        Column(
+          children: [
+            _answerButton(_selectedQuestion, 1),
+            _answerButton(_selectedQuestion, 2),
+            _answerButton(_selectedQuestion, 3),
+            _answerButton(_selectedQuestion, 4),
+          ],
         ),
-        color: Colors.black,
-        onPressed: () => _openResultScreen()));
+      ],
+    );
   }
 
   Widget _body() {
@@ -79,7 +101,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
       stream: _questionBloc.questions,
       builder: (context, snapshot) {
         if (snapshot.hasData && snapshot.data.length > 0) {
-          _allQuestions = snapshot.data;
+          //_allQuestions = snapshot.data;
           _selectedQuestion = snapshot.data[_questionNumber];
           return Column(
             children: [
@@ -99,6 +121,10 @@ class _QuestionScreenState extends State<QuestionScreen> {
           return Column();
       },
     );
+  }
+
+  Widget _appBarTitle2(){
+    return Text("Q${_questionNumber + 1} of ${_allQuestions.length}");
   }
 
   Widget _appBarTitle() {
@@ -172,8 +198,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 ],
               )),
           Container(
-              height: 110,
-              child: Image.asset("assets/${question.id}.jpg"))
+              height: 110, child: Image.asset("assets/${question.id}.jpg"))
         ],
       ),
     );
