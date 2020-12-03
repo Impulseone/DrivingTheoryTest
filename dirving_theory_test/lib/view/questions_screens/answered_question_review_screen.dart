@@ -135,6 +135,7 @@ class _AnsweredQuestionReviewScreenState
   Widget _questionTextWithImage(Question question) {
     return Container(
       height: MediaQuery.of(context).size.height / 2.7,
+      padding: EdgeInsets.only(top: 20,left: 15, right: 5),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -162,7 +163,7 @@ class _AnsweredQuestionReviewScreenState
 
   Widget _questionTextWithoutImage(Question question) {
     return Container(
-        padding: EdgeInsets.only(top: 20),
+        padding: EdgeInsets.only(top: 20,left: 15, right: 5),
         height: MediaQuery.of(context).size.height / 2.7,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

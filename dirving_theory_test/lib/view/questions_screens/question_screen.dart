@@ -96,46 +96,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
     );
   }
 
-  Widget _body() {
-    return StreamBuilder<List<Question>>(
-      stream: _questionBloc.questions,
-      builder: (context, snapshot) {
-        if (snapshot.hasData && snapshot.data.length > 0) {
-          //_allQuestions = snapshot.data;
-          _selectedQuestion = snapshot.data[_questionNumber];
-          return Column(
-            children: [
-              _progressIndicator(),
-              _questionTextWidget(_selectedQuestion),
-              Column(
-                children: [
-                  _answerButton(_selectedQuestion, 1),
-                  _answerButton(_selectedQuestion, 2),
-                  _answerButton(_selectedQuestion, 3),
-                  _answerButton(_selectedQuestion, 4),
-                ],
-              ),
-            ],
-          );
-        } else
-          return Column();
-      },
-    );
-  }
-
   Widget _appBarTitle2(){
     return Text("Q${_questionNumber + 1} of ${_allQuestions.length}");
-  }
-
-  Widget _appBarTitle() {
-    return StreamBuilder<List<Question>>(
-        stream: _questionBloc.questions,
-        builder: (context, snapshot) {
-          if (snapshot.hasData && snapshot.data.length > 0)
-            return Text("Q${_questionNumber + 1} of ${snapshot.data.length}");
-          else
-            return Text("Q${_questionNumber + 1} of 0");
-        });
   }
 
   Widget _bottomBarWidget(double width, double height, IconData iconData,
@@ -180,6 +142,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
   Widget _questionTextWithImage(Question question) {
     return Container(
       height: MediaQuery.of(context).size.height / 2.7,
+      padding: EdgeInsets.only(top: 20,left: 15, right: 5),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -206,7 +169,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   Widget _questionTextWithoutImage(Question question) {
     return Container(
-        padding: EdgeInsets.only(top: 20),
+        padding: EdgeInsets.only(top: 20,left: 15, right: 5),
         height: MediaQuery.of(context).size.height / 2.7,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
