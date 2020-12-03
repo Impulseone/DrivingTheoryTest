@@ -7,21 +7,23 @@ import 'package:flutter/material.dart';
 class ResultScreen extends StatefulWidget {
   final List<Question> _allQuestions;
   final List<Question> _trueAnsweredQuestions;
-  final Map<int,String> _selectedAnswers;
+  final Map<int, String> _selectedAnswers;
 
-  ResultScreen(this._allQuestions, this._trueAnsweredQuestions, this._selectedAnswers);
+  ResultScreen(
+      this._allQuestions, this._trueAnsweredQuestions, this._selectedAnswers);
 
   @override
-  _ResultScreenState createState() =>
-      _ResultScreenState(_allQuestions, _trueAnsweredQuestions,_selectedAnswers);
+  _ResultScreenState createState() => _ResultScreenState(
+      _allQuestions, _trueAnsweredQuestions, _selectedAnswers);
 }
 
 class _ResultScreenState extends State<ResultScreen> {
   final List<Question> _allQuestions;
   final List<Question> _trueAnsweredQuestions;
-  final Map<int,String> _selectedAnswers;
+  final Map<int, String> _selectedAnswers;
 
-  _ResultScreenState(this._allQuestions, this._trueAnsweredQuestions, this._selectedAnswers);
+  _ResultScreenState(
+      this._allQuestions, this._trueAnsweredQuestions, this._selectedAnswers);
 
   @override
   Widget build(BuildContext context) {
@@ -58,10 +60,12 @@ class _ResultScreenState extends State<ResultScreen> {
 
   Widget _answeredCorrectlyText(
       List<Question> allQuestions, List<Question> trueAnsweredQuestions) {
-    return Text(
-      "You have answered ${trueAnsweredQuestions.length} out of ${allQuestions.length} questions correctly.\nВы ответили верно на ${trueAnsweredQuestions.length} вопросов из ${allQuestions.length}.",
-      style: CustomTextStyle.rusTextStyleHeadlineBlack(context),
-    );
+    return Container(
+        padding: EdgeInsets.all(15),
+        child: Text(
+          "You have answered ${trueAnsweredQuestions.length} out of ${allQuestions.length} questions correctly.\nВы ответили верно на ${trueAnsweredQuestions.length} вопросов из ${allQuestions.length}.",
+          style: CustomTextStyle.rusTextStyleHeadlineBlack(context),
+        ));
   }
 
   Widget _reviewAnswersButton() {
@@ -102,8 +106,8 @@ class _ResultScreenState extends State<ResultScreen> {
 
   void _openReviewAnswersScreen() {
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) =>
-            ReviewAnswersScreen(_allQuestions, _trueAnsweredQuestions,_selectedAnswers)));
+        builder: (context) => ReviewAnswersScreen(
+            _allQuestions, _trueAnsweredQuestions, _selectedAnswers)));
   }
 
   void _openMenuScreen() {
