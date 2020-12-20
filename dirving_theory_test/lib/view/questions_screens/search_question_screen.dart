@@ -24,7 +24,7 @@ class _SearchQuestionScreenState extends State<SearchQuestionScreen> {
           TextField(
             decoration: InputDecoration(
               hintText: 'Enter the text (Введите текст)...',
-              contentPadding: EdgeInsets.only(left: 15)
+              contentPadding: EdgeInsets.only(left: 30)
             ),
             onSubmitted: (text) => searchQuestionBloc.searchQuestions(text),
           ),

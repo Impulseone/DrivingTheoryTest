@@ -61,7 +61,7 @@ class _ResultScreenState extends State<ResultScreen> {
   Widget _answeredCorrectlyText(
       List<Question> allQuestions, List<Question> trueAnsweredQuestions) {
     return Container(
-        padding: EdgeInsets.all(15),
+        padding: EdgeInsets.all(20),
         child: Text(
           "You have answered ${trueAnsweredQuestions.length} out of ${allQuestions.length} questions correctly.\nВы ответили верно на ${trueAnsweredQuestions.length} вопросов из ${allQuestions.length}.",
           style: CustomTextStyle.rusTextStyleHeadlineBlack(context),
